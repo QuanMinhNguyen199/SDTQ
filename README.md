@@ -1,6 +1,6 @@
 # Sơ đồ tổ chức 3D · THEHEGEO
 
-Ứng dụng giao diện theo `design.md`, dùng React Three Fiber + Drei + Post-processing (cảnh 3D isometric), Tailwind CSS (lớp giao diện 2D phủ trên canvas), Motion (trượt panel, popup hover), Zustand (store dùng chung giữa cảnh 3D và giao diện) và nhận diện logo trong `assets`.
+Ứng dụng giao diện theo `design.md`, dùng Next.js App Router + TypeScript, React Three Fiber + Drei + Post-processing (cảnh 3D isometric), Tailwind CSS (lớp giao diện 2D phủ trên canvas), Motion (trượt panel, popup hover), Zustand (store dùng chung giữa cảnh 3D và giao diện) và nhận diện logo trong `assets`.
 
 ## Chạy tại máy
 
@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Mở địa chỉ localhost được Vite in ra. Để tạo bản build: `npm run build`. Để xem bản build: `npm run preview`.
+Mở http://127.0.0.1:5173. Để tạo bản tĩnh Next.js trong `out/`: `npm run build`. Để xem bản build: `npm run preview` (hoặc `npm start`). Node.js 22 trở lên. `npm run dev:legacy` giữ điểm vào Vite cũ.
 
 ## Chức năng
 
@@ -48,10 +48,20 @@ npm run build
 
 Kiểm thử logic bao gồm cây bốn cấp, nội dung riêng, thu gọn, phát hiện chu trình, tham chiếu hỏng, tìm kiếm không dấu và bố cục nhánh.
 
-Kiểm thử trình duyệt: chạy dev server rồi `npm run test:browser` (lần mở đầu dev server có thể chậm do Vite tối ưu dependency — mở trang một lần trước khi chạy) (cần Microsoft Edge được cài). Có thể đặt `PREVIEW_URL` để kiểm tra server khác. Kịch bản kiểm tra tương tác thực, xuất/nhập JSON, theme, mobile và fallback khi WebGL không khả dụng; ảnh và dữ liệu kiểm thử nằm trong `.local/qa` (không đưa vào Git).
+Kiểm thử trình duyệt: chạy dev server rồi `npm run test:browser` (nên dùng bản production qua `npm run preview` để tránh thời gian biên dịch lần đầu) (cần Microsoft Edge được cài). Có thể đặt `PREVIEW_URL` để kiểm tra server khác. Kịch bản kiểm tra tương tác thực, xuất/nhập JSON, theme, mobile và fallback khi WebGL không khả dụng; ảnh và dữ liệu kiểm thử nằm trong `.local/qa` (không đưa vào Git).
 
 Kiểm tra riêng thao tác 2D: `node scripts/browser-check-2d.mjs` (dev server đang chạy). Bao gồm zoom vào/ra, con lăn, kéo nền, bàn phím, Toàn cảnh, Định vị và chọn đơn vị trên viewport desktop/mobile.
 
 Kiểm tra chuyển chế độ: `node scripts/browser-check-view-switch.mjs` kiểm tra chuyển qua lại nhiều lần, mất context thật, mở lại 3D, giao diện không có icon thư viện và fallback khi trình duyệt không có WebGL.
 
 Kiểm tra typography/theme: `node scripts/browser-check-theme.mjs` xác nhận font nội bộ, glyph tiếng Việt, hai theme và bố cục mobile.
+
+## Journey mode
+
+Chọn **Journey mode** trên navbar để khám phá cơ cấu theo lộ trình 3D. Camera chuyển mượt tới trạm được chọn; vẫn xoay và thu phóng tự do. Dùng Trạm trước / Trạm tiếp theo hoặc danh sách Đi đến trạm; tìm không dấu và lọc theo cụm/cấp tổ chức. Hồ sơ có Tổng quan, Nhiệm vụ, Quyền hạn và Đơn vị con. Chọn đơn vị con đưa camera tới đúng trạm.
+
+Dữ liệu mặc định dùng cơ cấu đang làm việc. Chọn **Doanh nghiệp mẫu · minh họa** để thử 13 đơn vị, ba khối và hai lớp con; dữ liệu mẫu không ghi đè dữ liệu đang quản lý. Quay về **Sơ đồ** sẽ khôi phục chế độ xem, bộ lọc, lựa chọn và cây trước đó. Trên mobile, bấm **Tìm & lọc trạm** để mở bộ lọc hoặc **Mở hồ sơ đơn vị** để xem chi tiết.
+
+Mã chính: `app/page.tsx` (điểm vào), `store/useOrgStore.ts` (store chung), `data/orgData.ts` (kiểu dữ liệu/mẫu), `components/3d/OrgScene.tsx` (hai chế độ cảnh), `components/ui/Sidebar.tsx`, `components/ui/JourneyControls.tsx`. Giao diện quản lý hiện tại được giữ trong `src/App.jsx` và các module liên quan.
+
+Journey dùng khối PBR, HDR city tự phục vụ trong `public/environments`, DPR tối đa 1.5 và render theo nhu cầu; giảm chuyển động tắt bay camera/nhấc khối. Chế độ Journey là trải nghiệm tra cứu, thao tác sửa dữ liệu vẫn ở Sơ đồ. Kiểm tra: `npm run typecheck`, `npm test`, và khi server đang chạy `npm run test:journey`.

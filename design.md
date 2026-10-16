@@ -417,3 +417,17 @@ Mục tiêu đề xuất: phản hồi chọn nút dưới 200ms sau khi dữ li
 File này là định hướng thiết kế để xây dựng ứng dụng, không phải báo cáo tính năng đã chạy. Chưa tạo dự án Spline, mô hình GLB, bản mẫu web hoặc kết quả kiểm thử trình duyệt.
 
 Trước triển khai cần chốt: danh mục cơ cấu thực tế, trường hồ sơ bắt buộc, vai trò người dùng, quy trình duyệt, nguồn dữ liệu chính thức, quy mô mục tiêu, framework/backend và môi trường triển khai. Các quyết định này không thay đổi nguyên tắc đã xác nhận: tổ chức đa cấp và nội dung riêng tại mọi cấp.
+
+
+## 17. Journey mode — triển khai 16/10/2026
+
+- Navbar có bộ chọn **Sơ đồ / Journey mode**, giữ chữ 12px và giao diện dùng nhãn chữ. Theme ruby–navy, Manrope/Be Vietnam Pro và nhãn khối 12px được giữ.
+- Journey xếp toàn bộ đơn vị theo thứ tự duyệt cây, trên đường cong liên tiếp. Chiều cao khối bằng nhau; nhãn Layer thể hiện cấp, không suy diễn quyền lực từ kích thước. Đường trên nền biểu diễn thứ tự khám phá, không thay thế quan hệ trực thuộc; tab Đơn vị con liệt kê con trực tiếp.
+- Mỗi trạm là khối R3F RoundedBox với MeshPhysicalMaterial, clearcoat nhẹ, transmission thấp, ánh sáng studio và HDR city được đóng gói nội bộ. Chọn/rê chuột đổi màu, nhấc khối và hiện viền; không có hoạt cảnh lặp.
+- CameraControls cho phép xoay/zoom tự do. Chọn trạm bay tới góc chéo, căn theo phần canvas không bị panel che; Định vị trạm khôi phục góc nhìn. Reduced motion chuyển ngay tới đích. Cảnh render theo nhu cầu, DPR 1–1.5.
+- Panel trái rộng 300px: dữ liệu, tìm kiếm, bộ lọc cụm/cấp, đi nhanh đến trạm, mở/ẩn hồ sơ. Mobile thu gọn bộ lọc. Player phía dưới có tiến trình, trạm trước/tiếp theo và định vị; nút đầu/cuối bị vô hiệu hóa khi không có trạm tương ứng.
+- Hồ sơ phải: Tổng quan (mô tả, phụ trách, Layer, số mục), Nhiệm vụ (kể cả ý con), Quyền hạn (nhóm nếu có dữ liệu), Đơn vị con (đi sâu). Nội dung thiếu được ghi là chưa có; không thêm quyền hạn giả vào dữ liệu tham khảo. Tab dùng chuyển opacity ngắn bằng Motion; panel trượt theo shell hiện tại.
+- `activeDeptId`, `hoveredDeptId`, `searchQuery` nằm trong Zustand duy nhất. Mở Journey lưu trạng thái Sơ đồ; thoát khôi phục view, cây, lựa chọn, filter, tab và panel. Mất WebGL thật đưa về 2D; chuyển chế độ bình thường không bị xem là lỗi.
+- Tìm kiếm không dấu, lọc theo cụm/cấp; không khớp thì hiển thị trạng thái rỗng và Xóa bộ lọc. Chọn con ngoài bộ lọc sẽ xóa lọc để mở đúng con.
+- Bộ mẫu riêng 13 đơn vị, ba khối chính, hai lớp con; mọi cấp có nhiệm vụ/quyền hạn riêng. Dữ liệu minh họa được gắn nhãn và không thay thế dữ liệu đang làm việc.
+- Điểm vào Next.js: `app/page.tsx`, nạp workspace phía client để không truy cập WebGL/window trên server. Các module Journey mới dùng TypeScript strict; giao diện quản lý hiện hữu tiếp tục dùng JSX. Xuất tĩnh vào `out/`.

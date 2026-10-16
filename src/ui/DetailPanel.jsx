@@ -8,11 +8,11 @@ const tabs = [{ id: 'overview', label: 'Tổng quan' }, { id: 'duties', label: '
 
 export default function DetailPanel() {
   const units = useOrg(s => s.units);
-  const selectedId = useOrg(s => s.selectedId);
+  const activeDeptId = useOrg(s => s.activeDeptId);
   const tab = useOrg(s => s.tab);
   const theme = useOrg(s => s.theme);
   const { select, setTab, setDetailOpen, setEditor, focusBranch } = useOrg.getState();
-  const unit = units.find(u => u.id === selectedId) || units[0];
+  const unit = units.find(u => u.id === activeDeptId) || units[0];
   const path = ancestors(units, unit.id);
   const children = units.filter(u => u.parentId === unit.id);
 

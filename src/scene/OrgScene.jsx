@@ -215,8 +215,8 @@ function Campus({ campus, palette }) {
 
 function UnitBlock({ unit, position, base, palette, childCount, dimmed, delay }) {
   const theme = useOrg(s => s.theme);
-  const selected = useOrg(s => s.selectedId === unit.id);
-  const hovered = useOrg(s => s.hoveredId === unit.id);
+  const selected = useOrg(s => s.activeDeptId === unit.id);
+  const hovered = useOrg(s => s.hoveredDeptId === unit.id);
   const open = useOrg(s => s.expanded.has(unit.id));
   const { select, setHovered, toggle } = useOrg.getState();
   const portal = useContext(LabelLayer);
@@ -228,7 +228,7 @@ function UnitBlock({ unit, position, base, palette, childCount, dimmed, delay })
   const targetColor = useMemo(() => new Color(color), [color]);
   const tone = unitTone(unit.type, theme);
   const enter = () => { setHovered(unit.id); document.body.style.cursor = 'pointer'; };
-  const leave = () => { if (useOrg.getState().hoveredId === unit.id) setHovered(null); document.body.style.cursor = ''; };
+  const leave = () => { if (useOrg.getState().hoveredDeptId === unit.id) setHovered(null); document.body.style.cursor = ''; };
   useEffect(() => () => { document.body.style.cursor = ''; }, []);
 
   useLayoutEffect(() => {
@@ -294,12 +294,12 @@ function UnitBlock({ unit, position, base, palette, childCount, dimmed, delay })
 }
 
 function Edges({ units, allUnits, positions, baseY, palette }) {
-  const selectedId = useOrg(s => s.selectedId);
+  const activeDeptId = useOrg(s => s.activeDeptId);
   const path = useMemo(() => {
-    const ids = new Set(); let current = allUnits.find(u => u.id === selectedId);
+    const ids = new Set(); let current = allUnits.find(u => u.id === activeDeptId);
     while (current) { ids.add(current.id); current = allUnits.find(u => u.id === current.parentId); }
     return ids;
-  }, [allUnits, selectedId]);
+  }, [allUnits, activeDeptId]);
   // Đường nối dạng trục chung trên mặt bằng của đơn vị cha: hàng đầu nối thẳng, các hàng sau đi qua trục bên trái nhóm con.
   const routes = units.filter(u => positions.has(u.parentId)).map(unit => {
     const parent = positions.get(unit.parentId), child = positions.get(unit.id);
@@ -316,7 +316,7 @@ function Edges({ units, allUnits, positions, baseY, palette }) {
     return (
       <group key={unit.id}>
         <Line points={points.map(([x, z]) => [x, y + (active ? 0.4 : 0), z])} color={color} lineWidth={active ? 2.6 : 1.3} />
-        <RoutePulse points={points.map(([x, z]) => [x, y + 4, z])} active={active} trigger={selectedId} color={palette.accent} delay={Math.min(.21, unit.depth * .07)} />
+        <RoutePulse points={points.map(([x, z]) => [x, y + 4, z])} active={active} trigger={activeDeptId} color={palette.accent} delay={Math.min(.21, unit.depth * .07)} />
         <mesh position={[child.x, y + 0.5, endZ + 4]} rotation-x={Math.PI / 2} scale={[1, 1, 0.35]}>
           <coneGeometry args={[6, 10, 3]} />
           <meshBasicMaterial color={color} />
@@ -368,9 +368,9 @@ function RoutePulse({ points, active, trigger, color, delay }) {
 }
 
 function HoverPopup({ units, allUnits, positions, baseY }) {
-  const hoveredId = useOrg(s => s.hoveredId);
+  const hoveredDeptId = useOrg(s => s.hoveredDeptId);
   const portal = useContext(LabelLayer);
-  const unit = units.find(u => u.id === hoveredId);
+  const unit = units.find(u => u.id === hoveredDeptId);
   const last = useRef(null);
   if (unit && positions.has(unit.id)) last.current = { unit, position: positions.get(unit.id), base: baseY.get(unit.id) ?? 0 };
   if (!last.current) return null;
@@ -487,7 +487,7 @@ function Rig({ positions, baseY, campuses, units, insets, labelLayer }) {
     invalidate();
     if (type === 'zoom-in' || type === 'zoom-out') { c.dolly(c.distance * (type === 'zoom-in' ? 0.22 : -0.28), animate); return; }
     if (type === 'locate') {
-      const id = useOrg.getState().selectedId; const p = positions.get(id);
+      const id = useOrg.getState().activeDeptId; const p = positions.get(id);
       if (!p) return;
       aim(c, new Vector3(p.x, (baseY.get(id) ?? 0) + H / 2, p.z), { azimuth: c.azimuthAngle, polar: c.polarAngle }, Math.min(c.distance, 1100), insets, size, animate);
       return;

@@ -9,8 +9,12 @@ import UnitEditor from './ui/UnitEditor';
 import { Graph2D, ListView } from './ui/FlatViews';
 import logoDark from '../assets/logo-dark.png';
 
-const OrgScene = lazy(() => import('./scene/OrgScene'));
+const OrgScene = lazy(() => import('../components/3d/OrgScene'));
+import JourneyControls from '../components/ui/JourneyControls';
+import JourneySidebar from '../components/ui/Sidebar';
 const ease = [0.22, 1, 0.36, 1];
+// Temporary feature lock; keep the Journey implementation for later reactivation.
+const JOURNEY_ENABLED = false;
 
 function useViewportWidth() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -22,7 +26,7 @@ export default function App() {
   const units = useOrg(s => s.units);
   const expanded = useOrg(s => s.expanded);
   const focusId = useOrg(s => s.focusId);
-  const query = useOrg(s => s.query);
+  const searchQuery = useOrg(s => s.searchQuery);
   const typeFilter = useOrg(s => s.typeFilter);
   const theme = useOrg(s => s.theme);
   const view = useOrg(s => s.view);
@@ -33,24 +37,26 @@ export default function App() {
   const notice = useOrg(s => s.notice);
   const importError = useOrg(s => s.importError);
   const webglFailed = useOrg(s => s.webglFailed);
+  const journey = useOrg(s => s.experienceMode) === 'journey';
   const store = useOrg.getState();
   const fileInput = useRef(null);
   const vw = useViewportWidth();
   const mobile = vw < 768;
+  useEffect(() => { if (!JOURNEY_ENABLED && journey) store.setExperienceMode('organization'); }, [journey]);
 
   const visible = useMemo(() => visibleUnits(units, expanded, focusId), [units, expanded, focusId]);
   const positions = useMemo(() => layoutScene(visible), [visible]);
-  const filtering = !!query.trim() || typeFilter.size > 0;
+  const filtering = !!searchQuery.trim() || typeFilter.size > 0;
   const matches = useMemo(() => {
-    const q = normalize(query.trim());
+    const q = normalize(searchQuery.trim());
     return u => (!typeFilter.size || typeFilter.has(u.type)) && (!q || normalize(`${u.name} ${u.code}`).includes(q));
-  }, [query, typeFilter]);
+  }, [searchQuery, typeFilter]);
   const results = useMemo(() => (filtering ? units.filter(matches) : []), [units, matches, filtering]);
   const maxDepth = useMemo(() => Math.max(...units.map(u => ancestors(units, u.id).length)), [units]);
 
   // Panel phủ lên canvas: camera căn giữa sơ đồ trong phần còn trống.
   const treeW = vw >= 1600 ? 340 : 320, detailW = vw >= 1600 ? 440 : vw >= 1200 ? 408 : 360;
-  const insets = { left: treeOpen && !mobile ? treeW + 24 : 0, right: detailOpen && !mobile ? detailW + 24 : 0, top: 64, bottom: 76 };
+  const insets = { left: journey ? (!mobile ? 336 : 0) : treeOpen && !mobile ? treeW + 24 : 0, right: detailOpen && !mobile ? detailW + 24 : 0, top: journey ? 100 : 64, bottom: journey ? 160 : 76 };
 
   useEffect(() => { if (!hasWebGL()) store.failWebGL(); }, []);
   useEffect(() => { document.documentElement.dataset.theme = theme; try { localStorage.setItem('sdtq-theme', theme); } catch {} }, [theme]);
@@ -80,19 +86,28 @@ export default function App() {
     store.setView(next);
   };
 
+  const changeMode = mode => {
+    if (mode === 'journey' && !JOURNEY_ENABLED) return;
+    if (mode === 'journey' && !hasWebGL()) { store.notify('Journey cần trình duyệt hỗ trợ 3D. Bạn vẫn có thể dùng sơ đồ 2D.'); return; }
+    store.setExperienceMode(mode);
+  };
+
   return (
     <MotionConfig reducedMotion="user">
       <div className="flex h-dvh flex-col overflow-hidden">
-        <header className="brand-header z-30 flex h-16 shrink-0 items-center gap-3 border-b border-line bg-surface px-3 md:gap-5 md:px-6">
+        <header className="brand-header z-30 flex min-h-16 shrink-0 flex-wrap items-center gap-3 py-2 md:h-16 md:flex-nowrap md:py-0 border-b border-line bg-surface px-3 md:gap-5 md:px-6">
           <a href="./" aria-label="THEHEGEO — trang đầu" className="w-[96px] shrink-0 overflow-hidden rounded md:w-[144px]">
-            <img src={logoDark} alt="THEHEGEO" className="block h-auto w-full" />
+            <img src={typeof logoDark === 'string' ? logoDark : logoDark.src} alt="THEHEGEO" className="block h-auto w-full" />
           </a>
-          <span className="hidden h-6 w-px bg-line md:block" />
-          <h1 className="hidden items-center gap-2.5 text-[15px] font-semibold tracking-tight md:flex">
+          <span className="hidden h-6 w-px bg-line lg:block" />
+          <h1 className="hidden items-center gap-2.5 text-[15px] font-semibold tracking-tight lg:flex">
             Sơ đồ tổ chức<span className="rounded border border-line px-1.5 py-0.5 text-[10px] font-medium text-muted">Bản làm việc</span>
           </h1>
+          <div role="group" aria-label="Chế độ trải nghiệm" className="order-3 flex w-full justify-center gap-1 rounded-lg bg-bg p-1 md:order-none md:w-auto md:shrink-0">
+            {[['organization','Sơ đồ'],['journey','Journey mode']].map(([mode,label]) => <button key={mode} disabled={mode === 'journey' && !JOURNEY_ENABLED} title={mode === 'journey' && !JOURNEY_ENABLED ? 'Journey mode đang tạm khóa' : undefined} aria-pressed={journey === (mode === 'journey')} onClick={() => changeMode(mode)} className={`min-h-8 rounded-md px-3 text-[12px] ${journey === (mode === 'journey') ? 'bg-brand-soft font-semibold text-brand' : 'text-muted hover:text-ink'}`}>{label}{mode === 'journey' && !JOURNEY_ENABLED && <span className="ml-1.5 text-[10px]">· Tạm khóa</span>}</button>)}
+          </div>
           <div className="ml-auto flex items-center gap-1.5 md:gap-2">
-            <span className="mr-2 hidden items-center gap-2 text-[11px] text-muted xl:flex">
+            <span className="mr-2 hidden items-center gap-2 text-[11px] text-muted min-[1700px]:flex">
               <span className={`size-1.5 rounded-full ${dirty ? 'bg-warning' : 'bg-success'}`} />{dirty ? 'Có thay đổi chưa xuất' : 'Dữ liệu chỉ nằm trong phiên trình duyệt'}
             </span>
             <input type="file" accept="application/json,.json" ref={fileInput} hidden onChange={importData} />
@@ -118,6 +133,7 @@ export default function App() {
             )}
           </section>
 
+          {!journey && <>
           {/* Thanh công cụ trên: chế độ xem + ngữ cảnh phạm vi */}
           <div className="pointer-events-none absolute top-3 right-[calc(var(--inset-r)+12px)] left-[calc(var(--inset-l)+12px)] z-10 flex flex-wrap items-start justify-between gap-2 transition-[left,right] duration-200 max-md:right-3 max-md:left-3">
             <div className="pointer-events-auto flex items-center gap-2">
@@ -166,8 +182,10 @@ export default function App() {
             </div>
           )}
 
+          </>}
+          {journey && <JourneyControls />}
           <AnimatePresence>
-            {treeOpen && (
+            {!journey && treeOpen && (
               <motion.aside key="tree" {...panelMotion(-1)} aria-label="Cây tổ chức"
                 className="navigation-panel floating absolute top-3 bottom-3 left-3 z-20 overflow-hidden max-md:inset-0 max-md:rounded-none max-md:border-0"
                 style={{ width: mobile ? undefined : treeW }}>
@@ -180,7 +198,7 @@ export default function App() {
               <motion.aside key="detail" {...panelMotion(1)} aria-label="Hồ sơ đơn vị"
                 className="floating absolute top-3 right-3 bottom-3 z-20 overflow-hidden max-md:inset-0 max-md:rounded-none max-md:border-0"
                 style={{ width: mobile ? undefined : detailW }}>
-                <DetailPanel />
+                {journey ? <JourneySidebar /> : <DetailPanel />}
               </motion.aside>
             )}
           </AnimatePresence>

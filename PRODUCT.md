@@ -16,11 +16,11 @@ Quản lý dữ liệu tổ chức nhiều cấp và thể hiện quan hệ bằ
 
 ## Operating Context
 
-Đã có BRD, SRS và đặc tả thiết kế chi tiết Markdown bằng tiếng Việt. Người dùng đã yêu cầu triển khai sơ đồ 3D theo `design.md`; ứng dụng giao diện nằm trong `src`, chạy tại máy bằng Vite. Dữ liệu mặc định trích từ graph_toan_canh.html; có thể chỉnh sửa trong phiên và xuất/nhập JSON. Chưa có backend. Spline tạm hoãn.
+Đã có BRD, SRS và đặc tả thiết kế chi tiết Markdown bằng tiếng Việt. Người dùng đã yêu cầu triển khai sơ đồ 3D theo `design.md`; ứng dụng giao diện nằm trong `src`, chạy tại máy bằng Next.js App Router + TypeScript. Dữ liệu mặc định trích từ graph_toan_canh.html; có thể chỉnh sửa trong phiên và xuất/nhập JSON. Chưa có backend. Spline tạm hoãn.
 
 ## Capabilities and Constraints
 
-Triển khai giao diện dùng React, React Three Fiber + Drei + Post-processing, Tailwind CSS, Motion (motion.dev), Zustand, Vite và nguyên tắc Impeccable. Spline tạm hoãn theo yêu cầu người dùng (15/10/2026); khối dựng bằng primitive R3F. Backend, hạ tầng và SSO chưa triển khai. Xuất/nhập JSON là lưu trữ file cục bộ, không phải đồng bộ hoặc duyệt dữ liệu trên máy chủ.
+Triển khai giao diện dùng React, React Three Fiber + Drei + Post-processing, Tailwind CSS, Motion (motion.dev), Zustand, Next.js và nguyên tắc Impeccable. Spline tạm hoãn theo yêu cầu người dùng (15/10/2026); khối dựng bằng primitive R3F. Backend, hạ tầng và SSO chưa triển khai. Xuất/nhập JSON là lưu trữ file cục bộ, không phải đồng bộ hoặc duyệt dữ liệu trên máy chủ.
 
 ## Evidence on Hand
 
@@ -47,3 +47,7 @@ Người dùng yêu cầu tăng cỡ chữ, thêm màu trang trí và animation 
 Top nav đã được đưa về cỡ chữ gọn trước đó (tiêu đề 17px, nút 12px), dùng logo-dark.png có kênh alpha trên nền navy.
 
 Sidebar đã giảm theo yêu cầu để đồng bộ: tên đơn vị và ô tìm kiếm 13px, tiêu đề 14px, nhãn phụ 11px, nút 12px.
+
+## Journey mode — 16/10/2026
+
+Chế độ trải nghiệm trên navbar, dùng cùng store và dữ liệu tổ chức; có camera chuyển trạm, tìm kiếm, lọc cụm/cấp và hồ sơ bốn tab. Bộ dữ liệu doanh nghiệp minh họa riêng gồm 13 đơn vị. Quay về sơ đồ khôi phục trạng thái quản lý trước đó.

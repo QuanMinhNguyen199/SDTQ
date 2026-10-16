@@ -6,12 +6,12 @@ import { fitViewport, zoomViewport } from './viewport2d';
 import { toneVariables } from '../theme';
 
 export function Graph2D({ units, allUnits, matches, filtering }) {
-  const selectedId = useOrg(s => s.selectedId);
+  const activeDeptId = useOrg(s => s.activeDeptId);
   const expanded = useOrg(s => s.expanded);
   const camera = useOrg(s => s.camera);
   const theme = useOrg(s => s.theme);
   const reduced = useReducedMotion();
-  const selectedPath = new Set(ancestors(allUnits, selectedId).map(u => u.id));
+  const selectedPath = new Set(ancestors(allUnits, activeDeptId).map(u => u.id));
   const { select, toggle } = useOrg.getState();
   const svg = useRef(null);
   const gesture = useRef(null);
@@ -51,10 +51,10 @@ export function Graph2D({ units, allUnits, matches, filtering }) {
     handledCommand.current = camera.tick;
     if (camera.type === 'zoom-in' || camera.type === 'zoom-out') setView(v => zoomViewport(v, fit, camera.type === 'zoom-in' ? 1.25 : 1 / 1.25));
     else if (camera.type === 'locate') {
-      const p = positions.get(selectedId);
+      const p = positions.get(activeDeptId);
       if (p) setView(v => { const next = zoomViewport(v, fit, Math.max(1, 2 / (fit.width / v.width))); return { ...next, x: p.x - next.width / 2, y: -p.y - next.height / 2 }; });
     } else if (camera.type === 'fit' || camera.type === 'initial') setView(fit);
-  }, [camera, fit, positions, selectedId]);
+  }, [camera, fit, positions, activeDeptId]);
 
   function pointerDown(event) {
     if (event.button !== 0 || event.target.closest('button') || gesture.current) return;
@@ -93,7 +93,7 @@ export function Graph2D({ units, allUnits, matches, filtering }) {
             initial={reduced ? false : { pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: reduced ? 0 : .42 }} />;
         })}
         {units.map(u => {
-          const p = positions.get(u.id); const count = allUnits.filter(v => v.parentId === u.id).length; const active = selectedId === u.id;
+          const p = positions.get(u.id); const count = allUnits.filter(v => v.parentId === u.id).length; const active = activeDeptId === u.id;
           return (
             <motion.g key={u.id} initial={reduced ? false : { x: p.x, y: -p.y + 12, opacity: .3 }} animate={{ x: p.x, y: -p.y, opacity: 1 }} transition={{ duration: reduced ? 0 : .32, ease: [.22, 1, .36, 1] }}>
             <foreignObject x={-97} y={-45} width="194" height="112">
@@ -115,7 +115,7 @@ export function Graph2D({ units, allUnits, matches, filtering }) {
 }
 
 export function ListView({ units, matches, filtering }) {
-  const selectedId = useOrg(s => s.selectedId);
+  const activeDeptId = useOrg(s => s.activeDeptId);
   const select = useOrg(s => s.select);
   return (
     <div className="size-full overflow-auto px-3 pt-28 pb-6 md:px-5 md:pt-20">
@@ -127,7 +127,7 @@ export function ListView({ units, matches, filtering }) {
         </tr></thead>
         <tbody>
           {units.map(u => (
-            <tr key={u.id} className={`${selectedId === u.id ? 'bg-brand-soft' : ''} ${filtering && !matches(u) ? 'opacity-45' : ''}`}>
+            <tr key={u.id} className={`${activeDeptId === u.id ? 'bg-brand-soft' : ''} ${filtering && !matches(u) ? 'opacity-45' : ''}`}>
               <td className="border-b border-line"><button onClick={() => select(u.id)} className="flex w-full items-center gap-2 py-3.5 pr-2 text-left text-[15px]" style={{ paddingLeft: 10 + u.depth * 16 }}>
                 <span>{u.name}<small className="mt-1 block text-[12px] text-muted">{[u.code, u.type].filter(Boolean).join(' · ')}</small></span>
               </button></td>

@@ -4,11 +4,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
-    "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1",
-    "test": "node --test tests/*.test.js",
-    "test:browser": "node scripts/browser-check.mjs"
+    "dev": "next dev --webpack --hostname 127.0.0.1 --port 5173",
+    "build": "next build --webpack",
+    "preview": "node scripts/serve-static.mjs",
+    "test": "tsx --test tests/*.test.js tests/*.test.ts",
+    "test:browser": "node scripts/browser-check.mjs",
+    "start": "node scripts/serve-static.mjs",
+    "dev:legacy": "vite --host 127.0.0.1",
+    "build:legacy": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test:journey": "node scripts/browser-check-journey.mjs"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.3.0",
@@ -27,8 +32,15 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.51.0",
+    "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
     "vite": "^6.1.0"
   }
 }

@@ -4,7 +4,7 @@ import { unitTypes, useOrg } from '../store';
 import { toneVariables } from '../theme';
 
 export default function TreePanel({ results, filtering, maxDepth }) {
-  const { units, query, typeFilter } = useOrg();
+  const { units, searchQuery, typeFilter } = useOrg();
   const { setQuery, toggleType, clearFilters, expandToLevel, collapseAll, setTreeOpen, select } = useOrg.getState();
   const presentTypes = unitTypes.filter(t => units.some(u => u.type === t)).concat([...new Set(units.map(u => u.type))].filter(t => !unitTypes.includes(t)));
   return (
@@ -15,9 +15,9 @@ export default function TreePanel({ results, filtering, maxDepth }) {
       </div>
 
       <label className="mx-4 flex items-center gap-2 rounded-lg border border-control/60 px-3 py-2 text-muted focus-within:border-brand">
-        <input value={query} onChange={e => setQuery(e.target.value)} placeholder="Tìm vụ, cục, phòng…" aria-label="Tìm đơn vị"
+        <input value={searchQuery} onChange={e => setQuery(e.target.value)} placeholder="Tìm vụ, cục, phòng…" aria-label="Tìm đơn vị"
           className="min-w-0 flex-1 bg-transparent text-[13px] text-ink outline-none! placeholder:text-muted" />
-        {query && <button onClick={() => setQuery('')} aria-label="Xóa tìm kiếm" className="min-h-6 rounded px-1 text-[11px] hover:text-ink">Xóa</button>}
+        {searchQuery && <button onClick={() => setQuery('')} aria-label="Xóa tìm kiếm" className="min-h-6 rounded px-1 text-[11px] hover:text-ink">Xóa</button>}
       </label>
 
       <fieldset className="mx-4 mt-3">
@@ -60,13 +60,13 @@ export default function TreePanel({ results, filtering, maxDepth }) {
 
 function SearchResults({ results, onSelect }) {
   const units = useOrg(s => s.units);
-  const selectedId = useOrg(s => s.selectedId);
+  const activeDeptId = useOrg(s => s.activeDeptId);
   if (!results.length) return <p className="px-2 py-6 text-[13px] leading-relaxed text-muted">Không tìm thấy đơn vị. Thử tên, mã hoặc loại khác.</p>;
   return (
     <ul className="search-results">
       {results.map(u => (
         <li key={u.id}>
-          <button onClick={() => onSelect(u.id)} className={`w-full rounded-md px-2.5 py-2.5 text-left text-[13px] ${selectedId === u.id ? 'bg-brand-soft text-brand' : 'hover:bg-bg'}`}>
+          <button onClick={() => onSelect(u.id)} className={`w-full rounded-md px-2.5 py-2.5 text-left text-[13px] ${activeDeptId === u.id ? 'bg-brand-soft text-brand' : 'hover:bg-bg'}`}>
             <strong className="font-semibold">{u.name}</strong>
             <small className="mt-1 block text-[11px] text-muted">{ancestors(units, u.id).slice(0, -1).map(v => v.name).join(' / ') || u.type}</small>
           </button>
@@ -79,11 +79,11 @@ function SearchResults({ results, onSelect }) {
 function TreeLevel({ parentId, depth }) {
   const units = useOrg(s => s.units);
   const expanded = useOrg(s => s.expanded);
-  const selectedId = useOrg(s => s.selectedId);
+  const activeDeptId = useOrg(s => s.activeDeptId);
   const { select, toggle, setHovered } = useOrg.getState();
   return units.filter(u => u.parentId === parentId).map(u => {
     const count = units.filter(v => v.parentId === u.id).length;
-    const open = expanded.has(u.id); const active = selectedId === u.id;
+    const open = expanded.has(u.id); const active = activeDeptId === u.id;
     return (
       <li key={u.id}>
         <div className={`flex min-h-9 items-center gap-0.5 rounded-md pr-2 ${active ? 'bg-brand-soft text-brand' : 'hover:bg-bg'}`} style={{ paddingLeft: 4 + depth * 14 }}

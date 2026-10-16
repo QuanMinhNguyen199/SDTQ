@@ -76,7 +76,7 @@ try {
   await expect(page.locator('.tree-meta')).toContainText('20 đơn vị');
   const invalid = structuredClone(exported); invalid.units[0].parentId = 'van-phong-ban';
   await page.locator('input[type=file]').setInputFiles({ name:'invalid.json', mimeType:'application/json', buffer:Buffer.from(JSON.stringify(invalid)) });
-  await expect(page.getByRole('alert')).toContainText('vòng lặp');
+  await expect(page.getByRole('alert').filter({hasText:'vòng lặp'})).toContainText('vòng lặp');
   await expect(page.locator('.tree-meta')).toContainText('20 đơn vị');
   await page.close();
 

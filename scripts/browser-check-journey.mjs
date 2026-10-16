@@ -1,0 +1,73 @@
+import { chromium, expect } from '@playwright/test';
+import fs from 'node:fs';
+
+const browser=await chromium.launch({channel:'msedge',headless:true,args:['--enable-unsafe-swiftshader']});
+const base=process.env.PREVIEW_URL||'http://127.0.0.1:5173';
+const errors=[];
+fs.mkdirSync('.local/qa',{recursive:true});
+try {
+  const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
+  page.setDefaultTimeout(20000);page.on('pageerror',e=>errors.push(e.message));
+  await page.goto(base,{waitUntil:'networkidle'});
+  await page.getByRole('button',{name:'2D',exact:true}).click();
+  await page.getByRole('button',{name:'Journey mode',exact:true}).click();
+  const guide=page.getByRole('region',{name:'Điều hướng Journey'});
+  await expect(guide).toBeVisible();
+  await expect(page.locator('.journey-node-label')).toHaveCount(19);
+  await expect(page.getByLabel('Đi đến trạm')).toHaveValue('ban-to-chuc-trung-uong');
+  await page.getByRole('button',{name:'Trạm tiếp theo',exact:true}).click();
+  await expect(page.getByLabel('Đi đến trạm')).not.toHaveValue('ban-to-chuc-trung-uong');
+  await page.getByLabel('Dữ liệu Journey').selectOption('sample');
+  await expect(page.locator('.journey-node-label')).toHaveCount(13);
+  await page.getByLabel('Cấp tổ chức Journey').selectOption('1');
+  await expect(page.getByLabel('Đi đến trạm').locator('option')).toHaveCount(3);
+  await page.getByRole('tab',{name:'Đơn vị con',exact:true}).click();
+  await page.getByRole('tabpanel').getByRole('button',{name:/Phòng Tuyển dụng/}).click();
+  await expect(page.getByLabel('Đi đến trạm')).toHaveValue('demo-recruit');
+  await expect(page.getByLabel('Cấp tổ chức Journey')).toHaveValue('');
+  await page.getByRole('tab',{name:'Nhiệm vụ',exact:true}).click();
+  await expect(page.getByRole('tabpanel')).toContainText('Lập kế hoạch và tổ chức tuyển dụng');
+  await page.getByRole('tab',{name:'Quyền hạn',exact:true}).click();
+  await expect(page.getByRole('tabpanel')).toContainText('Điều phối các vòng đánh giá');
+  await page.getByLabel('Tìm đơn vị trong Journey',{exact:true}).fill('no-match-xyz');
+  await expect(page.getByRole('button',{name:'Trạm tiếp theo',exact:true})).toBeDisabled();
+  await page.getByRole('button',{name:'Xóa bộ lọc',exact:true}).click();
+  await page.getByLabel('Đi đến trạm').selectOption('demo-tech');
+  await expect(page.getByRole('tabpanel')).toContainText('Xây dựng nền tảng số');
+  await page.screenshot({path:'.local/qa/journey-desktop.png'});
+  await page.getByRole('button',{name:'Bật theme tối'}).click();
+  await page.screenshot({path:'.local/qa/journey-dark.png'});
+  await page.getByRole('button',{name:'Sơ đồ',exact:true}).click();
+  await expect(page.locator('.graph-2d svg')).toBeVisible();
+  await page.getByRole('button',{name:'3D',exact:true}).click();
+  await expect(page.locator('.node-label')).toHaveCount(13);
+  for(let i=0;i<2;i++) {
+    await page.getByRole('button',{name:'Journey mode',exact:true}).click();
+    await expect(page.locator('.journey-node-label')).toHaveCount(13);
+    await page.getByRole('button',{name:'Sơ đồ',exact:true}).click();
+    await expect(page.locator('.node-label')).toHaveCount(13);
+  }
+  await page.getByRole('button',{name:'Journey mode',exact:true}).click();
+  await page.locator('canvas').evaluate(canvas=>canvas.getContext('webgl2').getExtension('WEBGL_lose_context').loseContext());
+  await expect(page.locator('.graph-2d svg')).toBeVisible();
+  await expect(page.getByRole('button',{name:'Sơ đồ',exact:true})).toHaveAttribute('aria-pressed','true');
+  await page.close();
+  const mobile=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});
+  mobile.on('pageerror',e=>errors.push(e.message));
+  await mobile.goto(base,{waitUntil:'networkidle'});
+  await mobile.getByRole('button',{name:'Journey mode',exact:true}).click();
+  await expect(mobile.locator('.journey-node-label')).toHaveCount(19);
+  await mobile.getByRole('button',{name:'Trạm tiếp theo',exact:true}).click();
+  await mobile.getByRole('button',{name:'Mở hồ sơ đơn vị',exact:true}).click();
+  await expect(mobile.getByRole('tab',{name:'Nhiệm vụ',exact:true})).toBeVisible();
+  await mobile.getByRole('button',{name:'Đóng hồ sơ Journey',exact:true}).click();
+  await expect(mobile.getByRole('complementary',{name:'Hồ sơ đơn vị'})).toHaveCount(0);
+  await mobile.screenshot({path:'.local/qa/journey-mobile.png'});
+  await mobile.getByRole('button',{name:'Tìm & lọc trạm',exact:true}).click();
+  await mobile.getByLabel('Dữ liệu Journey').selectOption('sample');
+  await expect(mobile.locator('.journey-node-label')).toHaveCount(13);
+  if(await mobile.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw new Error('Mobile horizontal overflow');
+  if(errors.length)throw new Error(errors.join('\n'));
+  console.log('PASS Journey: stations, filters, sublayers, responsibilities, authorities, sample isolation, mode restore, context loss, mobile.');
+} finally {await browser.close();}
+
