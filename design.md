@@ -6,7 +6,7 @@
 | Ngày cập nhật | 16/10/2026 |
 | Mục đích | Quản lý dữ liệu tổ chức nội bộ và khám phá cơ cấu bằng sơ đồ 3D |
 | Nền tảng | Web, hỗ trợ desktop và mobile |
-| Phương pháp thiết kế | Impeccable — ưu tiên thao tác, phân cấp thông tin và khả năng đọc |
+| Phương pháp thiết kế | Impeccable — ưu tiên thao tác, phân cấp thông tin và khả năng đọc. Humanizer — rà chữ trên giao diện và tài liệu (mục 18) |
 | Công nghệ định hướng | React Three Fiber + Drei + Post-processing, Tailwind CSS, Motion (motion.dev), Zustand. Spline tạm hoãn (15/10/2026) |
 | Trạng thái | Tài liệu triển khai; chưa phải giao diện hoặc tài sản 3D đã xây dựng |
 
@@ -431,3 +431,64 @@ Trước triển khai cần chốt: danh mục cơ cấu thực tế, trường 
 - Tìm kiếm không dấu, lọc theo cụm/cấp; không khớp thì hiển thị trạng thái rỗng và Xóa bộ lọc. Chọn con ngoài bộ lọc sẽ xóa lọc để mở đúng con.
 - Bộ mẫu riêng 13 đơn vị, ba khối chính, hai lớp con; mọi cấp có nhiệm vụ/quyền hạn riêng. Dữ liệu minh họa được gắn nhãn và không thay thế dữ liệu đang làm việc.
 - Điểm vào Next.js: `app/page.tsx`, nạp workspace phía client để không truy cập WebGL/window trên server. Các module Journey mới dùng TypeScript strict; giao diện quản lý hiện hữu tiếp tục dùng JSX. Xuất tĩnh vào `out/`.
+
+## 18. Viết nội dung giao diện và tài liệu — skill humanizer
+
+Skill `humanizer` dùng để viết lại những đoạn văn đọc như do AI tạo ra, sao cho tự nhiên mà **không đổi nội dung và không thêm dữ kiện**. Trong dự án này, skill được dùng ở hai nơi: chữ trên giao diện (nhãn, nút, thông báo, trạng thái rỗng, thông báo lỗi, chú thích) và tài liệu (design.md, BRD, SRS, README). Cách gọi: `/humanizer`, hoặc yêu cầu "dùng humanizer rà đoạn này".
+
+### 18.1. Không được áp dụng cho
+
+- Toàn văn chức năng, nhiệm vụ, ý con, quyền hạn lấy từ văn bản. Giữ nguyên văn, kể cả câu dài hay cách dùng từ hành chính.
+- Tên cơ quan, chức danh, số hiệu văn bản, số hiệu nhiệm vụ, trích dẫn điều khoản, tên nguồn.
+- Thuật ngữ đã thống nhất trong tài liệu: bằng chứng, giả định, căn cứ, phạm vi, bản sửa đổi, bản đã duyệt.
+- Câu giới hạn phạm vi và cảnh báo có chủ đích, ví dụ "chưa đối chiếu văn bản hiện hành; không dùng làm căn cứ chính thức". Skill xếp loại câu này là thông tin cần giữ, không phải văn thừa.
+
+### 18.2. Mẫu cần rà trong tiếng Việt
+
+Skill gốc liệt kê mẫu bằng tiếng Anh. Bảng dưới chuyển các mẫu thường gặp sang dạng tương đương trong tiếng Việt. Một dấu hiệu đơn lẻ chưa đủ để kết luận; nên sửa khi nhiều dấu hiệu xuất hiện cùng một đoạn.
+
+| Mẫu (theo mục trong skill) | Dấu hiệu trong tiếng Việt | Cách sửa |
+| --- | --- | --- |
+| Thổi phồng tầm quan trọng (§1, §7) | "đóng vai trò then chốt", "mang tính bước ngoặt", "nâng tầm", "khẳng định vị thế" | Nói việc cụ thể mà nó làm |
+| Ngôn ngữ quảng cáo (§4) | "trải nghiệm liền mạch", "hiện đại", "trực quan", "tối ưu", "mạnh mẽ" | Thay bằng hành vi hoặc tiêu chí đo được (đã quy định trong `CLAUDE.md`) |
+| Mệnh đề phụ làm câu nghe sâu hơn (§3) | "…, góp phần nâng cao…", "…, qua đó thể hiện…" | Bỏ, hoặc tách thành câu có dữ kiện |
+| Nguồn mơ hồ (§5) | "nhiều chuyên gia cho rằng", "theo các nghiên cứu" | Ghi đúng nguồn, nếu không có thì bỏ câu. Không tự tạo nguồn |
+| "Không chỉ… mà còn…" (§9) | Dùng lặp nhiều lần để tạo nhịp | Viết thẳng ý chính |
+| Bộ ba ép buộc (§10) | Ba tính từ hoặc ba cụm đi liền nhau cho đủ nhịp | Giữ số ý thật sự có |
+| Bị động, thiếu chủ thể (§13) | "được thực hiện", "đã được xử lý" khi người đọc cần biết ai làm | Nêu chủ thể: "Người duyệt trả lại bản sửa đổi" |
+| In đậm và gạch đầu dòng có tiêu đề in đậm (§15, §16) | In đậm rải khắp đoạn | Chỉ in đậm điều người đọc phải chú ý trước |
+| Câu đầu lặp lại tiêu đề (§29) | Mục "Bố cục" mở bằng "Phần này trình bày bố cục…" | Vào thẳng nội dung |
+| Kết luận tích cực chung chung (§25) | "Hy vọng hệ thống sẽ mang lại hiệu quả cao" | Bỏ, hoặc thay bằng bước tiếp theo cụ thể |
+| Văn chatbot (§20, §22) | "Dưới đây là…", "Chắc chắn rồi!", "Câu hỏi rất hay" | Bỏ |
+
+### 18.3. Chữ trên giao diện
+
+Áp dụng cùng với nguyên tắc viết của frontend-design và mục 13 về trạng thái:
+
+- Nút nói đúng việc sẽ xảy ra, và tên hành động giữ nguyên trong cả luồng. Ví dụ: nút "Xuất JSON" thì thông báo sau đó là "Đã xuất JSON…", không đổi thành "Thao tác thành công".
+- Lỗi nói rõ chuyện gì xảy ra và cách sửa, không xin lỗi, không mơ hồ.
+- Trạng thái rỗng nói lý do và việc có thể làm tiếp.
+- Giọng trung tính, trang trọng vừa đủ cho sản phẩm của cơ quan nhà nước. Không thêm cá tính, cảm thán hay ngôi thứ nhất (skill quy định văn bản tham chiếu, kỹ thuật, pháp lý giữ giọng trung tính).
+
+Ví dụ minh họa (không phải dữ liệu nghiên cứu):
+
+| Trước | Sau |
+| --- | --- |
+| "Sơ đồ 3D đóng vai trò then chốt, mang đến trải nghiệm trực quan và liền mạch, góp phần nâng cao hiệu quả quản lý." | "Sơ đồ 3D cho thấy đơn vị nào thuộc đơn vị nào. Mọi thao tác quản lý vẫn làm được trong cây và bảng." |
+| "Đã có lỗi xảy ra. Vui lòng thử lại sau." | "Không đọc được file: thiếu trường units. Hãy nhập lại file được xuất từ hệ thống." |
+| "Thao tác đã được thực hiện thành công!" | "Đã xuất JSON. Hãy giữ file để mở lại phiên làm việc." |
+
+### 18.4. Quy trình
+
+1. Viết nội dung và kiểm tra dữ kiện trước: số liệu, nguồn, tên cơ quan khớp với nguồn đã ghi.
+2. Chạy humanizer trên phần văn diễn giải, bỏ qua các phần ở 18.1.
+3. So sánh trước và sau: mọi phát biểu, số liệu và mức độ chắc chắn ("chưa xác nhận", "đề xuất") phải giữ nguyên. Nhãn **bằng chứng / diễn giải / giả định / đề xuất** không được mất khi viết lại.
+4. Giữ quy ước sẵn có của tài liệu khi khác với mặc định của skill. Ví dụ, design.md dùng dấu "—" trong tiêu đề, nên giữ nguyên thay vì xóa hàng loạt.
+
+### 18.5. Tiêu chí chấp nhận
+
+- Không còn cụm quảng cáo hoặc thổi phồng ở 18.2 trong chữ giao diện và phần diễn giải của tài liệu.
+- Nội dung trích văn bản, tên cơ quan và số hiệu trùng khớp nguyên văn với nguồn.
+- Mỗi thông báo lỗi có nguyên nhân và cách xử lý; mỗi nút và thông báo đi kèm dùng cùng tên hành động.
+- Không có dữ kiện, nguồn hay con số nào xuất hiện sau khi viết lại mà không có ở bản trước.
+
