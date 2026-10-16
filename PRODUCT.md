@@ -51,3 +51,8 @@ Sidebar đã giảm theo yêu cầu để đồng bộ: tên đơn vị và ô t
 ## Journey mode — 16/10/2026
 
 Chế độ trải nghiệm trên navbar, dùng cùng store và dữ liệu tổ chức; có camera chuyển trạm, tìm kiếm, lọc cụm/cấp và hồ sơ bốn tab. Bộ dữ liệu doanh nghiệp minh họa riêng gồm 13 đơn vị. Quay về sơ đồ khôi phục trạng thái quản lý trước đó.
+
+
+## Explore mode — thay Journey, 16/10/2026
+
+Người dùng đã chốt trải nghiệm tòa nhà ở góc nhìn thứ nhất: chọn cửa để vào đơn vị; vào thang máy để zoom ra toàn nhà, chọn tầng rồi zoom về cabin và mở cửa. Đơn vị gốc ở tầng cao nhất, phân cấp xuống dưới; mỗi sảnh chỉ chứa các đơn vị thuộc đúng nhánh. Explore thay Journey, dùng dữ liệu làm việc hiện có và không dùng chuỗi trạm ngang hàng. Giữ nhận diện và cách viết ngắn gọn của prototype.

@@ -11,12 +11,13 @@ page.on('pageerror', e => errors.push(e.message));
 try {
   await page.goto(base, { waitUntil: 'networkidle' });
   console.log('Loaded');
+  await expect(page.getByRole('button',{name:/Journey mode/})).toHaveCount(0);
   await expect(page.locator('canvas')).toHaveCount(1);
   await expect(page.locator('.node-label')).toHaveCount(13);
   await expect(page.locator('.inspector-title h2')).toHaveText('Ban Tổ chức Trung ương');
   await page.getByRole('tab', { name: /^Nhiệm vụ/ }).click();
   await expect(page.locator('.responsibility-list > li')).toHaveCount(0);
-  await expect(page.getByText('Nguồn dữ liệu chưa có nhiệm vụ riêng')).toBeVisible();
+  await expect(page.getByText('Chưa có dữ liệu nhiệm vụ.')).toBeVisible();
   await page.getByRole('button', { name: 'Xem Vụ Tổ chức - Điều lệ', exact: true }).click();
   await expect(page.locator('.responsibility-list > li')).toHaveCount(14);
   await expect(page.locator('.responsibility-list > li').first()).toContainText('1.1');
@@ -37,7 +38,7 @@ try {
   await expect(page.locator('.inspector-title h2')).toHaveText('Phòng Tài vụ');
   await expect(page.locator('.node-label')).toHaveCount(19);
   await page.getByRole('tab', { name: /^Quyền hạn/ }).click();
-  await expect(page.getByText('Nguồn dữ liệu chưa có quyền hạn riêng')).toBeVisible();
+  await expect(page.getByText('Chưa có dữ liệu quyền hạn.')).toBeVisible();
   await page.getByRole('button', { name: 'Xóa tìm kiếm' }).click();
   await page.getByRole('button', { name: 'Cục', exact: true }).click();
   await expect(page.locator('.search-results li')).toHaveCount(2);
@@ -50,8 +51,8 @@ try {
   await page.getByRole('button', { name: 'Thêm đơn vị con', exact: true }).click();
   await page.getByLabel('Tên đơn vị').fill('Tổ Kiểm thử');
   await page.getByLabel('Mã đơn vị', { exact: true }).fill('KT-01');
-  await page.getByLabel('Nhiệm vụ riêng').fill('[1] Kiểm tra cấu trúc dữ liệu.\n    [a] Đối chiếu nguồn.\n[2] Báo cáo kết quả kiểm thử.');
-  await page.getByLabel('Quyền hạn riêng').fill('Đề xuất sửa lỗi.');
+  await page.getByLabel('Nhiệm vụ', {exact:true}).fill('[1] Kiểm tra cấu trúc dữ liệu.\n    [a] Đối chiếu nguồn.\n[2] Báo cáo kết quả kiểm thử.');
+  await page.getByLabel('Quyền hạn', {exact:true}).fill('Đề xuất sửa lỗi.');
   await page.getByRole('button', { name: 'Lưu thay đổi' }).click();
   await expect(page.locator('.inspector-title h2')).toHaveText('Tổ Kiểm thử');
   await page.getByRole('tab', { name: /^Nhiệm vụ/ }).click();

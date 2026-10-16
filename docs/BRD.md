@@ -3,10 +3,11 @@
 | Thuộc tính | Giá trị |
 | --- | --- |
 | Mã tài liệu | SDTQ-BRD |
-| Phiên bản | 0.2 — dự thảo để rà soát |
-| Ngày cập nhật | 16/10/2026 (bản 0.1: 15/10/2026) |
+| Phiên bản | 0.3 — dự thảo để rà soát |
+| Ngày cập nhật | 16/10/2026 (bản 0.2 và 0.1: 15–16/10/2026) |
 | Ngôn ngữ | Tiếng Việt |
 | Tài liệu liên quan | [SRS](SRS.md), [Thiết kế 3D](THIET_KE_SO_DO_3D.md) |
+| Thay đổi so với 0.2 | Ghi nhận phản hồi đầu tiên trên bản mẫu (mục 2.2); mục tiêu B-08 về điều hướng sơ đồ; phạm vi bản trình diễn công khai (mục 5.5); quy tắc R-15 về chức năng thử nghiệm; rủi ro và câu hỏi Q-08, Q-09 |
 | Thay đổi so với 0.1 | Đổi đối tượng từ "cơ cấu phòng ban" sang bộ máy cấp quốc gia; bổ sung căn cứ Nghị quyết 203/2025/QH15, cơ cấu Chính phủ, chính quyền địa phương hai cấp, quan hệ có loại, chiều thời gian, an toàn thông tin |
 
 ## 1. Bối cảnh và vấn đề nghiệp vụ
@@ -55,6 +56,15 @@ Tài liệu ghi nhận trạng thái các nguồn tại ngày cập nhật; ngu�
 
 Infographic có cả họ tên, ngày sinh, quê quán và quá trình công tác của từng thành viên. Các thông tin cá nhân này nằm ngoài phạm vi hệ thống (R-12).
 
+### 2.2. Phản hồi trên bản mẫu giao diện
+
+| Ngày | Nguồn | Bằng chứng (nguyên văn) | Diễn giải | Xử lý | Trạng thái |
+| --- | --- | --- | --- | --- | --- |
+| 16/10/2026 | Một người xem bản mẫu; chưa rõ vai trò, phản hồi qua tin nhắn kèm ảnh chụp sơ đồ 3D | "zoom khó thế" | Nhãn tên đặt đè lên khối chặn thao tác cuộn chuột, nên zoom chỉ chạy khi con trỏ ở chỗ trống | Cuộn chuột hoạt động ở mọi vị trí trên sơ đồ; nhấp đúp để bay tới đơn vị (SRS FR-18) | Đã sửa trên bản mẫu; **chưa kiểm chứng lại** với người phản hồi |
+| 16/10/2026 | Như trên | "ấn ra ngoài ko thấy tự tắt cái popup" | Thẻ đơn vị đang chọn bị hiểu là popup. Thiết kế cũ cố ý giữ lựa chọn khi bấm vùng trống | Bấm vùng trống hoặc nhấn Escape để bỏ chọn và đóng hồ sơ; kéo để di chuyển vẫn giữ lựa chọn (SRS FR-26) | Như trên |
+
+Đây là phản hồi từ một người, không qua thử nghiệm có kịch bản. Bảng này chỉ xác nhận hai điểm gây vướng có thật với ít nhất một người dùng; chưa cho biết mức độ phổ biến của vấn đề.
+
 ## 3. Mục tiêu và chỉ tiêu đề xuất
 
 | Mã | Mục tiêu | Cách đo nghiệm thu |
@@ -66,6 +76,7 @@ Infographic có cả họ tên, ngày sinh, quê quán và quá trình công tá
 | B-05 | Xem cơ cấu tại một thời điểm | Xem ngày 30/6/2025 và 01/7/2025 cho kết quả khác nhau đúng với chuyển tiếp của Nghị quyết 203: cấp huyện chỉ còn ở ngày trước |
 | B-06 | Tra cứu thuận tiện | Ít nhất 4/5 người thử tìm một bộ và mở đúng nhiệm vụ của một đơn vị thuộc bộ trong 60 giây |
 | B-07 | Dùng được khi không có 3D | Luồng xem, tìm, sửa, duyệt hoàn tất qua cây, bảng và biểu mẫu |
+| B-08 | Điều hướng sơ đồ 3D không cần kỹ năng đồ họa 3D | Ít nhất 4/5 người thử, không được hướng dẫn trước, phóng to tới một vụ và đóng thẻ đang chọn trong 30 giây; làm được bằng chuột hoặc bàn phím (căn cứ: mục 2.2) |
 
 Chỉ tiêu là mục tiêu đề xuất, chưa có số đo vận hành hoặc kết quả thử nghiệm.
 
@@ -114,8 +125,21 @@ So sánh cơ cấu giữa hai mốc thời gian; danh sách người giữ chứ
 - Hồ sơ cá nhân: ngày sinh, quê quán, quá trình công tác, đánh giá cán bộ.
 - Thông tin thuộc danh mục bí mật nhà nước, cho tới khi có hạ tầng và phê duyệt phù hợp (Q-04).
 - Tự suy luận thẩm quyền hoặc quan hệ pháp lý; tự đồng bộ từ báo chí.
-- Công bố ra internet.
+- Công bố **hệ thống vận hành** và dữ liệu đã duyệt ra internet. Bản trình diễn ở mục 5.5 là ngoại lệ có giới hạn.
 - VR/AR.
+- Các chức năng thử nghiệm chưa được đặc tả trong BRD/SRS (xem R-15).
+
+### 5.5. Bản trình diễn công khai
+
+Từ 16/10/2026, bản mẫu giao diện được đăng trên GitHub Pages để các bên liên quan xem và góp ý.
+
+| Nội dung | Quy định |
+| --- | --- |
+| Mục đích | Xem và góp ý giao diện; không dùng để tra cứu chính thức |
+| Dữ liệu | Chỉ dữ liệu tham khảo đang dùng trong bản mẫu, có nhãn nguồn và mốc. Chỉnh sửa chỉ nằm trong trình duyệt của người xem, không lưu lên máy chủ |
+| Chức năng | Chỉ các chức năng đã có trong BRD/SRS. Chức năng thử nghiệm bị khóa (R-15) |
+| Không có | Đăng nhập, phân quyền, duyệt, lưu trữ máy chủ |
+| Điều kiện | Phải xác nhận dữ liệu trên bản trình diễn được phép công khai (Q-08). Nếu chưa được phép thì gỡ bản trình diễn hoặc chuyển sang hình thức giới hạn người xem |
 
 ## 6. Quy trình nghiệp vụ mục tiêu
 
@@ -147,6 +171,7 @@ So sánh cơ cấu giữa hai mốc thời gian; danh sách người giữ chứ
 | R-12 | Không lưu thông tin cá nhân của người giữ chức danh trong MVP |
 | R-13 | Hồ sơ có mâu thuẫn giữa các nguồn phải trả lại, hoặc ghi quyết định xử lý kèm người chịu trách nhiệm |
 | R-14 | Nội dung trống hiển thị "Chưa có dữ liệu trong nguồn đã duyệt", không hiển thị "Không có nhiệm vụ". Không tự suy nhiệm vụ của đơn vị từ đơn vị cấp trên hoặc cấp dưới |
+| R-15 | Chức năng thử nghiệm chưa được đặc tả trong BRD/SRS chỉ chạy ở môi trường máy cục bộ. Chức năng này không xuất hiện trên bản trình diễn công khai hay môi trường vận hành cho tới khi được đặc tả và chủ sở hữu nghiệp vụ duyệt |
 
 ## 8. Rủi ro, phụ thuộc và biện pháp
 
@@ -159,6 +184,8 @@ So sánh cơ cấu giữa hai mốc thời gian; danh sách người giữ chứ
 | Yêu cầu an toàn thông tin của cơ quan nhà nước chưa xác định | Không triển khai được hoặc phải làm lại kiến trúc | Xác định cấp độ an toàn hệ thống thông tin và nơi lưu trữ trước khi xây dựng (Q-04) |
 | Phụ thuộc dịch vụ hoặc CDN nước ngoài | Rò rỉ dữ liệu, không vận hành được trên mạng nội bộ | Mọi tài nguyên (thư viện, font, mô hình 3D) đóng gói và phục vụ nội bộ |
 | Thiết bị không có GPU hoặc WebGL bị chặn | Không xem được 3D | Cây và bảng là đường thao tác đầy đủ (B-07) |
+| Bản trình diễn công khai bị hiểu là trang chính thức hoặc dữ liệu hiện hành | Người xem dùng sai thông tin | Luôn hiện nhãn nguồn, mốc và "chưa đối chiếu văn bản hiện hành"; không dùng tên miền hay tên gọi gợi ý cơ quan nhà nước (Q-08) |
+| Thao tác 3D khó với người không quen | Người dùng bỏ sơ đồ, quay về bảng | Zoom ở mọi vị trí, nhấp đúp để bay tới, bàn phím, bấm vùng trống để đóng; kiểm chứng bằng B-08 |
 
 ## 9. Lộ trình theo điều kiện hoàn thành
 
@@ -183,3 +210,5 @@ Chưa ấn định ngân sách, nhân lực và ngày hoàn thành.
 | Q-05 | Có lưu người giữ chức danh (chỉ họ tên và thời gian giữ chức) không? | Mở rộng mô hình dữ liệu và yêu cầu bảo vệ dữ liệu cá nhân |
 | Q-06 | Mốc dữ liệu khởi tạo: 19/02/2025 theo SRC-CP, hay mốc mới hơn khi có nguồn chính thức? | Quyết định dữ liệu nghiệm thu B-01 |
 | Q-07 | Nguồn văn bản gốc nào được chấp nhận làm căn cứ (Công báo, Cổng thông tin Chính phủ, cơ sở dữ liệu quốc gia về văn bản pháp luật)? | Quyết định quy tắc R-01 khi duyệt |
+| Q-08 | Dữ liệu đang hiển thị trên bản trình diễn công khai đã được phép công khai chưa? Ai xác nhận? | Nếu chưa được phép, bản trình diễn phải gỡ hoặc giới hạn người xem (mục 5.5) |
+| Q-09 | Giữ bản trình diễn công khai đến khi nào, và ai được thông báo khi có bản mới? | Quyết định vòng đời bản trình diễn và cách thu góp ý |

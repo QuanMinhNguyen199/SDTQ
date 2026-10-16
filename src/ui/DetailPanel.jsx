@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ancestors, itemCount } from '../data';
+import { ancestors } from '../data';
 import { useOrg } from '../store';
 import { toneVariables } from '../theme';
 
@@ -48,30 +48,18 @@ export default function DetailPanel() {
         {tab === 'overview' ? <>
           <section className="mb-6">
             <h3 className="mb-2 text-[14px] font-semibold">Chức năng</h3>
-            <p className="text-[15px] leading-relaxed text-muted">{unit.description || 'Nguồn dữ liệu chưa có mô tả chức năng của đơn vị này.'}</p>
+            <p className="text-[15px] leading-relaxed text-muted">{unit.description || 'Chưa có mô tả chức năng.'}</p>
           </section>
-          <div className="mb-6 border-y border-line py-1.5">
-            {[['duties', 'Nhiệm vụ riêng'], ['authorities', 'Quyền hạn riêng']].map(([key, label]) => (
-              <button key={key} onClick={() => setTab(key)} className="group flex w-full items-center gap-2.5 py-2.5 text-left text-[14px]">
-                <strong className="text-sm font-semibold tabular-nums">{unit[key].length}</strong>
-                <span className="text-muted group-hover:text-brand">{label}{itemCount(unit[key]) > unit[key].length && ` · ${itemCount(unit[key]) - unit[key].length} ý con`}</span>
-              </button>
-            ))}
-          </div>
           <section className="mb-6">
             <div className="flex items-baseline justify-between"><h3 className="mb-2 text-[14px] font-semibold">Đơn vị trực thuộc</h3><span className="text-[12px] text-muted">{children.length}</span></div>
             {children.length
               ? <ul>{children.map(c => (
                   <li key={c.id}><button onClick={() => select(c.id, { locate: true })} className="flex w-full items-center gap-2.5 border-b border-line py-3 text-left text-[14px] hover:text-brand">
-                    <span>{c.name}<small className="mt-1 block text-[11px] text-muted">{[c.type, c.code].filter(Boolean).join(' · ')} · {c.duties.length} nhiệm vụ · {c.authorities.length} quyền hạn</small></span>
+                    <span>{c.name}<small className="mt-1 block text-[11px] text-muted">{[c.type, c.code].filter(Boolean).join(' · ')}</small></span>
                   </button></li>))}</ul>
-              : <p className="text-[15px] text-muted">Đơn vị này chưa có đơn vị trực thuộc.</p>}
+              : <p className="text-[15px] text-muted">Chưa có đơn vị trực thuộc.</p>}
           </section>
         </> : <>
-          <div className="mb-4">
-            <h3 className="mb-1.5 text-[14px] font-semibold">{tab === 'duties' ? 'Nhiệm vụ' : 'Quyền hạn'} của đơn vị</h3>
-            <p className="text-[14px] leading-relaxed text-muted">Nội dung riêng của {unit.name.toLowerCase()}, không bao gồm đơn vị cấp dưới.</p>
-          </div>
           <ol className="responsibility-list">
             {unit[tab].map((item, i) => (
               <li key={i} className="flex gap-3 border-t border-line py-4">
@@ -91,14 +79,14 @@ export default function DetailPanel() {
               </li>
             ))}
           </ol>
-          {!unit[tab].length && <p className="border-t border-line py-6 text-[15px] leading-relaxed text-muted">Nguồn dữ liệu chưa có {tab === 'duties' ? 'nhiệm vụ' : 'quyền hạn'} riêng của đơn vị này. Không tự suy từ đơn vị cấp trên hoặc cấp dưới; chọn Chỉnh sửa nếu có văn bản căn cứ để bổ sung.</p>}
+          {!unit[tab].length && <p className="border-t border-line py-6 text-[15px] leading-relaxed text-muted">Chưa có dữ liệu {tab === 'duties' ? 'nhiệm vụ' : 'quyền hạn'}.</p>}
         </>}
       </motion.div>
 
       <div className="flex flex-wrap gap-2 border-t border-line p-4">
         <button className="btn-secondary flex-1" onClick={() => setEditor({ mode: 'edit', unit })}>Chỉnh sửa</button>
         <button className="btn-primary flex-1" onClick={() => setEditor({ mode: 'add', parentId: unit.id })}>Thêm đơn vị con</button>
-        <button className="flex min-h-9 w-full items-center justify-center gap-2 text-[14px] text-muted hover:text-brand" onClick={() => focusBranch(unit.id)}>Xem riêng nhánh này</button>
+        <button className="flex min-h-9 w-full items-center justify-center gap-2 text-[14px] text-muted hover:text-brand" onClick={() => focusBranch(unit.id)}>Xem nhánh này</button>
       </div>
     </div>
   );

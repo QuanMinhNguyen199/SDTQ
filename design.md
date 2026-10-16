@@ -492,3 +492,43 @@ Ví dụ minh họa (không phải dữ liệu nghiên cứu):
 - Mỗi thông báo lỗi có nguyên nhân và cách xử lý; mỗi nút và thông báo đi kèm dùng cùng tên hành động.
 - Không có dữ kiện, nguồn hay con số nào xuất hiện sau khi viết lại mà không có ở bản trước.
 
+
+
+## Tinh gọn prototype — 16/10/2026
+
+Journey tiếp tục tạm khóa và được ẩn khỏi navbar. Bỏ nhãn Bản làm việc, trạng thái phiên khi chưa chỉnh sửa, thống kê phạm vi khi xem toàn cây, phần đếm nhiệm vụ/quyền hạn lặp trong Tổng quan và lời giải thích lặp trong hồ sơ. Ba góc nhìn gom thành một menu; bỏ nút Phím tắt và chú giải thường trực. Phím tắt vẫn hoạt động, hướng dẫn hỗ trợ đọc màn hình được giữ. Hướng dẫn định dạng nội dung trong biểu mẫu thu gọn theo yêu cầu. Các trạng thái trống và thông báo dùng câu ngắn; dữ liệu tổ chức không bị thay đổi. Giữ tìm kiếm/lọc, xem nhánh, ba chế độ xem, zoom, chỉnh sửa và nhập/xuất dữ liệu.
+
+
+## Explore mode — thay Journey, 16/10/2026
+
+Explore thay hoàn toàn tuyến trạm Journey. Mỗi cấp tổ chức là một tầng: đơn vị gốc ở tầng cao nhất, các cấp con ở dưới. Sảnh tầng chỉ có cửa của các đơn vị con trực tiếp thuộc nhánh đã chọn; số tầng không diễn giải quyền hạn. Dữ liệu tổ chức giữ nguyên.
+
+Luồng: ở trong phòng/hành lang → chọn thang máy → camera đi vào cabin, cửa đóng → camera lùi ra toàn nhà và hiện các tầng → chọn tầng hợp lệ → camera trở lại cabin ở tầng đích → cửa mở → ra hành lang để chọn cửa. Các tầng ngoài nhánh bị vô hiệu hóa. Có thể hủy chọn tầng để trở lại; rời Explore khôi phục trạng thái sơ đồ trước đó.
+
+Góc nhìn thứ nhất dùng kéo để nhìn quanh, W A S D/phím mũi tên để bước trong giới hạn hành lang/phòng. Mobile có Tiến/Lùi; mọi cửa có danh sách Chọn cửa thay cho thao tác chính xác trên 3D. Tìm kiếm đi thẳng tới đơn vị; breadcrumb và Về sảnh gốc hỗ trợ định hướng. Hồ sơ giữ chức năng, nhiệm vụ, quyền hạn và đơn vị con tại mọi cấp.
+
+Trạng thái thang máy gồm boarding, building, travelling, opening; callback phải khớp trạng thái và mã lượt chuyển để không điều hướng sau khi người dùng đã thoát. Giảm chuyển động bỏ nội suy camera và cửa, vẫn giữ đủ luồng. Mất WebGL thật trở về 2D. Chế độ này dùng chung dữ liệu làm việc, không có bộ mẫu riêng hay nút trạm trước/tiếp theo.
+
+
+### Điều khiển Explore — cập nhật 16/10/2026
+
+Bấm vào cảnh để khóa chuột và nhìn tự do; Escape thả chuột. Giữ WASD hoặc phím mũi tên để di chuyển liên tục, có tăng/giảm tốc theo thời gian khung hình. Mobile giữ nút Trái/Tiến/Lùi/Phải, vuốt để nhìn. Mất focus sẽ dừng di chuyển và thả chuột. Hồ sơ bên phải không chặn di chuyển trên desktop; thao tác trong biểu mẫu/hồ sơ không điều khiển camera.
+
+Phòng và hành lang nối qua cửa; cửa tự mở khi đến gần. Bước qua ngưỡng cửa cập nhật vị trí và hồ sơ mà không đưa camera về điểm đặt sẵn. Vào phòng tự mở hồ sơ, ra hành lang tự đóng; trên mobile hồ sơ toàn màn hình tạm dừng di chuyển để đọc. Có giới hạn tường, bàn và đường đi vào cabin; đi vào cabin tự gọi thang máy.
+
+
+### Tránh giật khi mở hồ sơ Explore
+
+Hồ sơ là lớp phủ, không thay đổi projection hoặc lệch tâm camera ở góc nhìn thứ nhất. Giữ panel Explore trong DOM và dùng transform/opacity để hiện; khi đóng, panel ẩn và inert. Cảnh 3D đăng ký những trường trạng thái cần thiết, không dựng lại toàn bộ theo tab hay trạng thái mở hồ sơ. Cùng một tầng giữ nguyên hành lang và các phòng; chỉ cửa/phòng đang thay đổi được cập nhật. Kiểm tra hồi quy đo vị trí nhãn thế giới qua nhiều lần mở/đóng hồ sơ, đồng thời kiểm tra panel và canvas không bị thay thế.
+
+
+### Explore: tốc độ, vùng kích hoạt và chọn tầng thấp
+
+Tốc độ đi đặt tại WALK_SPEED trong data/exploreMovement.ts, hiện 4 đơn vị cảnh/giây (trước 3.4). Hồ sơ kích hoạt khi đến gần cửa, với ngưỡng vào/ra khác nhau để tránh nhấp nháy; thang máy kích hoạt từ trước cửa cabin. Bật nhìn tự do đóng hồ sơ, danh sách cửa và ô tìm kiếm đang mở; việc tự mở hồ sơ khi đến gần đơn vị vẫn hoạt động.
+
+Tầng thấp không còn bị khóa chỉ vì chưa vào phòng của đơn vị cha. Nếu tầng chỉ có một đơn vị cha trong cơ cấu gốc đang xem, chọn đúng cha đó; nếu có nhiều cha, bắt buộc chọn cha trong bảng tầng. Mỗi hành lang vẫn chỉ gồm con trực tiếp của một cha, không trộn nhánh. Cửa 3D và danh sách cửa ghi rõ tên đơn vị cha. Với dữ liệu mặc định, tầng 1 chứa sáu phòng trực thuộc Văn phòng Ban.
+
+
+### Explore — tạm ẩn Quick access
+
+Tạm ẩn thanh thao tác nhanh (Thang máy, Ra hành lang, Chọn cửa, Hồ sơ đơn vị) và danh sách cửa đi kèm, giữ nút di chuyển trên mobile. Các cửa và thang máy trong cảnh vẫn hoạt động qua tương tác trực tiếp/vùng kích hoạt. Bấm một lần vào cảnh để bật nhìn tự do, bấm lần nữa để thả chuột; lần bấm thoát được chặn trước tương tác 3D để không vô tình vào cửa hoặc gọi thang máy. Escape vẫn là phím dự phòng.

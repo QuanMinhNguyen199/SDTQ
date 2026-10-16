@@ -13,7 +13,7 @@
 - Nhập/xuất dữ liệu để lưu và mở lại bản làm việc.
 - Giao diện sáng/tối, hỗ trợ máy tính và điện thoại.
 
-**Journey mode đang tạm khóa.**
+**Explore mode:** khám phá tòa nhà ở góc nhìn thứ nhất. Bấm vào cảnh để nhìn tự do, giữ WASD hoặc phím mũi tên để đi, bấm lần nữa để thả chuột. Vào phòng tự mở hồ sơ; vào thang máy để xem toàn nhà, chọn tầng rồi tiếp tục khám phá đúng nhánh tổ chức.
 
 ## Dữ liệu
 

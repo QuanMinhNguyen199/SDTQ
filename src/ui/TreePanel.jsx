@@ -15,13 +15,13 @@ export default function TreePanel({ results, filtering, maxDepth }) {
       </div>
 
       <label className="mx-4 flex items-center gap-2 rounded-lg border border-control/60 px-3 py-2 text-muted focus-within:border-brand">
-        <input value={searchQuery} onChange={e => setQuery(e.target.value)} placeholder="Tìm vụ, cục, phòng…" aria-label="Tìm đơn vị"
+        <input value={searchQuery} onChange={e => setQuery(e.target.value)} placeholder="Tìm đơn vị…" aria-label="Tìm đơn vị"
           className="min-w-0 flex-1 bg-transparent text-[13px] text-ink outline-none! placeholder:text-muted" />
         {searchQuery && <button onClick={() => setQuery('')} aria-label="Xóa tìm kiếm" className="min-h-6 rounded px-1 text-[11px] hover:text-ink">Xóa</button>}
       </label>
 
       <fieldset className="mx-4 mt-3">
-        <legend className="mb-2 text-[11px] text-muted">Lọc theo loại đơn vị</legend>
+        <legend className="mb-2 text-[11px] text-muted">Loại đơn vị</legend>
         <div className="flex flex-wrap gap-1.5">
           {presentTypes.map(type => {
             const on = typeFilter.has(type);
@@ -61,7 +61,7 @@ export default function TreePanel({ results, filtering, maxDepth }) {
 function SearchResults({ results, onSelect }) {
   const units = useOrg(s => s.units);
   const activeDeptId = useOrg(s => s.activeDeptId);
-  if (!results.length) return <p className="px-2 py-6 text-[13px] leading-relaxed text-muted">Không tìm thấy đơn vị. Thử tên, mã hoặc loại khác.</p>;
+  if (!results.length) return <p className="px-2 py-6 text-[13px] leading-relaxed text-muted">Không tìm thấy đơn vị.</p>;
   return (
     <ul className="search-results">
       {results.map(u => (

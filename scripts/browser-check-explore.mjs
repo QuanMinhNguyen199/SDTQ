@@ -1,0 +1,103 @@
+import { chromium, expect } from '@playwright/test';
+import fs from 'node:fs';
+
+const browser=await chromium.launch({channel:'msedge',headless:true,args:['--enable-unsafe-swiftshader']});
+const base=process.env.PREVIEW_URL||'http://127.0.0.1:5173';
+const errors=[];
+async function closeProfile(page){const button=page.getByRole('button',{name:'Đóng hồ sơ Explore',exact:true});await expect(button).toBeVisible();await button.click();await expect(page.getByRole('complementary',{name:'Hồ sơ đơn vị'})).toHaveCount(0);}
+// Projected labels may be behind the camera; invoke their DOM action for
+// transition coverage. Real walking and focus input have a separate browser check.
+async function projectedAction(page,name){await page.getByRole('button',{name,exact:true,includeHidden:true}).evaluate(button=>button.click());}
+async function hall(page){await expect(page.getByRole('region',{name:'Vị trí Explore'})).toContainText('Hành lang');}
+fs.mkdirSync('.local/qa',{recursive:true});
+try {
+  const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'no-preference'});
+  page.setDefaultTimeout(20000);page.on('pageerror',error=>errors.push(error.message));
+  await page.goto(base,{waitUntil:'networkidle'});
+  await page.getByRole('button',{name:'2D',exact:true}).click();
+  await page.getByRole('button',{name:'Explore mode',exact:true}).click();
+  const location=page.getByRole('region',{name:'Vị trí Explore'});
+  await expect(location).toContainText('Tầng 3 · Cấp 1');
+  await expect(page.locator('.explore-canvas canvas')).toHaveCount(1);
+  await closeProfile(page);
+  await projectedAction(page,'Thang máy');
+  const picker=page.getByRole('region',{name:'Chọn tầng thang máy'});
+  await expect(picker).toBeVisible();
+  await expect(page.getByRole('button',{name:'Đi đến Tầng 1 · Cấp 3',exact:true})).toBeEnabled();
+  await expect(page.getByRole('button',{name:'Đi đến Tầng 1 · Cấp 3',exact:true})).toContainText('Văn phòng Ban');
+  await page.waitForTimeout(1300);
+  await page.screenshot({path:'.local/qa/explore-building.png'});
+  await page.getByRole('button',{name:'Đi đến Tầng 2 · Cấp 2',exact:true}).click();
+  await expect(page.getByRole('status')).toContainText('Đang chuyển tầng');
+  await expect(page.getByRole('status')).toContainText('Đang mở cửa');
+  await hall(page);
+  await expect(location).toContainText('Tầng 2 · Cấp 2');
+  await page.waitForTimeout(1300);
+  await page.screenshot({path:'.local/qa/explore-hall.png'});
+  const doorLabel=page.getByRole('button',{name:'Vào Vụ Tổ chức - Điều lệ',exact:true});
+  const beforeWalk=await doorLabel.boundingBox();
+  await page.getByRole('region',{name:/^Explore:/}).focus();
+  await page.keyboard.down('w');
+  await page.waitForTimeout(350);
+  await page.keyboard.up('w');
+  await expect.poll(async()=>Math.abs((await doorLabel.boundingBox()).width-beforeWalk.width)).toBeGreaterThan(.1);
+  await page.keyboard.down('s');
+  await page.waitForTimeout(350);
+  await page.keyboard.up('s');
+  await projectedAction(page,'Vào Văn phòng Ban');
+  await expect(location).toContainText('Văn phòng Ban');
+  await page.waitForTimeout(1300);
+  await page.screenshot({path:'.local/qa/explore-room.png'});
+  await expect(page.getByRole('button',{name:'Đóng hồ sơ Explore',exact:true})).toBeVisible();
+  await page.getByRole('tab',{name:'Nhiệm vụ',exact:true}).click();
+  await expect(page.locator('.explore-content-list > li').first()).toBeVisible();
+  await page.getByRole('button',{name:'Đóng hồ sơ Explore',exact:true}).click();
+  await projectedAction(page,'Thang máy');
+  await expect(picker).toBeVisible();
+  await expect(page.getByRole('button',{name:'Đi đến Tầng 1 · Cấp 3',exact:true})).toBeEnabled();
+  await page.getByRole('button',{name:'Đi đến Tầng 1 · Cấp 3',exact:true}).click();
+  await hall(page);
+  const doors=page.locator('.explore-door-label');
+  await expect(doors).toHaveCount(6);
+  await expect(page.locator('.explore-door-label[aria-label="Vào Phòng Tài vụ"]')).toHaveCount(1);
+  await expect(page.locator('.explore-door-label[aria-label="Vào Vụ Cán bộ"]')).toHaveCount(0);
+  await projectedAction(page,'Vào Phòng Tài vụ');
+  await expect(page.getByRole('button',{name:'Đóng hồ sơ Explore',exact:true})).toBeVisible();
+  await page.getByRole('tab',{name:'Quyền hạn',exact:true}).click();
+  await expect(page.getByRole('tabpanel')).toContainText('Chưa có dữ liệu');
+  await page.getByRole('button',{name:'Đóng hồ sơ Explore',exact:true}).click();
+  await page.getByRole('button',{name:'Bật theme tối'}).click();
+  await page.waitForTimeout(1200);
+  await page.screenshot({path:'.local/qa/explore-dark.png'});
+  await location.getByText('Tìm đơn vị',{exact:true}).click();
+  await page.getByRole('textbox',{name:'Tìm đơn vị trong Explore'}).fill('vu can bo');
+  await location.getByRole('button',{name:'Vụ Cán bộ',exact:true}).click();
+  await expect(location).toContainText('Vụ Cán bộ');
+  await page.getByRole('button',{name:'Chế độ Sơ đồ',exact:true}).click();
+  await expect(page.locator('.graph-2d svg')).toBeVisible();
+  await page.getByRole('button',{name:'Explore mode',exact:true}).click();
+  await expect(page.locator('.explore-canvas canvas')).toHaveCount(1);
+  await closeProfile(page);
+  await page.locator('canvas').evaluate(canvas=>canvas.getContext('webgl2').getExtension('WEBGL_lose_context').loseContext());
+  await expect(page.locator('.graph-2d svg')).toBeVisible();
+  await page.close();
+
+  const mobile=await browser.newPage({viewport:{width:360,height:800},reducedMotion:'reduce'});
+  mobile.on('pageerror',error=>errors.push(error.message));
+  await mobile.goto(base,{waitUntil:'networkidle'});
+  await mobile.getByRole('button',{name:'Explore mode',exact:true}).click();
+  await closeProfile(mobile);
+  await projectedAction(mobile,'Thang máy');
+  await expect(mobile.getByRole('region',{name:'Chọn tầng thang máy'})).toBeVisible();
+  await mobile.screenshot({path:'.local/qa/explore-mobile-building.png'});
+  await mobile.getByRole('button',{name:'Đi đến Tầng 2 · Cấp 2',exact:true}).click();
+  await hall(mobile);
+  await mobile.screenshot({path:'.local/qa/explore-mobile-hall.png'});
+  if(await mobile.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw new Error('Mobile horizontal overflow');
+  await projectedAction(mobile,'Vào Vụ Cán bộ');
+  await expect(mobile.getByRole('button',{name:'Đóng hồ sơ Explore',exact:true})).toBeVisible();
+  await expect(mobile.getByRole('complementary',{name:'Hồ sơ đơn vị'}).getByRole('heading',{name:'Vụ Cán bộ',exact:true})).toBeVisible();
+  await mobile.getByRole('button',{name:'Đóng hồ sơ Explore',exact:true}).click();
+  if(errors.length)throw new Error(errors.join('\n'));
+  console.log('PASS Explore: first person, elevator overview, floor travel and opening, branch-specific doors, profiles, classic restore, WebGL fallback, mobile/reduced motion.');
+} finally {await browser.close();}

@@ -2,8 +2,9 @@
 
 | Thuộc tính | Giá trị |
 | --- | --- |
-| Phiên bản | 0.2 — dự thảo, 16/10/2026 (bản 0.1: 15/10/2026) |
-| Căn cứ | [BRD 0.2](BRD.md) |
+| Phiên bản | 0.3 — dự thảo, 16/10/2026 (bản 0.2 và 0.1: 15–16/10/2026) |
+| Căn cứ | [BRD 0.3](BRD.md) |
+| Thay đổi so với 0.2 | FR-18 (zoom ở mọi vị trí, nhấp đúp), FR-25 (bàn phím), FR-26 (bỏ chọn), cập nhật 5.3; mục 9 về bản trình diễn công khai và khóa chức năng thử nghiệm; AT-15 đến AT-19 |
 | Thiết kế liên quan | [Đặc tả 3D](THIET_KE_SO_DO_3D.md) |
 | Quy ước | "Phải" là yêu cầu đề xuất để nghiệm thu, không có nghĩa đã triển khai. Mã SRC-*, B-*, R-*, Q-* tham chiếu BRD |
 
@@ -60,13 +61,15 @@ Quyền gồm hành động và phạm vi. Máy chủ kiểm tra quyền trên m
 | FR-15 | Sơ đồ 3D | Must | Mặc định hiển thị quan hệ "thuộc cơ cấu"; bật/tắt từng loại quan hệ khác; mỗi loại có kiểu nét và chú giải riêng; chọn khối đồng bộ với cây và hồ sơ |
 | FR-16 | Hồ sơ cơ quan, đơn vị | Must | Hiện chức năng, nhiệm vụ (kèm ý con), quyền hạn, căn cứ của từng mục, quan hệ theo loại, lịch sử kế thừa |
 | FR-17 | Cây và bảng thay thế 3D | Must | Hoàn tất xem, tìm, sửa, gửi duyệt mà không cần tương tác với canvas |
-| FR-18 | Điều khiển góc nhìn | Must | Thu phóng, xoay có giới hạn, về toàn cảnh, định vị khối đang chọn; thao tác không làm thay đổi dữ liệu |
+| FR-18 | Điều khiển góc nhìn | Must | Thu phóng, xoay có giới hạn, về toàn cảnh, định vị khối đang chọn. Cuộn chuột thu phóng về phía con trỏ ở **mọi vị trí** trên sơ đồ, kể cả khi con trỏ nằm trên nhãn đơn vị. Nhấp đúp vào khối hoặc nhãn để chọn và bay camera tới đơn vị. Thao tác không làm thay đổi dữ liệu (căn cứ: BRD 2.2) |
 | FR-19 | Xuất JSON | Must | Xuất đúng phạm vi, ngày xem và bản đã duyệt, kèm căn cứ; ghi nhật ký; không xuất nháp nếu không có quyền |
 | FR-20 | Chỉnh sửa đồng thời | Must | Hai người sửa cùng phiên bản: người lưu sau nhận thông báo xung đột; không mất nội dung âm thầm |
 | FR-21 | Nhật ký quản trị và dữ liệu | Must | Ghi người, hành động, đối tượng, kết quả, thời gian; không lưu token hoặc mật khẩu |
 | FR-22 | So sánh hai mốc thời gian | Should | Liệt kê cơ quan thêm, bỏ, hợp nhất, đổi tên giữa hai ngày, kèm căn cứ |
 | FR-23 | Khôi phục nội dung bản cũ | Should | Tạo nháp mới từ bản đã duyệt cũ rồi duyệt lại; không ghi đè lịch sử |
 | FR-24 | Lưu trạng thái xem | Should | Giữ phạm vi, ngày, chế độ và lựa chọn khi chuyển giữa 3D và bảng; không đưa nội dung nội bộ vào URL |
+| FR-25 | Điều khiển sơ đồ 3D bằng bàn phím | Must | Mũi tên hoặc W, A, S, D di chuyển theo hướng nhìn; Shift + mũi tên hoặc Q, E để xoay; +, − hoặc PageUp, PageDown để thu phóng; Home về toàn cảnh. Giữ phím thì di chuyển liên tục, tốc độ tỉ lệ khoảng cách camera. Phím **không** tác động lên sơ đồ khi focus nằm trong ô nhập, biểu mẫu, hộp thoại hoặc panel. Vùng sơ đồ nhận focus bằng Tab và có mô tả phím cho trình đọc màn hình |
+| FR-26 | Bỏ chọn và đóng hồ sơ | Must | Bấm chuột trái vào vùng trống của sơ đồ (lệch không quá 2px) hoặc nhấn Escape: bỏ chọn đơn vị, tắt chú thích khi rê chuột, đóng panel hồ sơ. Kéo để di chuyển, xoay hoặc bấm chuột phải không bỏ chọn. Dữ liệu, bộ lọc và nhánh đang mở giữ nguyên (căn cứ: BRD 2.2) |
 
 Must thuộc MVP; Should không cản nghiệm thu MVP nếu được ghi vào backlog.
 
@@ -155,11 +158,14 @@ Tên các cấp tòa án và viện kiểm sát dưới cấp tỉnh chưa đư�
 
 ### 5.3. Khoảng cách với bản mẫu giao diện hiện có
 
-Bản mẫu giao diện hiện tại chỉ dùng để thử nghiệm trải nghiệm. Nó **chưa** đáp ứng SRS ở các điểm sau, và không được dùng làm cơ sở nghiệm thu:
+Bản mẫu giao diện chỉ dùng để thử nghiệm trải nghiệm, không được dùng làm cơ sở nghiệm thu. Trạng thái ngày 16/10/2026:
 
-- Không có máy chủ, phân quyền hay quy trình duyệt.
-- Mỗi đơn vị chỉ có một quan hệ cha; chưa có loại quan hệ (5.1), quan hệ kế thừa và căn cứ.
-- Chưa có chiều thời gian.
+| Nhóm | Bản mẫu đã có | Chưa có |
+| --- | --- | --- |
+| Nền tảng | Next.js xuất tĩnh (đầu ra `out/`), giữ bản Vite để đối chiếu; chạy hoàn toàn trong trình duyệt | Máy chủ, API mục 6, phân quyền, quy trình duyệt |
+| Dữ liệu | Hồ sơ đơn vị, nhiệm vụ có số hiệu và ý con, quyền hạn; nhập và xuất JSON | Loại quan hệ (5.1), quan hệ kế thừa, căn cứ, chiều thời gian. Mỗi đơn vị chỉ có một quan hệ cha |
+| Sơ đồ 3D | Camera phối cảnh, mặt bằng lồng nhau thể hiện "thuộc cơ cấu", khối cùng chiều cao, màu phân biệt loại đơn vị (không biểu thị thứ bậc), bóng đổ, bậc chất lượng tự hạ; FR-18, FR-25, FR-26 | Bật/tắt các loại quan hệ khác (FR-15) |
+| Kiểm thử | Unit test logic dữ liệu; kịch bản trình duyệt tự động; kiểm tra kiểu TypeScript | Kiểm thử phân quyền, đồng thời, thử nghiệm người dùng B-04, B-06, B-08 |
 
 ## 6. Hợp đồng API đề xuất
 
@@ -217,8 +223,29 @@ Các mức hiệu năng là mục tiêu nghiệm thu, trừ kết quả đo đã
 | AT-12 | — | R-12 | Nhập tệp có trường ngày sinh, quê quán: các trường bị từ chối hoặc loại bỏ kèm cảnh báo |
 | AT-13 | B-03 | FR-19, FR-21 | Người có quyền xem nhưng không có quyền xuất bị chặn cả ở API xuất; nhật ký ghi kết quả |
 | AT-14 | — | NFR-02, NFR-03 | Nội dung có script và ID phạm vi ngoài quyền: không chạy mã, không rò dữ liệu |
+| AT-15 | B-08 | FR-18 | Đặt con trỏ trên nhãn một vụ rồi cuộn chuột: camera zoom về phía con trỏ. Nhấp đúp vào nhãn: đơn vị được chọn và camera bay tới |
+| AT-16 | B-08 | FR-26 | Chọn một đơn vị; kéo ở vùng trống: lựa chọn và hồ sơ giữ nguyên. Bấm vùng trống: bỏ chọn, hồ sơ đóng. Chọn lại rồi nhấn Escape: kết quả như bấm vùng trống |
+| AT-17 | B-08 | FR-25 | Focus vào vùng sơ đồ, giữ mũi tên phải: camera dịch sang phải. Gõ "wasd" trong ô tìm kiếm: camera không đổi, ô nhận đủ ký tự. Nhấn Home: camera về toàn cảnh |
+| AT-18 | — | Mục 9 | Mở bản build bằng tên host không phải máy cục bộ: không có nút hay đường vào chức năng thử nghiệm; gọi trực tiếp hàm chuyển chế độ trong store cũng bị từ chối. Mở bằng localhost: chức năng hiện bình thường |
+| AT-19 | — | Mục 9 | Push lên nhánh main: workflow chạy unit test, kiểm tra kiểu, build; một bước lỗi thì không triển khai. Trang chạy được dưới đường dẫn con của repo và không có tài nguyên lỗi 404 |
 
-## 9. Điều kiện bàn giao
+Kết quả trên bản mẫu ngày 16/10/2026 (trình duyệt Edge, GPU Intel tích hợp): AT-15, AT-16, AT-17, AT-18 **đạt** qua kịch bản tự động. AT-19 mới kiểm tra phần build dưới đường dẫn con trên máy; **chưa xác nhận** một lần chạy workflow thành công trên GitHub. Các kết quả này là kiểm thử kỹ thuật, không thay cho thử nghiệm người dùng B-08.
+
+## 9. Bản trình diễn công khai (GitHub Pages)
+
+Áp dụng BRD 5.5 và R-15. Đây là cấu hình của bản trình diễn, không phải kiến trúc của hệ thống vận hành.
+
+| Mục | Yêu cầu |
+| --- | --- |
+| Triển khai | Workflow GitHub Actions chạy khi push lên `main`: cài thư viện (`npm ci`), unit test, kiểm tra kiểu, build Next.js xuất tĩnh với `basePath` bằng tên repo, rồi đăng thư mục `out/`. Một bước lỗi thì không triển khai |
+| Dữ liệu | Dữ liệu tham khảo đóng gói cùng bản build. Thay đổi của người xem chỉ nằm trong phiên trình duyệt; không gửi lên máy chủ hay dịch vụ bên ngoài (NFR-05) |
+| Khóa chức năng thử nghiệm | Chức năng chưa có trong BRD/SRS chỉ bật khi tên host là `localhost`, `127.0.0.1` hoặc `::1`. Ở tên host khác, giao diện ẩn đường vào **và** store từ chối chuyển sang chức năng đó; không dựa vào riêng việc ẩn nút |
+| Nhãn | Luôn hiển thị nguồn, mốc dữ liệu và "chưa đối chiếu văn bản hiện hành" |
+| Gỡ bỏ | Phải gỡ được trong một bước (tắt Pages hoặc chuyển repo về private) nếu Q-08 có kết luận dữ liệu chưa được phép công khai |
+
+Lưu ý: việc khóa theo tên host chỉ để bản công khai không lộ chức năng chưa đặc tả. Đây **không phải** biện pháp bảo mật, vì mã nguồn của chức năng thử nghiệm vẫn có trong bản build và trong repo công khai.
+
+## 10. Điều kiện bàn giao
 
 Bàn giao gồm:
 

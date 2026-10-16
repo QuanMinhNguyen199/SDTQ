@@ -83,7 +83,8 @@ export default function OrgScene({ units, allUnits, positions, matches, filterin
             camera={{ fov: FOV, near: 10, far: 40000, position: [-3000, 4000, 5000] }}
             gl={{ antialias: true, powerPreference: 'high-performance' }}
             onCreated={onCreated}
-            onPointerMissed={() => setHovered(null)}
+            // Chỉ cú bấm chuột trái không kéo (R3F: lệch ≤ 2px) mới bỏ chọn; kéo để xoay/di chuyển không ảnh hưởng.
+            onPointerMissed={event => { if (event.type === 'click') useOrg.getState().dismiss(); else setHovered(null); }}
           >
             <color attach="background" args={[palette.canvas]} />
             <fog attach="fog" args={[palette.canvas, 2000, 8000]} />
@@ -259,6 +260,7 @@ function UnitBlock({ unit, position, base, palette, childCount, dimmed, delay })
         <group ref={body}>
           <RoundedBox args={[BLOCK.width, H, BLOCK.depth]} radius={5} smoothness={3} position-y={H / 2} castShadow={!dimmed} receiveShadow
             onClick={event => { event.stopPropagation(); select(unit.id); }}
+            onDoubleClick={event => { event.stopPropagation(); select(unit.id, { locate: true }); }}
             onPointerOver={event => { event.stopPropagation(); enter(); }}
             onPointerOut={leave}>
             <meshStandardMaterial ref={material} color={palette.block} roughness={0.82} metalness={0} transparent={dimmed} opacity={dimmed ? 0.3 : 1} />
@@ -274,7 +276,7 @@ function UnitBlock({ unit, position, base, palette, childCount, dimmed, delay })
           <Html portal={portal} position={[0, H + 2, 0]} center zIndexRange={[20, 0]} className="pointer-events-none">
             <div style={toneVariables(unit.type, theme)} className={`node-label flex w-[124px] flex-col items-center gap-1 ${dimmed ? 'opacity-40' : ''}`}>
               <button type="button" aria-label={`Xem ${unit.name}`} aria-current={selected ? 'true' : undefined}
-                onClick={() => select(unit.id)} onPointerEnter={enter} onPointerLeave={leave} onFocus={() => setHovered(unit.id)} onBlur={leave}
+                onClick={() => select(unit.id)} onDoubleClick={() => select(unit.id, { locate: true })} onPointerEnter={enter} onPointerLeave={leave} onFocus={() => setHovered(unit.id)} onBlur={leave}
                 className={`pointer-events-auto flex max-w-full flex-col items-center gap-0.5 rounded-md px-2 py-1 text-center outline-offset-2 ${selected ? 'bg-surface/95 shadow-sm ring-1 ring-brand' : 'bg-surface/80'}`}>
                 <span className="unit-type-tag">{unit.code || unit.type}</span>
                 <strong className={`line-clamp-2 text-[12px] leading-tight font-semibold text-balance text-ink ${selected || hovered ? '' : 'group-data-[density=far]/labels:hidden'}`}>{unit.name}</strong>
@@ -442,6 +444,7 @@ function Rig({ positions, baseY, campuses, units, insets, labelLayer }) {
     const down = e => {
       if (ignored(e)) return;
       if (e.code === 'Home') { e.preventDefault(); useOrg.getState().command('fit'); return; }
+      if (e.code === 'Escape') { useOrg.getState().dismiss(); return; }
       if (!movement.has(e.code)) return;
       e.preventDefault();
       keys.current.add(e.code); shift.current = e.shiftKey;
@@ -454,6 +457,19 @@ function Rig({ positions, baseY, campuses, units, insets, labelLayer }) {
     window.addEventListener('blur', reset);
     return () => { window.removeEventListener('keydown', down); window.removeEventListener('keyup', up); window.removeEventListener('blur', reset); };
   }, [invalidate]);
+
+  // Nhãn HTML nằm đè lên canvas và chặn cuộn chuột, khiến zoom chỉ chạy khi con trỏ ở chỗ trống.
+  // Chuyển tiếp sự kiện wheel từ lớp nhãn xuống canvas để zoom về đúng vị trí con trỏ ở mọi chỗ.
+  const canvas = useThree(s => s.gl.domElement);
+  useEffect(() => {
+    const layer = labelLayer.current; if (!layer) return;
+    const forward = e => {
+      e.preventDefault();
+      canvas.dispatchEvent(new WheelEvent('wheel', { deltaX: e.deltaX, deltaY: e.deltaY, deltaZ: e.deltaZ, deltaMode: e.deltaMode, clientX: e.clientX, clientY: e.clientY, screenX: e.screenX, screenY: e.screenY, ctrlKey: e.ctrlKey, shiftKey: e.shiftKey, altKey: e.altKey, metaKey: e.metaKey, bubbles: true, cancelable: true }));
+    };
+    layer.addEventListener('wheel', forward, { passive: false });
+    return () => layer.removeEventListener('wheel', forward);
+  }, [canvas, labelLayer]);
 
   const target = useMemo(() => new Vector3(), []);
   useFrame((state, dt) => {

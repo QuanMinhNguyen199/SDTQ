@@ -25,6 +25,9 @@ try {
   await expect(page.locator('.unit-table')).toBeVisible();
   await page.getByRole('button', { name:'3D', exact:true }).click();
   await expect(page.locator('.node-label')).toHaveCount(13);
+  await page.getByRole('combobox',{name:'Góc nhìn',exact:true}).selectOption('top');
+  await expect(page.getByRole('combobox',{name:'Góc nhìn',exact:true})).toHaveValue('top');
+  await page.getByRole('combobox',{name:'Góc nhìn',exact:true}).selectOption('angled');
   // Genuine context loss still falls back; the user can retry rather than being permanently locked out.
   await page.locator('canvas').evaluate(canvas => canvas.getContext('webgl2').getExtension('WEBGL_lose_context').loseContext());
   await expect(page.getByRole('button', { name:'2D', exact:true })).toHaveAttribute('aria-pressed','true');
