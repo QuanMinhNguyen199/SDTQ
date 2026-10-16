@@ -2,9 +2,8 @@
 
 | Thuộc tính | Giá trị |
 | --- | --- |
-| Phiên bản | 0.3 — dự thảo, 16/10/2026 (bản 0.2 và 0.1: 15–16/10/2026) |
-| Căn cứ | [BRD 0.3](BRD.md) |
-| Thay đổi so với 0.2 | FR-18 (zoom ở mọi vị trí, nhấp đúp), FR-25 (bàn phím), FR-26 (bỏ chọn), cập nhật 5.3; mục 9 về bản trình diễn công khai và khóa chức năng thử nghiệm; AT-15 đến AT-19 |
+| Phiên bản | 0.1 |
+| Căn cứ | [BRD](BRD.md) |
 | Thiết kế liên quan | [Đặc tả 3D](THIET_KE_SO_DO_3D.md) |
 | Quy ước | "Phải" là yêu cầu đề xuất để nghiệm thu, không có nghĩa đã triển khai. Mã SRC-*, B-*, R-*, Q-* tham chiếu BRD |
 
@@ -122,7 +121,9 @@ Thời gian kỹ thuật lưu UTC, giao diện hiển thị theo Asia/Saigon. Ng
 | LegalBasis | id, docType, docNumber, issuer, issuedAt, effectiveAt, title, locator, url | locator ghi điều, khoản, điểm |
 | Reference | id, title, publisher, publishedAt, accessedAt, url, note | Không thay LegalBasis khi duyệt |
 | Evidence | id, targetType, targetId, legalBasisId or referenceId, claim, reviewNote | Gắn căn cứ tới từng trường hoặc quan hệ |
-| Revision, Snapshot, ChangeLog | Như bản 0.1 | Snapshot không đổi được; ChangeLog chỉ ghi thêm |
+| Revision | id, datasetId, baseSnapshotId, status, version, createdBy, submittedBy | version tăng dần; baseSnapshotId có thể trống khi khởi tạo phạm vi mới |
+| Snapshot | id, datasetId, revisionId, approvedBy, approvedAt, sourceAsOf | Không đổi được sau khi duyệt; sourceAsOf không thay hiệu lực của từng bản ghi |
+| ChangeLog | id, actorId, action, resourceId, revisionId, before, after, timestamp, result | Chỉ ghi thêm; lọc bỏ thông tin nhạy cảm |
 
 Mọi Organ, InternalUnit, ContentItem, Relation đều được phiên bản hóa theo bản sửa đổi và bản đã duyệt. Khoảng hiệu lực là nửa mở [validFrom, validTo). Khi chưa rõ hiệu lực thì để null và bắt buộc có temporalNote.
 
@@ -231,21 +232,8 @@ Các mức hiệu năng là mục tiêu nghiệm thu, trừ kết quả đo đã
 
 Kết quả trên bản mẫu ngày 16/10/2026 (trình duyệt Edge, GPU Intel tích hợp): AT-15, AT-16, AT-17, AT-18 **đạt** qua kịch bản tự động. AT-19 mới kiểm tra phần build dưới đường dẫn con trên máy; **chưa xác nhận** một lần chạy workflow thành công trên GitHub. Các kết quả này là kiểm thử kỹ thuật, không thay cho thử nghiệm người dùng B-08.
 
-## 9. Bản trình diễn công khai (GitHub Pages)
 
-Áp dụng BRD 5.5 và R-15. Đây là cấu hình của bản trình diễn, không phải kiến trúc của hệ thống vận hành.
-
-| Mục | Yêu cầu |
-| --- | --- |
-| Triển khai | Workflow GitHub Actions chạy khi push lên `main`: cài thư viện (`npm ci`), unit test, kiểm tra kiểu, build Next.js xuất tĩnh với `basePath` bằng tên repo, rồi đăng thư mục `out/`. Một bước lỗi thì không triển khai |
-| Dữ liệu | Dữ liệu tham khảo đóng gói cùng bản build. Thay đổi của người xem chỉ nằm trong phiên trình duyệt; không gửi lên máy chủ hay dịch vụ bên ngoài (NFR-05) |
-| Khóa chức năng thử nghiệm | Chức năng chưa có trong BRD/SRS chỉ bật khi tên host là `localhost`, `127.0.0.1` hoặc `::1`. Ở tên host khác, giao diện ẩn đường vào **và** store từ chối chuyển sang chức năng đó; không dựa vào riêng việc ẩn nút |
-| Nhãn | Luôn hiển thị nguồn, mốc dữ liệu và "chưa đối chiếu văn bản hiện hành" |
-| Gỡ bỏ | Phải gỡ được trong một bước (tắt Pages hoặc chuyển repo về private) nếu Q-08 có kết luận dữ liệu chưa được phép công khai |
-
-Lưu ý: việc khóa theo tên host chỉ để bản công khai không lộ chức năng chưa đặc tả. Đây **không phải** biện pháp bảo mật, vì mã nguồn của chức năng thử nghiệm vẫn có trong bản build và trong repo công khai.
-
-## 10. Điều kiện bàn giao
+## 9. Điều kiện bàn giao
 
 Bàn giao gồm:
 

@@ -2,262 +2,288 @@
 
 | Thuộc tính | Giá trị |
 | --- | --- |
-| Phiên bản | 0.1 — đề xuất thiết kế, 15/10/2026 |
-| Định dạng đã xác nhận | Đặc tả chi tiết Markdown |
-| Chế độ trải nghiệm | Operate: quản lý và kiểm tra dữ liệu nội bộ |
-| Căn cứ | [BRD](BRD.md), [SRS](SRS.md), [HTML](../graph_toan_canh.html) |
-| Phương pháp | [Impeccable](C:/Users/admin/.agents/skills/impeccable/SKILL.md) |
+| Phiên bản | 0.1 — đặc tả thiết kế, 16/10/2026 |
+| Chế độ trải nghiệm | Operate: tra cứu, kiểm tra và quản lý dữ liệu cơ cấu bộ máy |
+| Căn cứ | [BRD](BRD.md), [SRS](SRS.md), [design.md](../design.md) (token, typography, chữ trên giao diện) |
+| Phương pháp | Impeccable cho đánh giá và hoàn thiện; frontend-design cho hướng thị giác; humanizer cho chữ trên giao diện |
 
 ## 1. Mục tiêu và trạng thái thiết kế
 
-Người dùng cần biết đang xem bộ dữ liệu nào, đơn vị liên quan đến ai, nội dung nào đã được duyệt và căn cứ cho quan hệ. Sơ đồ 3D hỗ trợ định vị và kiểm tra; biểu mẫu và bảng là nơi quản lý nội dung dài.
+Người dùng cần biết đang xem phạm vi nào, tại ngày nào; một cơ quan hay đơn vị thuộc về đâu và chứa những gì; nội dung nào có căn cứ. Sơ đồ 3D giúp nhìn ra quan hệ "thuộc cơ cấu" và định vị đơn vị. Cây, bảng và hồ sơ là nơi đọc toàn văn và quản lý dữ liệu (SRS FR-17).
 
-Tài liệu áp dụng nguyên tắc Impeccable cho công cụ vận hành: phân cấp thông tin rõ, giảm tải nhận thức, phản hồi có mục đích, trạng thái lỗi đầy đủ và đường thao tác tiếp cận được. Đây là đề xuất bàn giao; chưa có bản dựng, ảnh kiểm chứng, tài sản Spline hay kiểm thử UX. Màu, bố cục và thông số camera dưới đây là thông số khởi điểm để triển khai và đánh giá, không phải lựa chọn thẩm mỹ đã được người dùng phê duyệt.
+| Nhãn | Nội dung |
+| --- | --- |
+| **Bằng chứng** | Bản mẫu đã dựng và chạy trên trình duyệt; kịch bản kiểm thử tự động đạt (SRS AT-15 đến AT-18); số đo khung hình ngày 16/10/2026 (mục 9); một phản hồi người dùng (BRD 2.2) |
+| **Diễn giải** | Hai điểm vướng trong phản hồi xuất phát từ việc nhãn chặn cuộn chuột và từ việc thẻ đang chọn bị hiểu là popup (mục 5) |
+| **Giả định** | Người dùng chính là cán bộ tham mưu, tra cứu tổ chức bộ máy (BRD Q-01); sơ đồ 3D giúp hiểu quan hệ trực thuộc nhanh hơn danh sách — **chưa kiểm chứng** |
+| **Đề xuất** | Các phần đánh dấu "chưa triển khai" trong tài liệu: hiển thị quan hệ có loại, chiều thời gian, trạng thái dữ liệu chưa xác minh |
 
-Kế thừa nền sáng, chữ tối, xanh cho lựa chọn và ba chế độ của HTML. Giữ nguyên nội dung gốc khi nhập. Thay cách ẩn toàn bộ nhãn đơn vị trong chế độ nội dung bằng nhãn ưu tiên để người dùng vẫn nhận diện được đơn vị đang làm việc.
+Mọi thông số dưới đây là thông số của bản mẫu, dùng để triển khai và đánh giá. Chúng chưa phải lựa chọn đã được chủ sở hữu nghiệp vụ phê duyệt.
 
 ## 2. Kiến trúc thông tin
 
 | Khu vực | Nội dung | Hành động chính |
 | --- | --- | --- |
-| Thanh ngữ cảnh | Dataset, snapshot/trạng thái nháp, mốc nguồn | Đổi phạm vi và bản xem |
-| Điều hướng trái | Tìm kiếm, cây đơn vị, bộ lọc | Chọn đơn vị, xem cảnh báo dữ liệu |
-| Không gian chính | 3D hoặc cây/bảng, chuyển Tổ chức/Nhiệm vụ/Quyền hạn | Khám phá quan hệ, định vị |
-| Hồ sơ phải | Tên đầy đủ, nội dung, quan hệ, nguồn, lịch sử | Đọc, mở chỉnh sửa nếu có quyền |
-| Vùng tác vụ biên tập | Trạng thái lưu, lỗi, Lưu nháp, Gửi duyệt | Thực hiện mutation rõ ràng |
-| Khu vực thẩm định | Diff, nguồn, lý do trả lại, Duyệt | Ra quyết định có căn cứ |
+| Thanh đầu | Logo, tên sản phẩm, trạng thái thay đổi chưa xuất, nhập và xuất dữ liệu, đổi theme | Đổi dữ liệu làm việc |
+| Thanh ngữ cảnh trên canvas | Chế độ xem 3D / 2D / Danh sách; phạm vi đang xem; số đơn vị hiển thị trên tổng số | Đổi cách trình bày, quay về toàn cây |
+| Panel trái (cây) | Tìm kiếm, lọc theo loại đơn vị, mở theo cấp, cây đơn vị, ghi chú nguồn | Chọn đơn vị, mở hoặc thu gọn nhánh |
+| Không gian chính | Sơ đồ 3D, sơ đồ 2D hoặc bảng | Định vị, khám phá quan hệ |
+| Panel phải (hồ sơ) | Loại, cấp, đường dẫn; tab Tổng quan, Nhiệm vụ, Quyền hạn; đơn vị trực thuộc; nguồn | Đọc; chỉnh sửa, thêm đơn vị con, xem riêng nhánh |
+| Thanh camera | Thu nhỏ, phóng to, ba góc nhìn, toàn cảnh, định vị, phím tắt | Điều khiển góc nhìn không cần kéo chuột |
 
-Không đặt nút Duyệt lên đối tượng 3D. Không bắt người dùng xoay camera để truy cập chức năng CRUD. Dataset và mốc nguồn luôn nhìn thấy cả khi mở hồ sơ.
+Theo SRS, cần bổ sung khi có máy chủ: bộ chọn phạm vi và **ngày xem** (FR-02, FR-13) luôn hiện trên thanh ngữ cảnh; bộ bật/tắt loại quan hệ (FR-15); vùng tác vụ gửi duyệt và thẩm định (FR-11). Không đặt nút Duyệt lên đối tượng 3D. Không bắt người dùng xoay camera để làm thao tác quản lý.
 
-## 3. Bố cục và wireframe
+## 3. Bố cục
 
-### 3.1. Desktop — viewport mẫu 1440 × 900
+### 3.1. Desktop
 
-Thanh đầu cao 64px. Cột trái 272px. Hồ sơ phải rộng 368px khi mở; canvas co theo vùng còn lại. Khoảng đệm 16–24px. Ở độ rộng dưới 1200px, chỉ mở một panel phụ để canvas còn đủ chỗ.
+Canvas 3D chiếm toàn bộ vùng làm việc. Panel cây và panel hồ sơ nổi đè lên canvas; camera căn sơ đồ vào phần còn trống giữa hai panel, nên mở hay đóng panel không làm sơ đồ bị che.
+
+| Thành phần | Kích thước bản mẫu |
+| --- | --- |
+| Thanh đầu | 64px |
+| Panel cây | 320px; 340px từ 1600px |
+| Panel hồ sơ | 360px (768–1199px), 408px (1200–1599px), 440px (từ 1600px) |
+| Khoảng cách panel với mép | 12px |
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────────┐
-│ SDTQ  [Bộ dữ liệu ▾] [Phiên bản ▾]  Mốc nguồn  Trạng thái  Tài khoản       │
-├────────────────┬───────────────────────────────────┬─────────────────────┤
-│ Tìm đơn vị     │ Tổ chức | Nhiệm vụ | Quyền hạn    │ Tên đơn vị đầy đủ   │
-│ Bộ lọc        │ [3D] [Cây/Bảng]                    │ Đã duyệt / Bản nháp │
-│ Cây đơn vị    │                                   │ Tổng quan           │
-│              │      Cụm đơn vị và quan hệ         │ Nhiệm vụ / Quyền hạn│
-│ Cảnh báo      │      chỉ của phạm vi đang chọn    │ Quan hệ / Nguồn     │
-│ cần rà soát   │                                   │ Lịch sử             │
-│              │ [−] [+] [Toàn cảnh] [Góc nhìn]      │ [Chỉnh sửa]         │
-├────────────────┴───────────────────────────────────┴─────────────────────┤
-│ Chú giải • Số kết quả • Thông báo thao tác / trạng thái lưu               │
-└──────────────────────────────────────────────────────────────────────────┘
+│ Logo  Sơ đồ tổ chức                         [Nhập] [Xuất JSON] [Theme]  │
+├──────────────┬───────────────────────────────────────┬───────────────────┤
+│ Cây tổ chức  │ [3D][2D][Danh sách]   Phạm vi · n/N   │ Hồ sơ đơn vị      │
+│ Tìm…         │                                       │ Loại · Cấp        │
+│ Lọc theo loại│      Mặt bằng của Ban                 │ Tên đơn vị        │
+│ Mở tới cấp   │        ┌──┐ ┌──┐ ┌──┐ ┌──┐            │ Tổng quan|NV|QH   │
+│ ▾ Ban        │        └──┘ └──┘ └──┘ └──┘            │ …                 │
+│   Vụ …       │        ┌──┐ ┌──┐ ┌─────────┐          │                   │
+│   ▸ Văn phòng│        └──┘ └──┘ │ mặt bằng│          │                   │
+│              │                  │ con     │          │ [Chỉnh sửa]       │
+│ Nguồn: …     │ Chú giải   [− + ⟲ ▣ ▢ ⛶ ◎ ⌨]          │ [Thêm đơn vị con] │
+└──────────────┴───────────────────────────────────────┴───────────────────┘
 ```
 
-### 3.2. Tablet và mobile
+Từ 768 đến 1199px chỉ mở một panel tại một thời điểm.
 
-- 768–1199px: cây mở bằng drawer; hồ sơ là panel, không mở cùng cây nếu không đủ chiều rộng.
-- 360–767px: mặc định bảng/danh sách; 3D là lựa chọn chủ động. Dòng ngữ cảnh có thể xuống hàng.
-- Chi tiết mở thành trang/panel toàn chiều rộng, biểu mẫu một cột; hành động cuối biểu mẫu giữ khoảng an toàn bàn phím ảo.
-- Canvas mobile không chiếm gesture cuộn trang ngoài vùng của nó. Có nút điều khiển thay pinch/rotate.
-- Nút chạm mục tiêu tối thiểu 44 × 44px; không dùng tooltip hover làm cách duy nhất đọc tên.
+### 3.2. Mobile
+
+- Dưới 768px: mặc định là bảng; 3D là lựa chọn chủ động.
+- Panel cây và hồ sơ mở toàn màn hình.
+- Nút điều khiển camera thay cho pinch và xoay; vùng chạm tối thiểu 40px trên thanh camera, 44px với nút hành động chính.
 
 ## 4. Ngữ pháp đồ họa 3D
 
-### 4.1. Ý nghĩa hình dạng
+### 4.1. Hình và ý nghĩa
 
-| Đối tượng | Hình | Nhãn và cách đọc |
+| Đối tượng | Hình | Ý nghĩa và giới hạn |
 | --- | --- | --- |
-| Đơn vị | Khối hộp mỏng, góc mềm | Tên đơn vị; luôn hiện khi được chọn |
-| Nhiệm vụ | Đĩa tròn nổi thấp | Số hiệu; toàn văn trong panel |
-| Nhiệm vụ con | Lăng trụ tam giác nhỏ | Số hiệu và tên cha trong panel |
-| Quyền hạn | Khối vuông nhỏ | Số hiệu; nhãn “Quyền hạn” trong panel |
-| Dữ liệu chưa xác minh | Biểu tượng cảnh báo + nét chấm | Chỉ hiện trong nháp có quyền; không giả như cạnh hợp lệ |
+| Cơ quan, đơn vị | Khối hộp bo góc 200 × 124 × 44 đơn vị cảnh, có viền | **Mọi khối cùng chiều cao** ở mọi cấp; kích thước không biểu thị quyền lực (BRD R-11) |
+| Mặt bằng | Nền phẳng dày 9 đơn vị dưới một đơn vị có nhánh đang mở, chứa đơn vị đó và các hậu duệ đang hiện | Thể hiện quan hệ "thuộc cơ cấu" (SRS `partOf`). Nền của cấp sâu hơn nằm chồng lên nền cấp trên. Độ cao của nền là hệ quả của lồng nhau, không biểu thị thứ bậc |
+| Đường nối | Đường mảnh trên mặt bằng của đơn vị cha, mũi tên ở đầu đơn vị con | Chỉ vẽ `partOf`. Nhiều con đi qua một trục chung bên trái nhóm con |
+| Nhiệm vụ, quyền hạn | **Không dựng thành vật thể 3D** | Đọc trong panel hồ sơ, giữ số hiệu và ý con. Lý do: hàng trăm mục nội dung làm cảnh quá dày và nhãn chồng nhau; toàn văn cần đọc ở DOM |
+| Dữ liệu chưa xác minh | Chưa triển khai | Đề xuất: nét chấm và biểu tượng cảnh báo, chỉ hiện trong bản nháp với người có quyền (SRS FR-10) |
 
-Hình dạng nhiệm vụ/quyền hạn kế thừa chú giải HTML. Màu không phải tín hiệu duy nhất. Không dùng kích thước lớn hơn để ám chỉ quyền lực nếu không có định nghĩa dữ liệu.
+### 4.2. Màu
 
-### 4.2. Quan hệ
+Token đầy đủ nằm ở design.md §10. Trong cảnh 3D:
 
-Quan hệ phân cấp dùng đường liền và mũi tên theo chiều được quy định trong schema. Quan hệ phối hợp dùng nét đứt, nhãn loại; chỉ hiện khi bật bộ lọc phù hợp. Quan hệ nội dung nối đơn vị với nhiệm vụ không được trình bày như cơ quan trực thuộc. Khi chọn cạnh, panel hiện loại, hai đầu, nguồn và khoảng thời gian.
+| Trạng thái | Cách hiển thị | Ghi chú |
+| --- | --- | --- |
+| Mặc định | Mặt trên màu nền token; mặt bên tối dần do ánh sáng; viền `blockSide` | Đèn được hiệu chỉnh để mặt trên đúng màu token |
+| Loại đơn vị | Thẻ loại trên nhãn và thanh nhấn trên mặt khối theo màu từng loại: Ban, Vụ, Cục, Văn phòng, Phòng | **Chỉ để phân loại**, không biểu thị thứ bậc hay trạng thái duyệt. Màu luôn đi kèm chữ (tên loại) |
+| Đang chọn | Màu ruby, khối nhấc lên 16, vòng viền dưới chân, thanh nhấn dày hơn, nhãn có viền | Không chỉ dựa vào màu |
+| Rê chuột | Đổi màu nhẹ, khối nhấc lên 8, hiện tooltip | Không dùng tooltip làm cách duy nhất để đọc tên |
+| Đường tới đơn vị chọn | Đường nối từ gốc tới đơn vị chọn chuyển sang màu ruby, đậm hơn | Giúp đọc đường dẫn trực thuộc |
+| Không khớp bộ lọc | Khối và nhãn mờ 30–40% | Không ẩn hẳn, để giữ ngữ cảnh cây |
 
-Loại chưa rõ không dùng mũi tên khẳng định; đặt trong danh sách cần rà soát. Hướng của `subDutyOf` được chuẩn hóa là con → cha; renderer có thể sắp xếp cha ở trên nhưng phải giữ mũi tên theo dữ liệu.
+Không dùng bloom hay ánh sáng màu phủ cảnh, vì làm lệch màu trạng thái.
 
-### 4.3. Tọa độ và phân cụm
+### 4.3. Quan hệ có loại (SRS 5.1) — chưa triển khai
 
-Dùng Y là trục đứng. X chia nhánh; Z tách các cụm để giảm giao cắt. Với một cây đã xác minh, khởi điểm khoảng cách ngang 180 đơn vị cảnh, cách tầng Y 140, độ sâu cụm Z 120. Kích thước đơn vị mẫu 120 × 40 × 12; camera tự fit theo bounds. Các thông số không phải thước đo nghiệp vụ.
+Mặc định chỉ hiện `partOf`. Các loại khác bật riêng từ bộ lọc. Khi bật, mỗi loại có **kiểu nét và nhãn riêng**, không chỉ khác màu:
 
-Thuật toán đề xuất: chia thành phần liên thông → tách các cạnh phân cấp → xếp tầng ổn định theo ID/order → giãn nhánh bằng bounding box nhãn → route cạnh phụ ngoài cụm. Nếu một nút có nhiều cha hợp lệ, chỉ có một mesh và nhiều cạnh; không nhân đôi hồ sơ để ép thành cây. Cạnh phi phân cấp không quyết định tầng.
+| kind | Kiểu nét đề xuất | Hướng |
+| --- | --- | --- |
+| partOf | Liền, mảnh, mũi tên tới con | Cha → con |
+| electedOrApprovedBy | Đứt dài, ký hiệu "bầu" ở giữa | Cơ quan bầu → cơ quan được bầu |
+| accountableTo | Đứt ngắn, mũi tên hai nét | Cơ quan chịu trách nhiệm → cơ quan nhận báo cáo |
+| directs | Liền, đậm hơn partOf, mũi tên đặc | Bên chỉ đạo → bên chịu chỉ đạo |
+| guides | Chấm | Bên hướng dẫn → bên được hướng dẫn |
+| supervises | Chấm – gạch | Bên giám sát → bên bị giám sát |
+| systemTier | Liền, hai vạch song song | Cấp trên → cấp dưới trong cùng hệ thống |
+| ledBy | Đứt, khác màu nền của phạm vi | Tổ chức lãnh đạo → tổ chức được lãnh đạo |
 
-Mỗi dataset là một cảnh riêng. Không xếp ba nguồn thành ba tầng quyền lực. Chính quyền địa phương hoặc cơ quan trung ương chỉ được bố trí thành nhóm khi dữ liệu đã có phân loại được duyệt.
+- Quan hệ ngoài `partOf` bay vòng phía trên mặt bằng, để không lẫn với đường trực thuộc.
+- Chọn một đường thì hồ sơ hiện loại, hai đầu, căn cứ và hiệu lực.
+- Quan hệ chưa rõ loại không có mũi tên và không hiện như quan hệ đã xác thực (BRD R-04).
+- Không suy loại quan hệ từ vị trí hay màu.
 
-### 4.4. Mật độ và nhãn
+### 4.4. Bố cục
 
-- Toàn cảnh chỉ hiện đơn vị và số lượng nội dung, không mở đồng thời 239 nút nội dung của baseline.
-- Khi chọn chế độ nhiệm vụ/quyền hạn và một đơn vị, mở nội dung của đơn vị đó; có tùy chọn toàn cảnh nội dung để giữ khả năng cũ.
-- Nhãn HTML chiếu từ tọa độ 3D, chữ luôn thẳng; ưu tiên selected → đường tổ tiên → kết quả tìm → nút còn lại.
-- Khi nhãn giao nhau, ẩn nhãn ưu tiên thấp và giữ truy cập bằng cây; không thu chữ xuống dưới 12px để nhét đủ.
-- Nút chọn được phải có hit area tối thiểu 24px ở không gian màn hình hoặc có lựa chọn tương đương trong cây/bảng.
-- Tên dài rút gọn trên cảnh, đầy đủ trong panel và accessible name; không làm mất tên gốc.
+- Cây nằm trên mặt sàn: X trải ngang các đơn vị cùng cấp, Z đi sâu theo cấp. Trục Y không dùng để xếp thứ bậc.
+- Đơn vị có nhiều con thì xếp con thành lưới: tối đa 3 cột khi có tới 6 con, 4 cột khi nhiều hơn. Ví dụ 12 vụ, cục được xếp thành lưới 4 × 3, nên tên vẫn đọc được ở mức zoom mặc định.
+- Khoảng cách: 80 giữa hai khối cùng hàng, 110 giữa các hàng, 174 từ cha tới hàng con đầu tiên.
+- Bố cục ổn định: cùng dữ liệu và cùng trạng thái mở nhánh thì cho cùng vị trí.
+- Mỗi phạm vi (BRD 5.1) là một cảnh riêng. Không ghép cơ quan của Đảng, Mặt trận Tổ quốc hay chính quyền địa phương vào nhánh của cơ quan nhà nước khác (BRD R-02).
+- Đơn vị có nhiều quan hệ với nhiều cơ quan vẫn chỉ có một khối; quan hệ ngoài `partOf` được thể hiện bằng đường nối, không nhân đôi khối.
+
+### 4.5. Chiều thời gian (SRS FR-13, FR-22) — chưa triển khai
+
+- Ngày xem quyết định tập đơn vị và quan hệ được dựng.
+- Đơn vị đã hết hiệu lực (ví dụ cấp huyện sau 01/7/2025) không hiện trên cảnh, nhưng tra được trong hồ sơ lịch sử và qua tìm kiếm tên cũ.
+- Đề xuất cho so sánh hai mốc: đơn vị thêm mới, bị bỏ, hợp nhất hoặc đổi tên được đánh dấu bằng nhãn chữ và biểu tượng, không chỉ bằng màu.
+
+### 4.6. Nhãn và mật độ
+
+- Nhãn là DOM chiếu từ tọa độ 3D, chữ luôn thẳng, rộng 124px, chữ tối thiểu 12px.
+- Khi một khối hiện nhỏ hơn 90px trên màn hình, nhãn chỉ còn thẻ loại và nút mở nhánh bị ẩn. Đơn vị đang chọn hoặc đang rê chuột luôn hiện đủ tên.
+- Cuộn chuột trên nhãn được chuyển xuống camera, để zoom hoạt động ở mọi vị trí (SRS FR-18).
+- Tên dài rút gọn tối đa hai dòng trên cảnh; tên đầy đủ có trong hồ sơ và trong tên đọc cho trình đọc màn hình.
 
 ## 5. Camera và thao tác
 
-Camera phối cảnh khởi điểm FOV 35°, góc nhìn chéo nhẹ; có preset Trước, Chéo, Trên và Toàn cảnh. Giới hạn xoay tránh lật cảnh. Không tự quay khi người dùng đang đọc hoặc gõ.
+Camera phối cảnh FOV 35°. Ba góc nhìn có sẵn:
 
-| Tác động | Kết quả | Bảo toàn trạng thái |
-| --- | --- | --- |
-| Click/chọn trong cây | Chọn entity, mở hồ sơ, nhấn mạnh cạnh liên quan | Không đổi mode |
-| Chọn kết quả tìm | Định vị entity, bỏ che nhãn | Giữ query và snapshot |
-| Chọn Nhiệm vụ/Quyền hạn | Lọc loại nội dung | Giữ đơn vị chọn; có nút “Toàn bộ đơn vị” |
-| Click vùng trống | Bỏ hover/tooltip | Không xóa lựa chọn hoặc biểu mẫu đang sửa |
-| Kéo trên nền | Xoay/pan theo chế độ điều khiển | Không chỉnh dữ liệu tổ chức |
-| Toàn cảnh | Fit các nút đang lọc | Không reset dataset và mode |
-| Escape | Đóng overlay trên cùng, trả focus về nút mở | Biểu mẫu bẩn cần cảnh báo |
-| Chuyển 3D/Bảng | Đổi cách trình bày | Giữ selection, query, mode, revision |
-
-Khác HTML cũ: đổi chế độ không tự xóa focus; bấm đơn vị lần hai không ngầm hủy bộ lọc, dùng nút rõ nghĩa. Kéo nút tự do chỉ nên bổ sung ở chế độ bố cục riêng, không có trong MVP quản lý nghiệp vụ.
-
-## 6. Quy tắc giao diện theo Impeccable
-
-| Token đề xuất | Giá trị | Mục đích |
-| --- | --- | --- |
-| canvas | #F5F6F8 | Nền dịu, không cạnh tranh dữ liệu |
-| surface | #FFFFFF | Panel và biểu mẫu |
-| text | #202936 | Văn bản chính |
-| text-muted | #526171 | Văn bản phụ; phải đo tương phản |
-| accent | #185ABC | Lựa chọn, focus, hành động chính |
-| border | #D7DDE5 | Phân vùng |
-| danger | #B42318 | Lỗi, thao tác ngừng hiệu lực |
-| warning | #8A4B08 | Cần rà soát |
-| success | #176B47 | Đã duyệt; luôn kèm chữ |
-
-Font ưu tiên hệ thống hỗ trợ tiếng Việt: Segoe UI, Arial, sans-serif. Nội dung 14–16px, line-height 1.5–1.6; tiêu đề hồ sơ 22px; nhãn điều khiển 13–14px. Khoảng cách theo thang 4/8/12/16/24/32px. Panel dùng đường phân cách, không bọc mọi trường trong thẻ riêng. Nội dung dài căn trái, không căn đều như tooltip cũ.
-
-Một màn hình có một tác vụ chính theo trạng thái: nháp là Lưu/Gửi duyệt, thẩm định là Duyệt/Trả lại. Nút nguy hiểm có mô tả hệ quả cụ thể. Không dùng glow liên tục, nền hạt, glassmorphism hoặc hiệu ứng bay chữ làm giảm khả năng đọc sơ đồ nghiệp vụ.
-
-## 7. Đặc tả chuyển động — Motion và Three.js
-
-Motion dùng cho DOM: panel, bộ lọc, thông báo, focus feedback; Three.js quản lý camera và transform cảnh. Một thuộc tính chỉ có một nơi ghi; không để Motion và render loop cùng cập nhật camera.position. Tài liệu chính thức: [Motion for React](https://motion.dev/docs/react).
-
-| Sự kiện | Thời lượng đề xuất | Cách chuyển | Reduced motion |
-| --- | ---: | --- | --- |
-| Hover nút | 100ms | Đổi màu/viền | Đổi tức thì |
-| Mở panel | 180ms | Opacity + translate 8px | Không dịch chuyển |
-| Thay bộ lọc | 160ms | Fade kết quả, giữ vùng bố cục | Cập nhật tức thì |
-| Chọn node | 120ms | Viền và màu nhấn | Cập nhật tức thì |
-| Camera định vị | 450ms | Nội suy vị trí + target, ease-out | Nhảy đến góc cuối |
-| Bung cụm | 240ms | Nội suy đến layout đã tính | Dùng layout cuối |
-| Lưu thành công | 150ms | Hiện thông báo text | Hiện text tức thì |
-
-Chuyển động phải ngắt được khi người dùng kéo camera hoặc chọn mục khác; chỉ chạy đích mới nhất. Không có vòng lặp tự chạy lúc rảnh. Reduced motion lấy từ hệ điều hành và có cấu hình người dùng; vẫn giữ phản hồi trạng thái bằng chữ. Không trì hoãn cập nhật dữ liệu để đợi animation.
-
-## 8. Kiến trúc triển khai đề xuất
-
-```text
-API có phân quyền + kho snapshot
-              │
-              ▼
-       Store trạng thái ứng dụng
-       dataset / revision / mode / selection / filters
-          │              │                  │
-          ▼              ▼                  ▼
-      Cây & bảng    Hồ sơ / biểu mẫu    Bộ dựng Three.js
-      DOM chuẩn      Motion cho DOM     layout / camera / picking
-                                             ▲
-                                             │
-                                GLB mẫu thiết kế từ Spline
-```
-
-Frontend React + TypeScript là đề xuất thuận tiện cho Motion; chưa chốt với người dùng. Có thể dùng Three.js trực tiếp trong component quản lý vòng đời. Không yêu cầu React Three Fiber để hoàn thành thiết kế. Backend và cơ sở dữ liệu lựa chọn sau khi chốt hạ tầng.
-
-Three.js nhận graph đã kiểm tra, tạo mesh/edges, chọn đối tượng và đồng bộ selection. Khi unmount hoặc đổi cảnh phải dispose geometry/material/texture, bỏ listeners và hủy animation frame. Có resize observer; pixel ratio giới hạn đề xuất 1.5 trên mobile, 2 trên desktop. Render theo thay đổi, tiếp tục loop chỉ trong chuyển động hoặc điều khiển có damping. Tham chiếu API: [Three.js documentation](https://threejs.org/docs/).
-
-Store không giữ một bản dữ liệu nghiệp vụ khác trong Spline. Mesh lưu entityId, không lưu fullText nhạy cảm trong metadata tài sản dùng lại. DOM xử lý toàn văn bằng text an toàn, không tái sử dụng innerHTML của HTML gốc.
-
-## 9. Quy trình thiết kế và bàn giao Spline
-
-Spline được dùng để dựng bộ mẫu khối, kiểm tra góc nhìn và vật liệu. Đề xuất xuất GLB của hình học để Three.js dựng cảnh dữ liệu động. Spline hỗ trợ xuất glTF/GLB theo [tài liệu xuất định dạng 3D](https://docs.spline.design/exporting-your-scene/files/exporting-as-gtlf-glb); cần thử xuất trên tài khoản thực tế trước cam kết quy trình.
-
-### 9.1. Cấu trúc scene cần dựng ở giai đoạn triển khai
-
-```text
-SDTQ_Component_Study
-  Cameras
-    Camera_Oblique
-    Camera_Front
-  Lighting
-    KeyLight
-    FillLight
-  Components
-    Unit_Default
-    Unit_Selected
-    Duty_Default
-    SubDuty_Default
-    Authority_Default
-  Samples
-    Sample_Parent_Child
-    Sample_MultiParent
-    Sample_LongName
-```
-
-Tên mẫu không chứa dữ liệu nội bộ. Pivot từng khối ở tâm, trục Y lên; khối đơn vị chuẩn 1 × 0.33 × 0.10 trước khi scale trong Three.js. Vật liệu mờ, ánh sáng đơn giản, không transmission hoặc texture lớn cho khối cơ bản. Nhãn tiếng Việt dựng bằng DOM trong ứng dụng để tìm kiếm và tiếp cận được.
-
-### 9.2. Gói bàn giao tài sản tương lai
-
-| Tài sản | Nội dung kiểm tra |
+| Góc nhìn | Dùng khi |
 | --- | --- |
-| Dự án Spline gốc | Đúng hierarchy, tên đối tượng, camera, vật liệu và quyền truy cập |
-| unit.glb, duty.glb, sub-duty.glb, authority.glb | Scale, pivot, màu, normals, khả năng load qua Three.js |
-| asset-manifest.json | Tên file, checksum, phiên bản, nguồn, quyền sử dụng |
-| Ảnh tham chiếu | Trước/chéo và trạng thái selected để so với runtime |
+| Phối cảnh (mặc định) | Nhìn chéo thấp, thấy chiều sâu, mặt bên khối và mặt bằng lồng nhau |
+| Từ trên | Đọc như sơ đồ phẳng |
+| Chính diện | Nhìn gần ngang tầm mắt |
 
-Không giả định GLB mang theo event, biến hay tương tác Spline; những phần này phải dựng lại trong ứng dụng. Nếu vật liệu xuất lệch, dùng vật liệu Three.js tương đương và đối chiếu ảnh mẫu. Nếu quyền xuất không đáp ứng, dùng primitive Three.js theo kích thước đã đặc tả; ghi nhận đây là phương án thay thế tài sản Spline.
+Giới hạn: góc nghiêng 0,02–1,38 rad để không lật cảnh; khoảng cách camera 180–9.000 đơn vị cảnh. Khi mở trang, camera bay vào từ trên cao rồi xoay về góc làm việc. Camera không tự quay.
 
-Không nhúng Spline Runtime cùng canvas Three.js để render cùng một graph. Nếu sau này chọn runtime Spline cho màn giới thiệu riêng, tách route và load theo yêu cầu; đây không phải MVP. Không có `.spline` hoặc `.splinecode` được tạo trong lần bàn giao tài liệu này.
+| Thao tác | Kết quả | Giữ nguyên |
+| --- | --- | --- |
+| Bấm khối hoặc nhãn | Chọn đơn vị, mở hồ sơ, tô đường dẫn tới gốc | Bộ lọc, nhánh đang mở |
+| Nhấp đúp khối hoặc nhãn | Chọn và bay camera tới đơn vị | Như trên |
+| Chọn trong cây hoặc kết quả tìm | Chọn, mở đường tổ tiên, định vị camera | Từ khóa tìm |
+| Bấm vùng trống (lệch ≤ 2px) | Bỏ chọn, tắt tooltip, đóng hồ sơ (SRS FR-26) | Dữ liệu, bộ lọc, nhánh đang mở |
+| Escape | Như bấm vùng trống. Trong hộp thoại, Escape đóng hộp thoại trước | Biểu mẫu chưa lưu được cảnh báo |
+| Kéo chuột trái | Di chuyển trên mặt sàn | Lựa chọn |
+| Kéo chuột phải | Xoay quanh điểm nhìn | Lựa chọn |
+| Cuộn chuột | Thu phóng về phía con trỏ, ở mọi vị trí kể cả trên nhãn | Lựa chọn |
+| Bàn phím (SRS FR-25) | Mũi tên hoặc W A S D: di chuyển theo hướng nhìn; Shift + mũi tên hoặc Q, E: xoay; +, − hoặc PageUp, PageDown: thu phóng; Home: toàn cảnh | Không tác động khi focus ở ô nhập, biểu mẫu, hộp thoại, panel |
+| Toàn cảnh | Căn mọi đơn vị đang hiện vào phần canvas không bị panel che | Phạm vi, chế độ |
+| Chuyển 3D / 2D / Danh sách | Đổi cách trình bày | Lựa chọn, bộ lọc, nhánh đang mở |
 
-## 10. Trạng thái màn hình và nội dung hiển thị
+**Lý do bấm vùng trống thì bỏ chọn:** theo phản hồi người dùng (BRD 2.2), thẻ của đơn vị đang chọn được hiểu như một popup, và người dùng mong bấm ra ngoài sẽ đóng nó. Kéo chuột không bị tính là bấm, nên thao tác di chuyển hay xoay không làm mất lựa chọn.
+
+Kéo khối để đổi cha không được hỗ trợ; đổi cha làm trong biểu mẫu chỉnh sửa.
+
+## 6. Quy tắc giao diện
+
+- Token màu, typography (Manrope cho tiêu đề, Be Vietnam Pro cho nội dung) và quy tắc 60–30–10 theo design.md §10. Không lặp lại bảng token ở đây để tránh hai nguồn lệch nhau.
+- Chữ trên giao diện theo design.md §18: nút nói đúng việc sẽ xảy ra, thông báo lỗi nói nguyên nhân và cách sửa, giọng trung tính.
+- Một tác vụ chính theo ngữ cảnh: với hồ sơ là Chỉnh sửa và Thêm đơn vị con; với bản nháp là Lưu và Gửi duyệt (khi có máy chủ).
+- Không dùng glow liên tục, hạt, glassmorphism hay chữ bay làm giảm khả năng đọc sơ đồ nghiệp vụ.
+
+## 7. Chuyển động
+
+Motion điều khiển DOM (panel, tab, popup, thông báo). Cảnh 3D tự nội suy bằng damping trong vòng render. Camera chỉ do camera-controls ghi; không có hai nơi cùng ghi một thuộc tính.
+
+| Sự kiện | Thông số bản mẫu | Khi bật giảm chuyển động |
+| --- | --- | --- |
+| Mở trang | Camera bay vào khoảng 1,5 giây; khối mọc lên lần lượt theo cấp rồi theo thứ tự trong hàng, độ trễ tối đa 0,28 giây | Hiện ngay ở vị trí cuối |
+| Mở hoặc thu gọn nhánh | Khối trượt về vị trí mới, mặt bằng co giãn (damping 0,2 giây) | Chuyển thẳng tới bố cục cuối |
+| Chọn đơn vị | Khối nhấc lên (0,12 giây), đổi màu; một chấm sáng chạy một lần dọc đường từ gốc tới đơn vị (0,65 giây) | Đổi màu và viền ngay, không nhấc, không chấm chạy |
+| Rê chuột | Khối nhấc nhẹ; tooltip hiện trong 0,14 giây | Tooltip hiện ngay |
+| Định vị, đổi góc nhìn | Camera nội suy, smoothTime 0,25 giây | Nhảy tới góc cuối |
+| Mở panel | 180ms, mờ dần và trượt 16px | Chỉ mờ dần |
+| Đổi tab | 150ms mờ dần | Đổi ngay |
+
+- Mọi chuyển động chạy một lần để phản hồi thao tác. Không có vòng lặp tự chạy; khi không thao tác, cảnh không render.
+- Thao tác mới thay đích chuyển động cũ. Kéo camera hủy chuyển động camera đang chạy.
+- Không trì hoãn cập nhật dữ liệu để chờ chuyển động.
+
+## 8. Kiến trúc triển khai
+
+```text
+Dữ liệu (JSON nhập/xuất; sau này: API có phân quyền theo SRS mục 6)
+                 │
+                 ▼
+     Store Zustand duy nhất
+     units / activeDeptId / hoveredDeptId / expanded / bộ lọc / camera
+        │                 │                         │
+        ▼                 ▼                         ▼
+  Cây, bảng, 2D     Hồ sơ, biểu mẫu         Cảnh R3F (React Three Fiber)
+  DOM, Tailwind     Motion cho DOM          Drei: CameraControls, Html, Line,
+                                            RoundedBox; postprocessing ở bậc cao
+```
+
+- Nền tảng: Next.js xuất tĩnh. Trang chỉ chạy phía trình duyệt, vì WebGL và tệp cục bộ không dùng được phía máy chủ.
+- Nhãn và tooltip render qua một lớp DOM cố định đặt trên canvas, không gắn trực tiếp vào canvas.
+- Render theo nhu cầu (`frameloop="demand"`): chỉ vẽ khi có thay đổi hoặc đang có chuyển động. Mọi lệnh camera tự yêu cầu một khung hình.
+- Shadow map chỉ vẽ lại khi cảnh đổi (khối di chuyển, lọc, theme), không vẽ lại khi chỉ xoay camera.
+- Store không giữ bản dữ liệu nghiệp vụ thứ hai trong cảnh. Mesh chỉ tham chiếu ID đơn vị.
+- Toàn văn hiển thị dạng văn bản thường, không chèn HTML.
+- Mọi tài nguyên (thư viện, font, mô hình) đóng gói cùng bản build; không tải từ dịch vụ bên ngoài (SRS NFR-05).
+
+## 9. Hiệu năng
+
+| Bậc | Độ phân giải tối đa | Bóng đổ | Hậu kỳ |
+| --- | --- | --- | --- |
+| 0 | 1× | Không | Không |
+| 1 (mặc định) | 1,25× | Có | Không |
+| 2 | 1,5× | Có | SMAA, Vignette |
+
+- Cảnh tự hạ một bậc khi trung vị thời gian khung hình trong lúc chuyển động vượt 1/55 giây.
+- Số đo ngày 16/10/2026, 19 khối, GPU Intel tích hợp, Edge, tỉ lệ màn hình 1,5×:
+  - Bậc 1: khoảng 7 ms mỗi khung khi render liên tục không thao tác; khoảng 68 fps khi xoay bằng chuột tự động.
+  - Bậc 2: khoảng 38 fps. Vì vậy hậu kỳ không bật mặc định.
+- SRS NFR-09 đặt mục tiêu ≥ 60 fps với tối đa 300 khối hiển thị. **Chưa đo với 300 khối.**
+- Với quy mô cấp xã (hàng nghìn đơn vị), chỉ dựng nhánh đang mở và giới hạn số khối hiển thị. Không giảm độ chính xác dữ liệu để đạt fps.
+
+## 10. Tài sản 3D
+
+Spline tạm hoãn từ 15/10/2026. Khối được dựng bằng primitive (RoundedBox, Box, Line) theo token. Nếu sau này dùng mô hình GLB:
+
+- Kiểm tra một mẫu trước khi sản xuất cả bộ: tỉ lệ, điểm gốc, vật liệu, tải được trong R3F.
+- Lưu nội bộ cùng bản build, có tệp mô tả gồm checksum, phiên bản và quyền sử dụng.
+- Không đưa tên hay dữ liệu cơ quan vào tài sản; nhãn luôn dựng bằng DOM.
+- Không giả định GLB mang theo sự kiện hay tương tác; mọi tương tác do ứng dụng xử lý.
+
+## 11. Trạng thái màn hình
 
 | Trạng thái | Nội dung | Hành động |
 | --- | --- | --- |
-| Đang tải dữ liệu | “Đang tải phiên bản…” | Không hiển thị dữ liệu cũ dưới nhãn mới |
-| Đang tải 3D | Cây/bảng đã dùng được | “Tiếp tục ở bảng” |
-| Dataset rỗng | “Chưa có hồ sơ trong bộ dữ liệu này” | Nhập/Tạo khi có quyền |
-| Không tìm thấy | Hiện từ khóa và bộ lọc | Xóa lọc; không mất dataset |
-| Chưa có nguồn | “Cần bổ sung căn cứ” | Mở trường nguồn trong nháp |
-| Không có quyền | Thông báo ngắn, không lộ nội dung | Quay về danh sách được phép |
-| Lỗi WebGL | “Không thể mở chế độ 3D” | Chuyển cây/bảng |
-| Lưu lỗi | Giữ nguyên biểu mẫu | Thử lại; không báo thành công |
-| Xung đột | Hiện bản nhập và phiên bản máy chủ | So sánh, chọn cách xử lý |
-| Chờ duyệt | Nội dung chỉ đọc, người gửi và thời gian | Người duyệt mở diff |
-| Trả lại | Lý do hiển thị trước biểu mẫu | Tạo lượt sửa mới |
-| Đã duyệt | Dấu trạng thái + thời gian + nguồn | Tạo nháp mới nếu được phép |
+| Đang tải 3D | "Đang mở không gian sơ đồ…"; cây và bảng đã dùng được | Tiếp tục ở bảng |
+| Không tìm thấy | Số kết quả bằng 0 | Xóa bộ lọc |
+| Nội dung trống | "Nguồn dữ liệu chưa có nhiệm vụ riêng của đơn vị này…" (BRD R-14) | Chỉnh sửa nếu có căn cứ |
+| Lỗi WebGL hoặc mất context | "Không mở được 3D. Đã chuyển sang 2D." | Dùng 2D hoặc bảng; lựa chọn giữ nguyên |
+| Nhập file lỗi | Nêu lỗi cụ thể; dữ liệu đang làm việc không đổi | Sửa file rồi nhập lại |
+| Thay đổi chưa xuất | Nhãn trên thanh đầu; cảnh báo khi rời trang | Xuất JSON |
+| Chưa có nguồn, chờ duyệt, trả lại, xung đột | Theo SRS UC-02, UC-04 | Chưa triển khai (cần máy chủ) |
 
-## 11. Khả năng tiếp cận và hiệu năng
+## 12. Khả năng tiếp cận
 
-Canvas có mô tả, nhưng cây/bảng DOM mới là đường tương tác thay thế đầy đủ. Chọn node thông báo qua vùng aria-live lịch sự; không đọc mọi frame. Các nút có accessible name; focus outline rõ; modal đúng focus trap và trả focus. Trong bảng, dùng semantic table; trong cây, tuân theo điều khiển bàn phím của tree hoặc dùng danh sách phân cấp đơn giản.
+- Cây, bảng và biểu mẫu là đường thao tác đầy đủ, không cần canvas (SRS FR-17).
+- Vùng sơ đồ nhận focus bằng Tab và có mô tả phím cho trình đọc màn hình. Nhãn khối là nút có tên đọc "Xem [tên đơn vị]".
+- Thông báo thao tác đi qua vùng aria-live lịch sự, không đọc mỗi khung hình.
+- Focus luôn nhìn thấy được; hộp thoại giữ và trả focus đúng chỗ.
+- Tôn trọng giảm chuyển động của hệ điều hành (mục 7).
 
-Ngân sách khởi điểm: tối đa 200 nhãn DOM đồng thời; mô hình mẫu tổng ≤ 1MB nén; tránh shadow thời gian thực cho mỗi nút. Các mức này là ngân sách đề xuất, phải đo trên build. Với hàng nghìn node, ưu tiên phân cụm, culling và instancing cho geometry giống nhau; không giảm chính xác dữ liệu để đạt FPS.
+## 13. Checklist nghiệm thu
 
-Đạt các mục tiêu NFR trong SRS trên baseline trước mở rộng. Khi FPS thấp kéo dài, giảm chi tiết và gợi ý chế độ bảng; giữ nguyên selection và dữ liệu. Dừng render khi tab ẩn. Không bắt buộc tải tài sản Spline trước khi người dùng tìm hoặc chỉnh hồ sơ.
+| ID | Điều kiện | Trạng thái bản mẫu 16/10/2026 |
+| --- | --- | --- |
+| D-01 | Phạm vi, nguồn và mốc dữ liệu luôn nhìn thấy, kể cả khi mở panel | Một phần: có nhãn nguồn; chưa có bộ chọn phạm vi và ngày xem |
+| D-02 | Bấm khối, nhãn, cây hoặc kết quả tìm cho cùng đơn vị và cùng hồ sơ | Đạt (kiểm thử tự động) |
+| D-03 | Không có quan hệ nào được tạo hay suy ra từ vị trí hoặc màu | Đạt với `partOf`; các loại khác chưa triển khai |
+| D-04 | Mọi khối cùng chiều cao; màu loại đơn vị không biểu thị thứ bậc | Đạt |
+| D-05 | Mọi thao tác quản lý làm được qua DOM, không cần 3D | Đạt với các thao tác hiện có |
+| D-06 | Giảm chuyển động bỏ bay camera, nhấc khối và chấm chạy | Đạt |
+| D-07 | Zoom bằng cuộn chuột ở mọi vị trí, kể cả trên nhãn (FR-18) | Đạt (AT-15) |
+| D-08 | Bấm vùng trống hoặc Escape bỏ chọn; kéo không bỏ chọn (FR-26) | Đạt (AT-16) |
+| D-09 | Điều khiển bàn phím; không chiếm phím khi đang gõ (FR-25) | Đạt (AT-17) |
+| D-10 | Quan hệ có loại hiện bằng kiểu nét và chú giải riêng (FR-15) | Chưa triển khai |
+| D-11 | Xem tại một ngày cho đúng tập đơn vị; đơn vị hết hiệu lực không bị xóa (FR-13) | Chưa triển khai |
+| D-12 | Bản trình diễn công khai không có chức năng thử nghiệm (BRD R-15) | Đạt (AT-18) |
+| D-13 | ≥ 60 fps với 300 khối trên máy tham chiếu (NFR-09) | Chưa đo |
+| D-14 | Thử nghiệm người dùng B-08: phóng tới một vụ và đóng thẻ đang chọn trong 30 giây, không cần hướng dẫn | Chưa thực hiện |
 
-## 12. Checklist nghiệm thu thiết kế và triển khai
+## 14. Thứ tự triển khai tiếp theo
 
-| ID | Điều kiện |
-| --- | --- |
-| D-01 | Dataset, snapshot và mốc nguồn luôn nhìn thấy, kể cả khi mở panel |
-| D-02 | Chế độ nội dung không làm mất nhận diện đơn vị được chọn |
-| D-03 | Click node/cây/kết quả tìm cho cùng entityId và hồ sơ |
-| D-04 | Không có quan hệ tổ chức được tạo chỉ từ vị trí hay màu |
-| D-05 | Mọi thao tác quản lý hoàn tất được qua DOM không cần 3D |
-| D-06 | Reduced motion bỏ di chuyển camera và chuyển động không thiết yếu |
-| D-07 | Long name, đa cha, dataset rỗng, lỗi nguồn, lỗi WebGL và xung đột đều có trạng thái |
-| D-08 | Spline → GLB → Three.js được kiểm tra bằng một mẫu trước sản xuất cả bộ |
-| D-09 | Màu/typography được đo tương phản và ảnh desktop/mobile được đối chiếu khi có bản dựng |
-| D-10 | Ba mươi cạnh thiếu loại từ HTML không hiện như quan hệ đã xác thực |
-
-Khi triển khai: dựng đầy đủ → kiểm tra một lượt gộp desktop/mobile và các trạng thái chính → sửa theo phát hiện → xác nhận một lượt. Hiện tại mới kiểm tra tính nhất quán tài liệu; không có kết quả đo FPS, kiểm tra trình duyệt hoặc nghiệm thu tài sản 3D.
-
-## 13. Thứ tự triển khai khuyến nghị
-
-1. Chuẩn hóa dữ liệu, quyền và vòng đời revision theo SRS.
-2. Dựng cây/bảng, hồ sơ và luồng sửa–duyệt hoạt động hoàn chỉnh.
-3. Tạo một mẫu Spline và kiểm tra tuyến xuất GLB; chốt cách dùng tài sản.
-4. Dựng Three.js từ cùng store, đồng bộ lựa chọn và panel.
-5. Thêm Motion, reduced motion, trạng thái lỗi và giới hạn hiệu năng.
-6. Kiểm tra bằng các AT trong SRS và D-01…D-10; bàn giao bằng chứng thực tế.
+1. Thử nghiệm B-08 với 4–5 người dùng mục tiêu trên bản trình diễn hiện tại, để xác nhận hai điểm đã sửa theo phản hồi.
+2. Bổ sung bộ chọn phạm vi và ngày xem trên thanh ngữ cảnh (D-01, D-11).
+3. Hiển thị quan hệ có loại theo mục 4.3, bắt đầu với `electedOrApprovedBy` và `directs` trong phạm vi P-NN (D-10).
+4. Đo hiệu năng với dữ liệu thử 300 khối và với quy mô cấp xã (D-13).
+5. Khi có máy chủ: trạng thái nháp, chờ duyệt, trả lại và xung đột theo SRS.

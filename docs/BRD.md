@@ -3,16 +3,14 @@
 | Thuộc tính | Giá trị |
 | --- | --- |
 | Mã tài liệu | SDTQ-BRD |
-| Phiên bản | 0.3 — dự thảo để rà soát |
-| Ngày cập nhật | 16/10/2026 (bản 0.2 và 0.1: 15–16/10/2026) |
+| Phiên bản | 0.1 — dự thảo để rà soát |
+| Ngày cập nhật | 16/10/2026 |
 | Ngôn ngữ | Tiếng Việt |
 | Tài liệu liên quan | [SRS](SRS.md), [Thiết kế 3D](THIET_KE_SO_DO_3D.md) |
-| Thay đổi so với 0.2 | Ghi nhận phản hồi đầu tiên trên bản mẫu (mục 2.2); mục tiêu B-08 về điều hướng sơ đồ; phạm vi bản trình diễn công khai (mục 5.5); quy tắc R-15 về chức năng thử nghiệm; rủi ro và câu hỏi Q-08, Q-09 |
-| Thay đổi so với 0.1 | Đổi đối tượng từ "cơ cấu phòng ban" sang bộ máy cấp quốc gia; bổ sung căn cứ Nghị quyết 203/2025/QH15, cơ cấu Chính phủ, chính quyền địa phương hai cấp, quan hệ có loại, chiều thời gian, an toàn thông tin |
 
 ## 1. Bối cảnh và vấn đề nghiệp vụ
 
-Hệ thống phục vụ việc lưu giữ, tra cứu và trình bày cơ cấu tổ chức của bộ máy cấp quốc gia: các cơ quan nhà nước theo Hiến pháp, Chính phủ cùng các bộ và cơ quan ngang bộ, chính quyền địa phương, và các cơ quan khác trong hệ thống chính trị. Với mỗi cơ quan và đơn vị bên trong, hệ thống lưu chức năng, nhiệm vụ và quyền hạn.
+ Hệ thống phục vụ việc lưu giữ, tra cứu và trình bày cơ cấu tổ chức của bộ máy cấp quốc gia: các cơ quan nhà nước theo Hiến pháp, Chính phủ cùng các bộ và cơ quan ngang bộ, chính quyền địa phương, và các cơ quan khác trong hệ thống chính trị. Với mỗi cơ quan và đơn vị bên trong, hệ thống lưu chức năng, nhiệm vụ và quyền hạn.
 
 Bài toán này khác cơ cấu phòng ban của một tổ chức ở năm điểm. Mỗi điểm dẫn tới yêu cầu riêng trong tài liệu:
 
@@ -49,12 +47,10 @@ Tài liệu ghi nhận trạng thái các nguồn tại ngày cập nhật; ngu�
 
 **Chính phủ tại mốc 19/02/2025 (SRC-CP):** 25 thành viên, gồm Thủ tướng, 7 Phó Thủ tướng, 14 Bộ trưởng và 3 Thủ trưởng cơ quan ngang bộ.
 
-| Nhóm | Cơ quan (theo chức danh ghi trên infographic) |
+| Nhóm | Cơ quan  |
 | --- | --- |
 | Bộ (14) | Ngoại giao; Quốc phòng; Công an; Nội vụ; Tư pháp; Tài chính; Công Thương; Nông nghiệp và Môi trường; Xây dựng; Văn hóa, Thể thao và Du lịch; Khoa học và Công nghệ; Giáo dục và Đào tạo; Y tế; Dân tộc và Tôn giáo |
 | Cơ quan ngang bộ (3) | Ngân hàng Nhà nước Việt Nam; Thanh tra Chính phủ; Văn phòng Chính phủ |
-
-Infographic có cả họ tên, ngày sinh, quê quán và quá trình công tác của từng thành viên. Các thông tin cá nhân này nằm ngoài phạm vi hệ thống (R-12).
 
 ### 2.2. Phản hồi trên bản mẫu giao diện
 
