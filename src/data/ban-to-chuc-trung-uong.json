@@ -1,0 +1,1292 @@
+{
+  "schemaVersion": 2,
+  "title": "Ban Tổ chức Trung ương",
+  "source": "reference",
+  "sourceInfo": {
+    "file": "graph_toan_canh.html",
+    "sha256": "208F999F85A42956755FE1ACE9C16B8057A0911A1A4D07F043D3521515483389",
+    "note": "Trích tự động từ sơ đồ tham khảo. Chưa đối chiếu với văn bản quy định chức năng, nhiệm vụ hiện hành; không dùng làm căn cứ chính thức."
+  },
+  "unmappedRelations": [
+    {
+      "from": "vu-to-chuc-dieu-le",
+      "to": "ban-to-chuc-trung-uong",
+      "style": "#1a73e8 dashed",
+      "note": "Không có chú giải trong nguồn; chưa xác định ý nghĩa."
+    },
+    {
+      "from": "vu-to-chuc-dieu-le",
+      "to": "van-phong-ban",
+      "style": "#888888 dashes 2,4",
+      "note": "Không có chú giải trong nguồn; chưa xác định ý nghĩa."
+    },
+    {
+      "from": "cuc-dao-tao-boi-duong-can-bo",
+      "to": "ban-to-chuc-trung-uong",
+      "style": "#1a73e8 dashed",
+      "note": "Không có chú giải trong nguồn; chưa xác định ý nghĩa."
+    },
+    {
+      "from": "vu-co-so-dang-dang-vien",
+      "to": "ban-to-chuc-trung-uong",
+      "style": "#1a73e8 dashed",
+      "note": "Không có chú giải trong nguồn; chưa xác định ý nghĩa."
+    },
+    {
+      "from": "vu-can-bo",
+      "to": "ban-to-chuc-trung-uong",
+      "style": "#1a73e8 dashed",
+      "note": "Không có chú giải trong nguồn; chưa xác định ý nghĩa."
+    },
+    {
+      "from": "vu-dia-phuong-iii",
+      "to": "ban-to-chuc-trung-uong",
+      "style": "#1a73e8 dashed",
+      "note": "Không có chú giải trong nguồn; chưa xác định ý nghĩa."
+    },
+    {
+      "from": "vu-dia-phuong-i",
+      "to": "ban-to-chuc-trung-uong",
+      "style": "#1a73e8 dashed",
+      "note": "Không có chú giải trong nguồn; chưa xác định ý nghĩa."
+    },
+    {
+      "from": "vu-dia-phuong-ii",
+      "to": "ban-to-chuc-trung-uong",
+      "style": "#1a73e8 dashed",
+      "note": "Không có chú giải trong nguồn; chưa xác định ý nghĩa."
+    },
+    {
+      "from": "vu-cac-ban-bo-nganh-doan-the-o-trung-uong-vu-v",
+      "to": "ban-to-chuc-trung-uong",
+      "style": "#1a73e8 dashed",
+      "note": "Không có chú giải trong nguồn; chưa xác định ý nghĩa."
+    },
+    {
+      "from": "vu-chinh-sach-can-bo",
+      "to": "ban-to-chuc-trung-uong",
+      "style": "#1a73e8 dashed",
+      "note": "Không có chú giải trong nguồn; chưa xác định ý nghĩa."
+    },
+    {
+      "from": "van-phong-ban",
+      "to": "ban-to-chuc-trung-uong",
+      "style": "#1a73e8 dashed",
+      "note": "Không có chú giải trong nguồn; chưa xác định ý nghĩa."
+    },
+    {
+      "from": "vu-nghien-cuu-khoa-hoc-to-chuc-can-bo",
+      "to": "ban-to-chuc-trung-uong",
+      "style": "#1a73e8 dashed",
+      "note": "Không có chú giải trong nguồn; chưa xác định ý nghĩa."
+    }
+  ],
+  "units": [
+    {
+      "id": "ban-to-chuc-trung-uong",
+      "parentId": null,
+      "name": "Ban Tổ chức Trung ương",
+      "code": "",
+      "type": "Ban",
+      "description": "",
+      "duties": [],
+      "authorities": []
+    },
+    {
+      "id": "vu-to-chuc-dieu-le",
+      "parentId": "ban-to-chuc-trung-uong",
+      "name": "Vụ Tổ chức - Điều lệ",
+      "code": "",
+      "type": "Vụ",
+      "description": "",
+      "duties": [
+        {
+          "code": "1.1",
+          "text": "Chủ trì tham mưu sửa đổi, bổ sung Điều lệ Đảng và quy định, hướng dẫn thi hành Điều lệ Đảng."
+        },
+        {
+          "code": "1.2",
+          "text": "Cụ thể hóa chủ trương, đường lối, quy định của Đảng về tổ chức bộ máy, biên chế của hệ thống chính trị"
+        },
+        {
+          "code": "1.3",
+          "text": "Xây dựng văn kiện đại hội Đảng toàn quốc, nghị quyết, chỉ thi, quyết định, kết luận của Ban Chấp hành Trung ương, Bộ Chính trị, Ban Bí thư về các lĩnh vực tổ chức bộ máy, biên chế, công chức, viên chức"
+        },
+        {
+          "code": "1.4",
+          "text": "Hướng dẫn, kiểm tra, giám sát việc thi hành Điều lệ Đảng trong toàn Đảng"
+        },
+        {
+          "code": "1.5",
+          "text": "Tổ chức sơ kết, tổng kết việc thực hiện thí điểm một số chủ trương, mô hình mới về công tác tổ chức bộ máy, biên chế"
+        },
+        {
+          "code": "1.6",
+          "text": "Nghiên cứu, tham mưu về tổng biên chế, công tác quản lý biên chế của hệ thống chính trị, quản lý tổ chức bộ máy, biên chế, công chức, viên chức các cơ quan Đảng, Mặt trận Tổ quốc, các tổ chức chính trị - xã hội ở Trung ương và các tỉnh ủy, thành ủy trực thuộc Trung ương."
+        },
+        {
+          "code": "1.7",
+          "text": "Nghiên cứu, tham mưu về vị trí việc làm cán bộ, công chức, viên chức trong cơ quan, đơn vị sự nghiệp của Đảng, Mặt trận Tổ quốc, các tổ chức chính trị - xã hội."
+        },
+        {
+          "code": "1.8",
+          "text": "Chủ trì hoặc phối hợp hướng dẫn, kiểm tra, giám sát việc thực hiện các nghị quyết, chỉ thị, quyết định, quy định, quy chế, kết luận của Trung ương về tổ chức bộ máy, biên chế, công chức, viên chức của các tỉnh ủy, thành ủy, các ban đảng, đảng ủy trực thuộc Trung ương"
+        },
+        {
+          "code": "1.9",
+          "text": "Chủ trì hoặc phối hợp với các cơ quan liên quan hướng dẫn xây dựng và kiểm tra, giám sát việc thực hiện chức năng, nhiệm vụ, tổ chức bộ máy, biên chế, công chức, viên chức của các tỉnh ủy, thành ủy, đảng ủy trực thuộc Trung ương, các ban đảng, cơ quan, đơn vị của Đảng."
+        },
+        {
+          "code": "1.10",
+          "text": "Chủ trì hoặc phối hợp xây dựng các đề án về tổ chức bộ máy, quản lý công chức, viên chức cơ quan đảng, Mặt trận Tổ quốc và các tổ chức chính trị - xã hội."
+        },
+        {
+          "code": "1.11",
+          "text": "Thẩm định các đề án về tổ chức bộ máy, biên chế, cán bộ, công chức, viên chức mà Trung ương phân cấp cho cấp uỷ, các ngành, Mặt trận Tổ quốc và các tổ chức chính trị - xã hội, các cơ quan trực thuộc Trung ương xây dựng."
+        },
+        {
+          "code": "1.12",
+          "text": "Tham gia thẩm định các đề án lớn về tổ chức bộ máy, biên chế, cán bộ, công chức, viên chức của Chính phủ, chính quyền địa phương và các bộ, ngành, cơ quan nhà nước."
+        },
+        {
+          "code": "1.13",
+          "text": "Hướng dẫn, kiểm tra việc quản lý và sử dụng con dấu các cơ quan khối Đảng, Mặt trận Tổ quốc và các tổ chức chính trị - xã hội."
+        },
+        {
+          "code": "1.14",
+          "text": "Thực hiện các nhiệm vụ khác do Lãnh đạo Ban giao."
+        }
+      ],
+      "authorities": [
+        {
+          "code": "2.1",
+          "text": "Cử lãnh đạo, công chức của Vụ tham dự các phiên họp bàn công tác tổ chức xây dựng đảng về tổ chức bộ máy, biên chế, công chức, viên chức, thi hành Điều lệ Đảng của các tỉnh ủy, thành ủy, các ban đảng, đảng ủy trực thuộc trung ương"
+        },
+        {
+          "code": "2.2",
+          "text": "Được cung cấp thông tin, tài liệu; được liên hệ với các tổ chức, cá nhân có thẩm quyền để triển khai chức năng, nhiệm vụ theo sự chỉ đạo của Lãnh đạo Ban"
+        },
+        {
+          "code": "2.3",
+          "text": "Được sử dụng chế độ chuyên gia, cán bộ biệt phái và chế độ cộng tác viên để triển khai thực hiện nhiệm vụ được giao"
+        },
+        {
+          "code": "2.4",
+          "text": "Có trách nhiệm phối hợp với Văn phòng Ban trong công tác tuyển dụng, phân công nhiệm vụ và thực hiện chính sách cán bộ, chịu trách nhiệm về quản lý cán bộ, công chức, người lao động và cơ sở vật chất của đơn vị theo quy chế làm việc của ban tổ chức trung ương."
+        }
+      ]
+    },
+    {
+      "id": "cuc-dao-tao-boi-duong-can-bo",
+      "parentId": "ban-to-chuc-trung-uong",
+      "name": "Cục Đào tạo, bồi dưỡng cán bộ",
+      "code": "",
+      "type": "Cục",
+      "description": "",
+      "duties": [
+        {
+          "code": "1.1",
+          "text": "Nghiên cứu, tham mưu những chủ trương, chính sách; đối tượng, điều kiện, tiêu chuẩn, kế hoạch, chương trình khung; đánh giá chất lượng đào tạo; bồi dưỡng cán bộ trong hệ thống chính trị."
+        },
+        {
+          "code": "1.2",
+          "text": "Nghiên cứu, tham mưu về hợp tác quốc tế trong lĩnh vực đào tạo, bồi dưỡng cán bộ"
+        },
+        {
+          "code": "1.3",
+          "text": "Hướng dẫn, kiểm tra, giám sát, sơ kết, tổng kết việc thực hiện chủ trương, chính sách, đối tượng, điều kiện, tiêu chuẩn, kế hoạch, chương trình khung, đánh giá chất lượng đào tạo, bồi dưỡng cán bộ trong hệ thống chính trị"
+        },
+        {
+          "code": "1.4",
+          "text": "Xây dựng các văn bản quy dịnh về hợp tác với chính phủ và các tổ chức quốc tế trong công tác đào tạo, bồi dưỡng cán bộ, các quy chế, quy định có liên quan đến việc đào tạo, bồi dưỡng cán bộ ở nước ngoài."
+        },
+        {
+          "code": "1.5",
+          "text": "Thực hiện các kế hoạch về đào tạo, bồi dưỡng cán bộ; quản lý, sử dụng kinh phí đào tạo, bồi dưỡng cán bộ theo quy định"
+        },
+        {
+          "code": "1.6",
+          "text": "Thực hiện các nhiệm vụ khác do Lãnh đạo Ban giao:",
+          "items": [
+            {
+              "code": "a",
+              "text": "Triển khai, quản lý các chương trình, thỏa thuận, dự án hợp tác quốc tế về đào tạo, bồi dưỡng cán bộ theo sự phân công của Lãnh đạo Ban."
+            },
+            {
+              "code": "b",
+              "text": "Chủ trì hoặc phối hợp xây dựng, thẩm định các dự án, đề án, chương trình đào tạo, bồi dưỡng cán bộ trong hệ thống chính trị theo sự phân công của Lãnh đạo Ban"
+            },
+            {
+              "code": "c",
+              "text": "Tham gia, phối hợp với các vụ, cục, đơn vị trong Ban, các cơ quan tổ chức của cấp uỷ địa phương và các cơ quan có liên quan ở Trung ương trong việc xây dựng kế hoạch, chương trình, nội dung bồi dưỡng, tập huấn nghiệp vụ cho cán bộ ngành tổ chức xây dựng Đảng"
+            },
+            {
+              "code": "d",
+              "text": "Thực hiện các nhiệm vụ khác do Lãnh đạo Ban Tổ chức Trung ương và Lãnh đạo Ban Chỉ đạo thực hiện kết luận 39 giao"
+            }
+          ]
+        }
+      ],
+      "authorities": [
+        {
+          "code": "2.1",
+          "text": "Được huy động và quản lý các nguồn lực trong nước và nước ngoài theo sự lãnh đạo, chỉ đạo của Lãnh đạo Ban Tổ chức Trung ương và theo quy định của pháp luật để thực hiện nhiệm vụ đào tạo, bồi dưỡng cán bộ"
+        },
+        {
+          "code": "2.2",
+          "text": "Được hợp tác với các cơ sở trong và ngoài nước trong lĩnh vực đào tạo, bồi dưỡng cán bộ theo chỉ đạo của Lãnh đạo Ban."
+        },
+        {
+          "code": "2.3",
+          "text": "Được cung cấp thông tin, tài liệu, được liên hệ với các tổ chức, cá nhân có thẩm quyền để triển khai chức năng, nhiệm vụ theo sự chỉ đạo của Lãnh đạo ban"
+        },
+        {
+          "code": "2.4",
+          "text": "Được sử dụng chế độ chuyên gia, cán bộ biệt phái và chế độ cộng tác viên để triển khai thực hiện nhiệm vụ được giao."
+        },
+        {
+          "code": "2.5",
+          "text": "Có trách nhiệm phối hợp với Văn phòng Ban trong công tác tuyển dụng, phân công nhiệm vụ và thực hiện chính sách cán bộ, chịu trách nhiệm về quản lý cán bộ, công chức, người lao động và cơ sở vật chất của đơn vị theo quy chế làm việc của Ban Tổ chức Trung ương và Ban Chỉ đạo thực hiện Kết luận 39."
+        }
+      ]
+    },
+    {
+      "id": "cuc-bao-ve-chinh-tri-noi-bo",
+      "parentId": "ban-to-chuc-trung-uong",
+      "name": "Cục Bảo vệ chính trị nội bộ",
+      "code": "",
+      "type": "Cục",
+      "description": "",
+      "duties": [
+        {
+          "code": "1.1",
+          "text": "Nghiên cứu, tham mưu",
+          "items": [
+            {
+              "code": "a",
+              "text": "Nghiên cứu, tham mưu Ban Tổ chức Trung ương, Tiểu ban Bảo vệ chính trị nội bộ Trung ương các chủ trương, biện pháp về công tác bảo vệ chính trị nội bộ Đảng, cụ thể hoá các văn bản của Đảng, sơ kết, tổng kết các nghi quyết, chỉ thị, quy định, kết luận của Ban Chấp hành Trung ương, Bộ Chính trị, Ban Bi thư về công tác bảo vệ chính trị nội bộ Đảng."
+            },
+            {
+              "code": "b",
+              "text": "Tham mưu tổng kết thực tiễn, nghiên cứu lý luận, thực hiện, thẩm định hoặc tham gia thầm định các đề án, đề tài khoa học liên quan đến công tác bảo vệ chính trị nội bộ Đảng."
+            },
+            {
+              "code": "c",
+              "text": "Thực hiện chế độ báo cáo Lãnh đạo Ban Tổ chức Trung ương, Tiểu ban Bảo vệ chính trị nội bộ Trung ương theo định kỳ tháng, quý, 6 tháng và hằng năm hoặc đột xuất về tình hình và công tác bảo vệ chính trị nội bộ."
+            },
+            {
+              "code": "d",
+              "text": "Tham mưu Lãnh đạo Ban Tổ chức Trung ương trao đổi với các cấp ủy, tổ chức đảng và lãnh đạo cơ quan, đơn vị trực thuộc Trung ương về bố trí, sử dụng cán bộ, đảng viên có vấn đề chính trị theo quy định."
+            }
+          ]
+        },
+        {
+          "code": "1.2",
+          "text": "Hướng dẫn, kiểm tra, giám sát",
+          "items": [
+            {
+              "code": "a",
+              "text": "Tham mưu Ban Tổ chức Trung ương, Tiểu ban Bảo vệ chính trị nội bộ Trung ương hướng dẫn việc thực hiện các nghị quyết, chỉ thị, quy định của Đảng về công tác bảo vệ chính trị nội bộ; xây dựng, triển khai thực hiện chương trình, kế hoạch kiểm tra, đôn đốc việc thực hiện công tác bảo vệ chính trị nội bộ, xây dựng triển khai thực hiện chương trình, nội dung tập huấn, bồi dưỡng nghiệp vụ về công tác bảo vệ chính trị nội bộ."
+            },
+            {
+              "code": "b",
+              "text": "Hướng dẫn cụ thể hóa các chủ trương, biện pháp về công tác bảo vệ chính trị nội bộ Đảng theo chỉ đạo của Lãnh đạo Ban Tổ chức Trung ương, Tiểu ban bảo vệ chính trị nội bộ trung ương."
+            },
+            {
+              "code": "c",
+              "text": "Hướng dân, trao đổi nghiệp vụ với ban tổ chức, cơ quan tham mưu về bảo vệ chính trị nội bộ của các cấp ủy, tổ chức đảng trực thuộc Trung ương."
+            }
+          ]
+        },
+        {
+          "code": "1.3",
+          "text": "Thẩm định, thầm tra, xác minh và giải quyết đơn thư",
+          "items": [
+            {
+              "code": "a",
+              "text": "Thẩm định tiêu chuẩn chính trị phục vụ công tác cán bộ thuộc diện Bộ Chính trị, Ban Bí thư quản lý và các chức danh cán bộ khác theo phân, cấp và theo chỉ đạo của Lãnh đạo Ban Tổ chức Trung ương, Tiểu ban Bảo vệ chính trị nội bộ trung ương"
+            },
+            {
+              "code": "b",
+              "text": "Xây dựng kế hoạch, tổ chức thẩm tra, xác minh và tham mưu kết luận tiêu chuẩn chính trị của cán bộ thuộc diện Bộ Chính trị, Ban Bí thư quản lý hoặc các trường hợp khác có vấn đề chính trị hiện nay cần xem xét theo chỉ đạo của Lãnh đạo Ban Tổ chức Trung ương, Tiểu ban Bảo vệ chính trị nội bộ Trung ương"
+            },
+            {
+              "code": "c",
+              "text": "Giải quyết đơn, thư khiếu nại, tố cáo liên quan đến công tác bảo vệ chính trị nội bộ Đảng theo quy định"
+            }
+          ]
+        },
+        {
+          "code": "1.4",
+          "text": "Năm tình hình chính trị nội bộ",
+          "items": [
+            {
+              "code": "a",
+              "text": "Chủ động nắm chắc tình hình chính trị nội bộ tại các cấp ủy, tổ chức đảng trực thuộc Trung ương; tổng hợp báo cáo, đề xuất với Lãnh đạo Ban Tổ chức Trung ương và Tiểu ban Bảo vệ chính trị nội bộ Trung ương."
+            },
+            {
+              "code": "b",
+              "text": "Xây dựng nội dung, chương trình, đề xuất Lãnh đạo Ban Tổ chức Trung ương, Tiểu ban Bảo vệ chính trị nội bộ Trung ương thực hiện công tác phối hợp thực hiện nhiệm vụ bảo vệ chính trị nội bộ Đảng với các cơ quan chức năng theo quy định"
+            },
+            {
+              "code": "c",
+              "text": "Chủ trì, phối hợp với Tổ Giúp việc của Tiểu ban Bảo vệ chính trị nội bộ Trung ương, các cơ quan chức năng thường xuyên trao đổi tình hình và xử lý các vấn đề liên quan đến công tác bảo vệ chính trị nội bộ."
+            },
+            {
+              "code": "d",
+              "text": "Khảo sát, năm tình hình về chính trị nội bộ tại các cơ quan, đơn vị, địa phương theo chương trình, kế hoạch của Ban Tổ chức Trung ương, Tiểu ban Bảo vệ chính trị nội bộ trung ương."
+            }
+          ]
+        },
+        {
+          "code": "1.5",
+          "text": "Tổ chức quản lý, lưu trữ, khai thác hồ sơ, tài liệu về bảo vệ chính trị nội bộ Đảng theo quy định"
+        },
+        {
+          "code": "1.6",
+          "text": "Quản lý, sử dụng kinh phí, tài sản được giao theo quy định."
+        },
+        {
+          "code": "1.7",
+          "text": "Thực hiện các nhiệm vụ khác do Ban Tổ chức Trung ương, Tiểu ban Bảo vệ chính trị nội bộ Trung ương giao."
+        }
+      ],
+      "authorities": [
+        {
+          "code": "2.1",
+          "text": "Kiến nghi, đề xuất với Lãnh đạo Ban Tổ chức Trung ương và Tiểu ban Bảo vệ chính trị nội bộ Trung ương đối với các vấn đề thuộc chức năng, nhiệm vụ được giao."
+        },
+        {
+          "code": "2.2",
+          "text": "Được tiếp nhận thông tin, tài liệu, tình hình liên quan đến an ninh quốc gia, trật tự an toàn xã hội để phục vụ công tác tham mưu về bảo vệ chính trị nội bộ Đảng"
+        },
+        {
+          "code": "2.3",
+          "text": "Được liên hệ với các tổ chức, cá nhân có thẩm quyền để thực hiện chức năng, nhiệm vụ được giao"
+        },
+        {
+          "code": "2.4",
+          "text": "Được sử dụng chế độ chuyên gia, cán bộ biệt phái và chế độ công tác viên để triển khai thực hiện nhiệm vụ được giao."
+        },
+        {
+          "code": "2.5",
+          "text": "Có trách nhiệm phối hợp với các đơn vị có liên quan trong Ban để xử lý hồ sơ cán bộ thuộc diện Bộ Chính trị, Ban Bí thư quản lý và chịu trách nhiệm bảo mật thông tin, tài liệu theo quy định."
+        },
+        {
+          "code": "2.6",
+          "text": "Quản lý nội bộ và tổ chức hoạt động của Cục Bảo vệ chính trị nội bộ theo quy định và phân cấp của Trưởng Ban Tổ chức Trung ương."
+        },
+        {
+          "code": "2.7",
+          "text": "Có trách nhiệm phối hợp với Văn phòng Ban về công tác tuyển dụng, phân công nhiệm vụ và thực hiện chính sách cán bộ, chịu trách nhiệm trong việc quản lý cán bộ, công, chức, người lao động và cơ sở vật chất của đơn vị theo quy chế làm việc của ban tổ chức trung ương"
+        }
+      ]
+    },
+    {
+      "id": "vu-co-so-dang-dang-vien",
+      "parentId": "ban-to-chuc-trung-uong",
+      "name": "Vụ Cơ sở đảng, đảng viên",
+      "code": "",
+      "type": "Vụ",
+      "description": "",
+      "duties": [
+        {
+          "code": "1.1",
+          "text": "Tham mưu về chủ trương, nhiệm vụ, giải pháp xây dựng tổ chức đảng ở cơ sở; xây dựng, quản lý đội ngũ đảng viên và công tác đảng viên."
+        },
+        {
+          "code": "1.2",
+          "text": "Tham mưu sửa đổi, bổ sung, cụ thể hóa chủ trương, đường lối, Điều lệ Đảng về tổ chức đảng ở cơ sở, đảng viên theo sự phân công của Lãnh đạo Ban"
+        },
+        {
+          "code": "1.3",
+          "text": "Tham mưu xây dựng các đề án về tổ chức đảng ở cơ sở, đảng viên thuộc thẩm quyền quyết định của Ban Chấp hành Trung ương, Bộ Chính trị, Ban Bí thư."
+        },
+        {
+          "code": "1.4",
+          "text": "Tham mưu sơ kết, tổng kết việc thực hiện các nghị quyết, chỉ thị, kết luận, quy chế, quy định và một số chủ trương thí điểm về tổ chức đảng ở cơ sở và đảng viên."
+        },
+        {
+          "code": "1.5",
+          "text": "Tham mưu các vấn đề về quản lý đảng viên, thẩm tra, xác minh và giải quyết các vấn đề về đảng tịch, công tác khen thưởng đối với tổ chức đảng ở cơ sở và đảng viên"
+        },
+        {
+          "code": "1.6",
+          "text": "Tham mưu giải quyết khiếu nại, tố cáo các vấn đề về tổ chức đảng ở cơ sở và đảng viên"
+        },
+        {
+          "code": "1.7",
+          "text": "Hướng dẫn, kiểm tra, giám sát việc thi hành Điều lệ Đảng, các nghị quyết, chỉ thị, kết luận, quyết định, quy chế, quy định của Trung ương và hướng dẫn của Ban Tổ chức Trung ương về tổ chức đảng ở cơ sở và đảng viên. 1.8 Hướng dẫn, theo dõi, tổng hợp báo cáo kết quả kiểm điểm, đánh giá, xếp loại chất lượng hằng năm đối với tổ chức đảng và đảng viên. 19. Thẩm định các đề án về tổ chức đảng ở cơ sở, đảng viên mà Trung ương phân cấp cho cấp ủy, các ngành, Mặt trận Tổ quốc Việt Nam, các tổ chức chính tri - xã hội và các cơ quan trực thuộc Trung ương xây dựng."
+        },
+        {
+          "code": "1.10",
+          "text": "Thực hiện các nhiệm vụ khác do Lãnh đạo Ban giao."
+        }
+      ],
+      "authorities": [
+        {
+          "code": "2.1",
+          "text": "Được cung cấp thông tin, tài liệu; được liên hệ với các tổ chức, cá nhân có thẩm quyền để triển khai chức năng, nhiệm vụ được giao theo sự chỉ đạo của Lãnh đạo ban"
+        },
+        {
+          "code": "2.2",
+          "text": "Được sử dụng chế độ chuyên gia, cán bộ biệt phái và chế độ cộng tác viên để triển khai thực hiện nhiệm vụ được giao."
+        },
+        {
+          "code": "2.3",
+          "text": "Có trách nhiệm phối hợp với Văn phòng Ban về công tác tuyển dụng, phân công nhiệm vụ và thực hiện chính sách cán bộ, chịu trách nhiệm trong việc quản lý cán bộ, công chức, người lao động và cơ sở vật chất của đơn vị theo quy chế làm việc của Ban Tổ chức Trung ương."
+        }
+      ]
+    },
+    {
+      "id": "vu-can-bo",
+      "parentId": "ban-to-chuc-trung-uong",
+      "name": "Vụ Cán bộ",
+      "code": "",
+      "type": "Vụ",
+      "description": "",
+      "duties": [
+        {
+          "code": "1.1",
+          "text": "Nghiên cứu, tham mưu xây dựng văn bản hướng dẫn chủ trương, chính sách về công tác cán bộ và cán bộ thuộc diện Bộ Chính trị, Ban Bí thư quản lý."
+        },
+        {
+          "code": "1.2",
+          "text": "Chủ trì tổng hợp và tham mưu Lãnh đạo Ban quyết định hoặc trình cấp có thẩm quyền quyết định công tác quy hoạch, bổ nhiệm, miễn nhiệm, giới thiệu cán bộ ứng cử, điều động, luân chuyển, bố trí và thực hiện một số chế độ, chính sách đối với cán bộ diện Bộ Chính trị, Ban Bí thư quản lý theo quy định"
+        },
+        {
+          "code": "1.3",
+          "text": "Tham mưu Lãnh đạo Ban thông báo cho cấp ủy, tổ chức đảng trực thuộc Trung ương về kết quả xem xét công tác cán bộ thuộc thẩm quyền của Thường trực Ban Bí thư và Lãnh đạo Ban quyết định"
+        },
+        {
+          "code": "1.4",
+          "text": "Chủ trì tham mưu, tổ chức tổng kết nghị quyết, chỉ thị, quy chế, quy định về công tác cán bộ và quản lý đội ngũ cán bộ theo chức năng, nhiệm vụ được giao và yêu cầu của Lãnh đạo Ban Tổ chức Trung ương."
+        },
+        {
+          "code": "1.5",
+          "text": "Tham mưu xây dựng các đề án về nhân sự diện Ban Chấp hành Trung Trương, Bộ Chính trì, Ban Bi thư quản lý theo sự chỉ đạo của Lãnh đạo Ban."
+        },
+        {
+          "code": "1.6",
+          "text": "Phối hợp với các đơn vị theo dõi địa bàn triển khai quy trình, hướng dẫn, kiểm tra, giám sát công tác cán bộ của các cấp ủy, tổ chức đảng trực thuộc Trung ương"
+        },
+        {
+          "code": "1.7",
+          "text": "Chủ trì, phối hợp với các vụ, cục, đơn vị liên quan tham mưu ban hành biểu mẫu hồ sơ và quản lý hồ sơ thuộc diện Bộ Chính trị, Ban Bí thư quản lý"
+        },
+        {
+          "code": "1.8",
+          "text": "Tổ chức quản lý, lưu giữ, khai thác hồ sơ cán bộ, hồ sơ quy hoạch chức danh thuộc diện bộ chính trị, Ban Bí thư quản lý"
+        },
+        {
+          "code": "1.9",
+          "text": "Thực hiện các nhiệm vụ khác do Lãnh đạo Ban giao."
+        }
+      ],
+      "authorities": [
+        {
+          "code": "2.1",
+          "text": "Được trao đổi thông tin, phối hợp với các cơ quan chức năng để triển khai nhiệm vụ theo sự chỉ đạo của Lãnh đạo Ban"
+        },
+        {
+          "code": "2.2",
+          "text": "Được sử dụng chế độ chuyên gia, cán bộ biệt phái và chế độ cộng tác viên để triển khai thực hiện nhiệm vụ được giao"
+        },
+        {
+          "code": "2.3",
+          "text": "Có trách nhiệm phối hợp với các vụ, cục, đơn vị có liên quan của Ban Tổ chức Trung ương trong việc xử lý hồ sơ cán bộ diện Bộ Chính trị, Ban Bí thư quản lý"
+        },
+        {
+          "code": "2.4",
+          "text": "Có trách nhiệm phối hợp với Văn phòng Ban trong công tác tuyển dụng, phân công nhiệm vụ và thực hiện chính sách cán bộ, chịu trách nhiệm về quản lý cán bộ, công chức, người lao động và cơ sở vật chất của đơn vị theo quy chế làm việc của Ban Tổ chức Trung ương"
+        }
+      ]
+    },
+    {
+      "id": "vu-dia-phuong-iii",
+      "parentId": "ban-to-chuc-trung-uong",
+      "name": "Vụ Địa phương III",
+      "code": "",
+      "type": "Vụ",
+      "description": "",
+      "duties": [
+        {
+          "code": "1.1",
+          "text": "Nghiên cứu, tham mưu về chủ trương, định hướng công tác xây dựng Đảng, xây dựng hệ thống chính trị trong khu vực, trong tâm là công tác cán bộ thuộc diện bộ chính trị, ban bí thư quản lý"
+        },
+        {
+          "code": "1.2",
+          "text": "Tổng hợp và đề xuất với Lãnh đạo Ban những vấn đề về công tác cán bộ, giúp Lãnh đạo Ban theo dõi cán bộ diện Bộ Chính trị, Ban Bí thư quản lý ở các tỉnh, thành uỷ trong khu vực."
+        },
+        {
+          "code": "1.3",
+          "text": "Tham mưu thẩm định đề án nhân sự đại hội đảng bộ cấp tỉnh, nhân sự dự kiến bồ nhiệm, bổ nhiệm lại, giới thiệu đề cử, ứng cử, luân chuyển, quy hoạch, điều động, bố trí cán bộ thuộc diện Bộ Chính trị, Ban Bí thư quản lý, quyết định trong khu vực."
+        },
+        {
+          "code": "1.4",
+          "text": "Thực hiện các nhiệm vụ do Lãnh đạo Ban giao:",
+          "items": [
+            {
+              "code": "a",
+              "text": "Theo dõi, hướng dẫn, kiểm tra, đôn đốc và tổng hợp tình hình thực hiện các chủ trương, nghị quyết, chỉ thị, quy định, quy chế, kết luận của Trung ương về công tác tổ chức xây dựng Đảng, xây dựng hệ thống chính trị trong khu vực."
+            },
+            {
+              "code": "b",
+              "text": "Theo dõi tình hình ở các khu vực được phân công, việc triển khai những mô hình mới, cách làm sáng tạo trong công tác tổ chức xây dựng Đảng, xây dựng hệ thống chính trị để phát hiện những nhân tố tích cực cần nhân rộng và đề xuất kiến nghi, xử lý những vấn đề vướng mắc, phức tạp mới nảy sinh"
+            },
+            {
+              "code": "c",
+              "text": "Theo dõi, phản ánh công tác thi đua của Ngành Tổ chức xây dựng Đảng trên địa bàn phụ trách"
+            },
+            {
+              "code": "d",
+              "text": "Thực hiện các nhiệm vụ khác do Lãnh đạo Ban giao."
+            }
+          ]
+        }
+      ],
+      "authorities": [
+        {
+          "code": "2.1",
+          "text": "Được cử cán bộ tham dự các cuộc họp, làm việc của Ban chấp hành, Ban thường vụ tỉnh ủy, thành ủy, được tham gia ý kiến đối với lãnh đạo tỉnh ủy, thành ủy và ban tổ chức tỉnh ủy, thành ủy về những vấn đề có liên quan đến công tác tổ chức xây dựng Đảng, xây dựng hệ thống chính trị trên địa bàn theo chức năng, nhiệm vụ được giao"
+        },
+        {
+          "code": "2.2",
+          "text": "Được cung cấp thông tin, tài liệu, được liên hệ với các tổ chức, cá nhân có thẩm quyền để triển khai chức năng, nhiệm vụ được giao theo sự chỉ đạo của Lãnh đạo Ban"
+        },
+        {
+          "code": "2.3",
+          "text": "Được sử dụng chế độ chuyên gia, cán bộ biệt phái và chế độ cộng tác viên để triển khai thực hiện nhiệm vụ được giao"
+        },
+        {
+          "code": "2.4",
+          "text": "Có trách nhiệm phối hợp với Cục Bảo vệ chính trị nội bộ và Vụ Cán bộ trong việc tổng hợp, báo cáo, hoàn chỉnh hồ sơ cán bộ để tham mưu Lãnh đạo Ban về công tác cán bộ thuộc diện Bộ Chính trị, Ban Bí thư quản lý, đồng thời là đầu mối thường xuyên, trực tiếp làm việc với địa bản về hồ sơ cán bộ."
+        },
+        {
+          "code": "2.5",
+          "text": "Thực hiện nghiêm Quy chế công tác đối với cán bộ theo dõi địa bàn của Ban Tổ chức Trung ương"
+        },
+        {
+          "code": "2.6",
+          "text": "Có trách nhiệm phối hợp với Văn phòng Ban trong công tác tuyển dụng, phân công nhiệm vụ và thực hiện chính sách cán bộ, chịu trách nhiệm về quản lý cán bộ, công chức, người lao động và cơ sở vật chất của đơn vị theo quy chế làm việc của ban tổ chức trung ương"
+        }
+      ]
+    },
+    {
+      "id": "vu-dia-phuong-i",
+      "parentId": "ban-to-chuc-trung-uong",
+      "name": "Vụ Địa phương I",
+      "code": "",
+      "type": "Vụ",
+      "description": "",
+      "duties": [
+        {
+          "code": "1.1",
+          "text": "Nghiên cứu, tham mưu về chủ trương, định hướng công tác xây dựng Đảng, xây dựng hệ thống chính trị trong khu vực, trọng tâm là công tác cán bộ thuộc diện bộ chính trị, Ban Bí thư quản lý."
+        },
+        {
+          "code": "1.2",
+          "text": "Tổng hợp và đề xuất với Lãnh đạo Ban những vấn đề về công tác cán bộ; giúp Lãnh đạo Ban theo dối cán bộ diện Bộ Chính trị, Ban Bí thư quản lý ở các tỉnh, thành uỷ trong khu vực"
+        },
+        {
+          "code": "1.3",
+          "text": "Tham mưu thẩm định đề án nhân sự đại hội đảng bộ cấp tỉnh, nhân sự dự kiến bổ nhiệm, bổ nhiệm lại, giới thiệu đề cử, ứng cử, luân chuyển, quy hoạch, điều động, bố trí cán bộ thuộc diện Bộ Chính trị, Ban Bí thư quản lý, quyết định trong khu vực."
+        },
+        {
+          "code": "1.4",
+          "text": "Thực hiện các nhiệm vụ do Lãnh đạo Ban giao:",
+          "items": [
+            {
+              "code": "a",
+              "text": "Theo dõi, hướng dẫn, kiểm tra, đôn đốc và tổng hợp tình hình thực hiện các chủ trương, nghị quyết, chỉ thị, quy định, quy chế, kết luận của Trung ương về công tác tổ chức xây dựng Đảng, xây dựng hệ thống chính trị trong khu vực."
+            },
+            {
+              "code": "b",
+              "text": "Theo dõi tình hình ở các khu vực được phân công, việc triển khai những mô hình mới, cách làm sáng tạo trong công tác tổ chức xây dựng Đảng, xây dựng hệ thống chính trị để phát hiện những nhân tố tích cực cần nhân rộng và đề xuất kiến nghị, xử lý những vấn đề vướng mắc, phức tạp mới nảy sinh"
+            },
+            {
+              "code": "c",
+              "text": "Theo dõi, phản ánh công tác thi đua của Ngành Tổ chức xây dựng Đảng trên địa bàn phụ trách"
+            },
+            {
+              "code": "d",
+              "text": "Thực hiện các nhiệm vụ khác do Lãnh đạo Ban giao."
+            }
+          ]
+        }
+      ],
+      "authorities": [
+        {
+          "code": "2.2",
+          "text": "Được cung cấp thông tin, tài liệu; được liên hệ với các tổ chức, cá nhân có thẩm quyền để triển khai chức năng, nhiệm vụ được giao theo sự chỉ đạo của Lãnh đạo Ban"
+        },
+        {
+          "code": "2.3",
+          "text": "Được sử dụng chế độ chuyên gia, cán bộ biệt phái và chế độ công tác viên để triển khai thực hiện nhiệm vụ được giao. 24. Có trách nhiệm phối hợp với Cục Bảo vệ chính trị nội bộ và Vụ Cán bộ trong việc tổng hợp, báo cáo, hoàn chỉnh hồ sơ cán bộ để tham mưu Lãnh đạo Ban về công tác cán bộ thuộc diện Bộ Chính trị, Ban Bí thư quản lý, đồng thời là đầu mối thường xuyên, trực tiếp làm việc với địa bàn về hồ sơ cán bộ."
+        },
+        {
+          "code": "2.5",
+          "text": "Thực hiện nghiêm Quy chế công tác đối với cán bộ theo dối địa bàn của Ban Tổ chức Trung ương"
+        },
+        {
+          "code": "2.6",
+          "text": "Có trách nhiệm phối hợp với Văn phòng Ban trong công tác tuyển dụng, phân công nhiệm vụ và thực hiện chính sách cán bộ, chịu trách nhiệm về quản lý cán bộ, công chức, người lao động và cơ sở vật chất của đơn vị theo quy chế làm việc của ban tổ chức trung ương"
+        }
+      ]
+    },
+    {
+      "id": "vu-dia-phuong-ii",
+      "parentId": "ban-to-chuc-trung-uong",
+      "name": "Vụ Địa phương II",
+      "code": "",
+      "type": "Vụ",
+      "description": "",
+      "duties": [
+        {
+          "code": "1.1",
+          "text": "Nghiên cứu, tham mưu về chủ trương, định hướng công tác xây dựng Đảng, xây dựng hệ thống chính trị trong khu vực, trọng tâm là công tác cán bộ thuộc diện bộ chính trị, ban bí thư quản lý"
+        },
+        {
+          "code": "1.2",
+          "text": "Tổng hợp và đề xuất với Lãnh đạo Ban những vấn đề về công tác cán bộ; giúp Lãnh đạo Ban theo dối cán bộ diện Bộ Chính trị, Ban Bí thư quản lý ở các tỉnh, thành uỷ trong khu vực."
+        },
+        {
+          "code": "1.3",
+          "text": "Tham mưu thẩm định đề án nhân sự đại hội đảng bộ cấp tỉnh, nhân sự dự kiến bổ nhiệm, bổ nhiệm lại, giới thiệu đề cử, ứng cử, luân chuyển, quy hoạch, điều động, bố trí cán bộ thuộc diện Bộ Chính trị, Ban Bi thư quản lý, quyết định trong khu vực."
+        },
+        {
+          "code": "1.4",
+          "text": "Thực hiện các nhiệm vụ do lãnh đạo Ban giao:",
+          "items": [
+            {
+              "code": "a",
+              "text": "Theo dõi, hướng dẫn, kiểm tra, đôn đốc và tổng hợp tình hình thực hiện các chủ trương, nghị quyết, chỉ thị, quy định, quy chế, kết luận của Trung ương về công tác tổ chức xây dựng Đảng, xây dựng hệ thống chính trị trong khu vực."
+            },
+            {
+              "code": "b",
+              "text": "Theo dõi tình hình ở các khu vực được phân công, việc triển khai những mô hình mới, cách làm sáng tạo trong công tác tổ chức xây dựng Đảng, xây dựng hệ thống chính trị để phát hiện những nhân tố tích cực cần nhân rộng và đề xuất kiến nghị, xử lý những vấn đề vướng mắc, phức tạp mới nảy sinh."
+            },
+            {
+              "code": "c",
+              "text": "Theo dối, phản ánh công tác thi đua của Ngành Tổ chức xây dựng Đảng trên địa bàn phụ trách"
+            },
+            {
+              "code": "d",
+              "text": "Thực hiện các nhiệm vụ khác do Lãnh đạo Ban giao."
+            }
+          ]
+        }
+      ],
+      "authorities": [
+        {
+          "code": "2.1",
+          "text": "Được cử cán bộ tham dự các cuộc hop, làm việc của Ban chấp hành, Ban thường vụ tỉnh ủy, thành ủy, được tham gia ý kiến đối với lãnh đạo tỉnh ủy, thành ủy và ban tổ chức tỉnh ủy, thành ủy về những vấn đề có liên quan đến công tác tổ chức xây dựng Đảng, xây dựng hệ thống chính trị trên địa bàn theo chức năng, nhiệm vụ được giao"
+        },
+        {
+          "code": "2.2",
+          "text": "Được cung cấp thông tin, tài liệu, được liên hệ với các tổ chức, cá nhân có thẩm quyền để triển khai chức năng, nhiệm vụ được giao theo sự chỉ đạo của Lãnh đạo Ban"
+        },
+        {
+          "code": "2.3",
+          "text": "Được sử dụng chế độ chuyên gia, cán bộ biệt phái và chế độ cộng tác viên để triển khai thực hiện nhiệm vụ được giao."
+        },
+        {
+          "code": "2.4",
+          "text": "Có trách nhiệm phối hợp với Cục Bảo vệ chính trị nội bộ và Vụ Cán bộ trong việc tổng hợp, báo cáo, hoàn chỉnh hồ sơ cán bộ để tham mưu Lãnh đạo Ban về công tác cán bộ thuộc diện Bộ Chính trị, Ban Bí thư quản lý, đồng thời là đâu mối thường xuyên, trực tiếp làm việc với địa bàn về hồ sơ cán bộ."
+        },
+        {
+          "code": "2.5",
+          "text": "Thực hiện nghiêm Quy chế công tác đối với cán bộ theo dõi địa bàn của Ban Tổ chức Trung ương"
+        },
+        {
+          "code": "2.6",
+          "text": "Có trách nhiệm phối hợp với Văn phòng Ban trong công tác tuyển dụng, phân công nhiệm vụ và thực hiện chính sách cán bộ, chịu trách nhiệm về quản lý cán bộ, công chức, người lao động và cơ sở vật chất của đơn vị theo quy chế làm việc của ban tổ chức trung ương"
+        }
+      ]
+    },
+    {
+      "id": "vu-cac-ban-bo-nganh-doan-the-o-trung-uong-vu-v",
+      "parentId": "ban-to-chuc-trung-uong",
+      "name": "Vụ Các ban, bộ, ngành, đoàn thể ở Trung ương (Vụ V)",
+      "code": "",
+      "type": "Vụ",
+      "description": "",
+      "duties": [
+        {
+          "code": "1.1",
+          "text": "Tham mưu, theo dõi cán bộ diện Bộ Chính trị, Ban Bí thư quản lý và cán bộ quy hoạch các chức danh diện Bộ Chính trị, Ban Bí thư quản lý, công tác cản bộ, công tác tổ chức xây dựng Đảng ở Đảng ủy các cơ quan Đảng Trung ương, Đảng ủy Chính phủ, Đảng ủy Quốc hội và Đảng ủy Mặt trận Tổ quốc, đoàn thể Trung ương, Quân ủy Trung ương, Đảng ủy Công an Trung ương, ở các đảng ủy bộ, ngành, đoàn thể, tổ chức chính trị - xã hội ở Trung ương và các cơ quan, đơn vị ở Trung ương theo phân cấp quản lý cán bộ."
+        },
+        {
+          "code": "1.2",
+          "text": "Nghiên cứu, tham mưu, theo dõi, thầm định tiêu chuẩn cán bộ để đề xuất bố trí, quy hoạch, bổ nhiệm, giới thiệu ứng cử, luân chuyển đối với cán bộ diện Bộ Chính trị, Ban Bí thư quản lý ở các ban, bộ, ngành, đoàn thể ở Trung ương."
+        },
+        {
+          "code": "1.3",
+          "text": "Phối hợp nghiên cứu, tham mưu xây dựng các đề án, thẩm định hồ sơ; tài liệu và tham gia chuẩn bị các văn bản được giao."
+        },
+        {
+          "code": "1.4",
+          "text": "Thực hiện các nhiệm vụ do Lãnh đạo Ban giao:",
+          "items": [
+            {
+              "code": "a",
+              "text": "Chủ trì, phối hợp với các đơn vị trực thuộc Ban Tổ chức Trung ương triển khai quy trình, hướng dẫn, kiểm tra, giám sát việc thực hiện các nghị quyết, chỉ thị, kết luận, quy định, quy chế, kết luận của Trung ương về cán bộ, công tác cán bộ, công tác xây dựng Đảng, công tác bảo vệ chính trị nội bộ của các ban, bộ, ngành, đoàn thể ở Trung ương"
+            },
+            {
+              "code": "b",
+              "text": "Phối hợp với các đơn vị trực thuộc Ban Tổ chức Trung ương, với các vụ hoặc ban tổ chức cán bộ của các ban, bộ, ngành, đoàn thể ở Trung ương để tham mưu Lãnh đạo Ban giải quyết những vấn đề liên quan đến cán bộ, công tác cản bộ, công tác xây dựng Đảng, công tác bảo vệ chính trị nội bộ."
+            },
+            {
+              "code": "c",
+              "text": "Theo dõi, phản ánh công tác thi đua của Ngành Tổ chức xây dựng Đảng trên địa bàn phụ trách"
+            },
+            {
+              "code": "d",
+              "text": "Thực hiện các nhiệm vụ khác do Lãnh đạo Ban giao"
+            }
+          ]
+        }
+      ],
+      "authorities": [
+        {
+          "code": "2.1",
+          "text": "Được cử cán bộ tham dự các cuộc họp, làm việc của cấp ủy, tổ chức đảng, đảng ủy trực thuộc ở Trung ương, các đảng ủy bộ, ngành, đoàn thể, tổ chức chính trị - xã hội ở Trung ương và tập thể lãnh đạo cơ quan, đơn vị; được tham gia ý kiến đối với cấp ủy, ban thường vụ, tập thể lãnh đạo cơ quan, đơn vị về những vấn đề có liên quan đến công tác cán bộ, công tác tổ chức xây dựng Đảng (trọng tâm là công tác cán bộ diện Bộ Chính trị, Ban Bí thư quản lý)"
+        },
+        {
+          "code": "2.2",
+          "text": "Được cung cấp thông tin, tài liệu, được liên hệ với các tổ chức, cá nhân có thẩm quyền để triển khai chức năng, nhiệm vụ được giao theo sự chỉ đạo của Lãnh đạo ban"
+        },
+        {
+          "code": "2.3",
+          "text": "Được sử dụng chế độ chuyên gia, cán bộ biệt phái và chế độ cộng tác viên để triển khai thực hiện nhiệm vụ được giao."
+        },
+        {
+          "code": "2.4",
+          "text": "Có trách nhiệm thực hiện nghiêm Quy chế công tác đối với cán bộ theo dõi địa bàn của Ban Tổ chức Trung ương."
+        },
+        {
+          "code": "2.5",
+          "text": "Có trách nhiệm chủ trì, phối hợp với các vụ, cục, đơn vị liên quan trực thuộc Ban Tổ chức Trung ương trong quá trình giải quyết các vấn đề liên quan đến hồ sơ cán bộ thuộc diện Bộ Chính trị, Ban Bi thư quản lý"
+        },
+        {
+          "code": "2.6",
+          "text": "Có trách nhiệm phối hợp với các vụ chuyên đề trong việc thu thập thông tin, số liệu phục vụ công tác tham mưu xây dựng cơ chế, chính sách về tổ chức bộ máy, cán bộ, đảng viên, bảo vệ chính trị nội bộ."
+        },
+        {
+          "code": "2.7",
+          "text": "Có trách nhiệm phối hợp với Văn phòng Ban về công tác tuyển dụng, phân công nhiệm vụ và thực hiện chính sách cán bộ; chịu trách nhiệm trong việc quản lý cán bộ, công chức, người lao động và cơ sở vật chất của đơn vị theo quy chế làm việc của Ban Tổ chức Trung ương."
+        }
+      ]
+    },
+    {
+      "id": "vu-chinh-sach-can-bo",
+      "parentId": "ban-to-chuc-trung-uong",
+      "name": "Vụ Chính sách cán bộ",
+      "code": "",
+      "type": "Vụ",
+      "description": "",
+      "duties": [
+        {
+          "code": "1.1",
+          "text": "Nghiên cứu, tham mưu xây dựng chính sách tiền lương đối với cán bộ, công chức, viên chức trong hệ thống chính trị"
+        },
+        {
+          "code": "1.2",
+          "text": "Nghiên cứu, tham mưu xây dựng chính sách, chế độ đối với cán bộ diện Bộ Chính trị, Ban Bí thư quản lý và cán bộ hoạt động cách mạng qua các thời kỳ."
+        },
+        {
+          "code": "1.3",
+          "text": "Nghiên cứu, tham mưu xây dựng chính sách, chế độ khen thưởng huân chương bậc cao và khen thưởng đối với cán bộ diện Bộ Chính trị, Ban Bí thư quản lý"
+        },
+        {
+          "code": "1.4",
+          "text": "Nghiên cứu, đề xuất chủ trương, chính sách và giải pháp về công tác bảo vệ, chăm sóc và nâng cao sức khoẻ đối với cán bộ thuộc diện Bộ Chính trì, Ban Bí thư quản lý (cả đương chức và nguyên chức)"
+        },
+        {
+          "code": "1.5",
+          "text": "Hướng dẫn, kiểm tra, giám sát việc thực hiện chính sách tiền lương đối với cán bộ, công chức, viên chức các cơ quan đảng, Mặt trận Tổ quốc và các tổ chức chính trị - xã hội. c 2,"
+        },
+        {
+          "code": "1.6",
+          "text": "Hướng dẫn, kiểm tra, giám sát việc thực hiện chính sách, chế độ, khen thưởng đối với cán bộ diện Bộ Chính trị, Ban Bí thư quản lý, khen thưởng huân chương bậc cao"
+        },
+        {
+          "code": "1.7",
+          "text": "Hướng dẫn, kiểm tra, giám sát việc thực hiện chính sách, chế độ đối với cán bộ hoạt động cách mạng qua các thời kỳ."
+        },
+        {
+          "code": "1.8",
+          "text": "Hướng dẫn, kiểm tra, giám sát trong việc tổ chức thực hiện chủ trương, chính sách bảo vệ, chăm sóc sức khoẻ cán bộ và công tác quản lý hồ sơ sức khỏe của cán bộ."
+        },
+        {
+          "code": "1.9",
+          "text": "Hướng dẫn, kiểm tra, giám sát việc thi hoặc xét nâng ngạch công chức và thăng hạng viên chức đối với các cơ quan, đơn vị của Đảng, Mặt trận Tổ quốc và các tổ chức chính trị - xã hội."
+        },
+        {
+          "code": "1.10",
+          "text": "Thẩm định các đề án về chính sách tiền lương, các chế độ theo lương của cơ quan đảng, Mặt trận Tổ quốc và các tổ chức chính trị - xã hội, các đề án, việc thực hiện chính sách, chế độ đối với cán bộ cấp cao hoạt động cách mạng qua các thời kỳ."
+        },
+        {
+          "code": "1.11",
+          "text": "Thẩm định, cho ý kiến về khen thưởng đối với cán bộ diện Bộ Chính trị, Ban Bí thư quản lý"
+        },
+        {
+          "code": "1.12",
+          "text": "Thẩm định việc khen thưởng huân chương bậc cao đối với cá nhân."
+        },
+        {
+          "code": "1.13",
+          "text": "Thực hiện công tác chăm sóc và bảo vệ sức khoẻ cán bộ, công chức thuộc diện bộ chính trị, Ban Bí thư quản lý"
+        },
+        {
+          "code": "1.14",
+          "text": "Thực hiện chính sách tiền lương đối với cán bộ, công chức, viên chức cơ quan đảng, Mặt trận Tổ quốc và các tổ chức chính trị - xã hội theo phân cấp."
+        },
+        {
+          "code": "1.15",
+          "text": "Hiệp y hình thức khen thưởng cấp nhà nước đối với người đứng đầu và tập thể ban tổ chức các tỉnh, thành ủy, đảng ủy trực thuộc Trung ương."
+        },
+        {
+          "code": "1.16",
+          "text": "Tổ chức thi nâng hoặc xét nâng ngạch công chức và xét thăng hạng viên chức theo phân cấp"
+        },
+        {
+          "code": "1.17",
+          "text": "Xếp lương, nâng ngạch, bậc lương; theo dõi, thực hiện một số chính sách, chế độ nhà ở, nghỉ hè, nghi dưỡng, chăm sóc sức khỏe, lễ tang.. đối với cán bộ diện Bộ Chính trị, Ban Bí thư quản lý theo phân cấp"
+        },
+        {
+          "code": "1.18",
+          "text": "Trả lời đơn, thư về chính sách, chế độ đối với cán bộ thuộc phạm vi chức năng, nhiệm vụ của Ban"
+        },
+        {
+          "code": "1.19",
+          "text": "Phối hợp với các cơ quan có liên quan để nghiên cứu, hướng dẫn, kiểm tra và thực hiện các chính sách, chế độ đối với cán bộ, công chức, viên chức và người lao động, phối hợp thẩm định về các hình thức khen thưởng đối với cá nhân, tổ chức nước ngoài khi được cấp có thẩm quyền yêu cầu."
+        },
+        {
+          "code": "1.20",
+          "text": "Thực hiện nhiệm vụ thường trực Ban Chỉ đạo Trung ương về bảo vệ, chăm sóc sức khoẻ cán bộ; tham mưu cho Lãnh đạo Ban và giúp Ban Chỉ đạo: (1) Tổ chức thực hiện việc khám, kiểm tra sức khoẻ, kết luận, phân loại sức khoẻ định kỳ đối với cán bộ thuộc diện Bộ Chính trị, Ban Bí thư quản lý; (2) Lập và quản lý hồ sơ sức khoẻ, theo dõi, kiểm tra sức khoẻ định kỳ, phát hiện bệnh sớm; kiểm tra sức khoẻ cán bộ quy hoạch cấp chiến lược, tổ chức khám, điều trị bệnh, nhất là điều trị tích cực bệnh lý, phục hồi chức năng, điều dưỡng kết hợp với điều trị bệnh lý và thực hiện chính sách bảo vệ, chăm sóc sức khoẻ cán bộ thuộc diện Bộ Chính trị, Ban Bí thư quản lý, (3) Theo dõi, chỉ đạo, hướng dẫn, kiểm tra hoat động công tác bảo vệ, chăm sóc sức khoẻ cán bộ tỉnh, thành phố trực thuộc Trung ương, Bộ Quốc phòng, Bộ Công an và các cơ sở, đơn vị y tế làm nhiệm vụ bảo vệ, chăm sóc sức khoẻ cán bộ; (4) Thực hiện công tác hợp tác quốc tế về đào tạo, chẩn đoán, bảo vệ, chăm sóc, điều trị bệnh, nghiên cứu khoa học, tăng cường ứng dụng công nghệ thông tin nâng cao chất lượng và hội nhập quốc tế trong công tác bảo vệ, chăm sóc sức khoẻ cán bộ."
+        },
+        {
+          "code": "1.21",
+          "text": "Thực hiện các nhiệm vụ khác do Lãnh đạo Ban và Ban Chỉ đạo Trung ương về bảo vệ, chăm sóc sức khoẻ cán bộ giao."
+        }
+      ],
+      "authorities": [
+        {
+          "code": "2.1",
+          "text": "Được cung cấp thông tin, tài liệu, được liên hệ với các tổ chức, cá nhân có thẩm quyền để triển khai chức năng, nhiệm vụ theo sự chỉ đạo của Lãnh đạo Ban và Ban Chỉ đạo Trung ương về bảo vệ, chăm sóc sức khoẻ cán bộ."
+        },
+        {
+          "code": "2.2",
+          "text": "Được sử dụng chế độ chuyên gia, cán bộ biệt phái và chế độ cộng tác viên để triển khai thực hiện nhiệm vụ."
+        },
+        {
+          "code": "2.3",
+          "text": "Cố trách nhiệm cung cấp thông tin, tài liệu do Vụ quản lý để phục vụ công tác của Ban và Ban Chỉ đạo Trung ương về bảo vệ, chăm sóc sức khoẻ cán bộ theo quy định"
+        },
+        {
+          "code": "2.4",
+          "text": "Có trách nhiệm phối hợp với Văn phòng Ban về công tác tuyển dụng, phân công nhiệm vụ và thực hiện chính sách cán bộ, chịu trách nhiệm trong việc quản lý cán bộ, công chức, người lao động và cơ sở vật chất của đơn vị theo quy chế làm việc của ban tổ chức trung ương"
+        }
+      ]
+    },
+    {
+      "id": "van-phong-ban",
+      "parentId": "ban-to-chuc-trung-uong",
+      "name": "Văn phòng Ban",
+      "code": "",
+      "type": "Văn phòng",
+      "description": "",
+      "duties": [
+        {
+          "code": "1.1",
+          "text": "Về tổ chức, cán bộ",
+          "items": [
+            {
+              "code": "a",
+              "text": "Tham mưu thực hiện công tác tổ chức bộ máy, biên chế và xác định vị trí việc làm cán bộ, công chức của Ban"
+            },
+            {
+              "code": "b",
+              "text": "Tham mưu thực hiện công tác cán bộ và quản lý cán bộ, công chức của Ban."
+            },
+            {
+              "code": "c",
+              "text": "Thực hiện chính sách đối với cán bộ, công chức, người lao động của Ban; thực hiện nhiệm vụ thường trực Hội đồng Thi đua khen thưởng và Hội đồng Lương, nhà ở của cơ quan."
+            }
+          ]
+        },
+        {
+          "code": "1.2",
+          "text": "Về thông tin, tổng hợp, đối ngoại.",
+          "items": [
+            {
+              "code": "a",
+              "text": "Tham mưu xây dựng và tổ chức thực hiện chương trình, kế hoạch công tác của Ban; là đầu mối phối hợp hoạt động của các đơn vị trực thuộc Ban, giúp lãnh đạo Ban theo dõi, đôn đốc và tổng hợp tình hình, kết quả thực hiện"
+            },
+            {
+              "code": "b",
+              "text": "Chuẩn bị, tổ chức và phục vụ các hội nghị, các cuộc làm việc của Lãnh đạo Ban, dự họp, ghi biên bản các cuộc họp, làm việc của Lãnh đạo Ban với các địa phương, cơ quan, đơn vị theo quy chế làm việc; quản lý, cập nhật hệ thống thông tin điện tử của Ban"
+            },
+            {
+              "code": "c",
+              "text": "Tổng hợp, xây dựng báo cáo định kỳ, báo cáo chuyên đề của Ban, là đầu mối tổng hợp số liệu thống kê cơ bản về tổ chức xây dựng Đảng."
+            },
+            {
+              "code": "d",
+              "text": "Tham mưu, thực hiện hoạt động đối ngoại của Ban"
+            }
+          ]
+        },
+        {
+          "code": "1.3",
+          "text": "Về hành chính, lưu trữ",
+          "items": [
+            {
+              "code": "–",
+              "text": "Tham mưu và tổ chức thực hiện công tác hành chính, văn thư, lưu trữ; bảo vệ bí mật nhà nước của Ban, tiếp nhận, xử lý, phát hành và quản lý văn bản; rà soát, thấm định thể thức, thẩm quyền và tính pháp lý các văn bản của Ban trước khi ban hành, tổ chức lưu trữ tài liệu bảo đảm khoa học, hiệu quả; in sao các loại văn bản phục vụ công tác của Ban; tiếp nhận và đề xuất xử lý, giải quyết đơn, thư gửi đến Ban"
+            }
+          ]
+        },
+        {
+          "code": "1.4",
+          "text": "Về công nghệ thông tin và chuyển đổi số",
+          "items": [
+            {
+              "code": "–",
+              "text": "Tham mưu, xây dựng và tổ chức thực hiện chương trình, kế hoạch ứng dụng công nghệ thông tin và chuyển đổi số phục vụ công tác của Ban, của Ngành; bảo đảm hạ tầng kỹ thuật, hoạt động hiệu quả, an ninh, an toàn, quản lý hệ thống các cơ sở dữ liệu, phần mềm ứng dụng chuyên ngành tổ chức xây dựng Đảng, triển khai ứng dụng, hướng dẫn, kiểm tra, khai thác hệ thống thông tin chuyên ngành đối với các ban tổ chức tỉnh ủy, thành ủy, đảng ủy trực thuộc Trung ương"
+            }
+          ]
+        },
+        {
+          "code": "1.5",
+          "text": "Về tài vụ, quản trị",
+          "items": [
+            {
+              "code": "a",
+              "text": "Tham mưu xây dựng và thực hiện kế hoạch dự toán ngân sách hàng năm, quản lý nguồn thu, chi ngân sách của Ban, quyết toán kinh phí hoạt động thường xuyên, kinh phí đào tạo trong nước và kinh phí đoàn ra, đoàn vào theo kế hoạch hoạt động đối ngoại năm, kinh phí hoạt động bảo vệ, chăm sóc sức khỏe của cán bộ thuộc diện Bộ Chính trị, Ban Bí thư quản lý, kinh phí đề tài, đề án, dự án của Ban theo quy định của Đảng và pháp luật của Nhà nước. Hướng dẫn, quản lý và kiểm tra các đơn vị dự toán trực thuộc thực hiện nhiệm vụ thu, chi ngân sách được giao và thẩm định, phê duyệt quyết toán ngân sách hàng năm theo đúng quy định hiện hành"
+            },
+            {
+              "code": "b",
+              "text": "Tham mưu xây dựng kế hoạch, quản lý mua sắm, sử dụng, sửa chữa tài sản, bảo đảm cơ sở vật chất, kỹ thuật và các điều kiện làm việc của cơ quan; thực hiện công tác phục vụ, lễ tân và bảo đảm vệ sinh, trật tự, an toàn trụ sở cơ quan, quản lý, điều hành, sử dụng, bảo quản xe ô tô an toàn, tiết kiệm, hiệu quả, Quản lý và thực hiện công tác phát hành tài liệu nghiệp vụ phục vụ công tác tổ chức xây dựng Đảng theo yêu cầu của Lãnh đạo Ban."
+            }
+          ]
+        },
+        {
+          "code": "1.6",
+          "text": "Tham mưu tổ chức thực hiện công tác thi đua, khen thưởng của Ngành Tổ chức xây dựng Đảng"
+        },
+        {
+          "code": "1.7",
+          "text": "Công tác đảng vụ và các nhiệm vụ khác",
+          "items": [
+            {
+              "code": "a",
+              "text": "Chủ trì tham mưu tổ chức thực hiện công tác đảng vụ của Đảng ủy cơ quan; nhiệm vụ quốc phòng - an ninh và hoạt động tự vệ trong cơ quan"
+            },
+            {
+              "code": "b",
+              "text": "Tham mưu các nhiệm vụ khác do Lãnh đạo Ban giao"
+            }
+          ]
+        }
+      ],
+      "authorities": [
+        {
+          "code": "a",
+          "text": "Được cung cấp thông tin, tài liệu, được liên hệ với các tổ chức, cá nhân để triển khai chức năng, nhiệm vụ theo chi đạo của Lãnh đạo Ban."
+        },
+        {
+          "code": "b",
+          "text": "Được sử dụng cán bộ biệt phái, cộng tác viên và hợp đồng lao động để triển khai thực hiện nhiệm vụ được giao."
+        },
+        {
+          "code": "c",
+          "text": "Quản lý cán bộ, công chức, người lao động và cơ sở vật chất của Văn phòng Ban"
+        }
+      ]
+    },
+    {
+      "id": "vu-nghien-cuu-khoa-hoc-to-chuc-can-bo",
+      "parentId": "ban-to-chuc-trung-uong",
+      "name": "Vụ Nghiên cứu khoa học tổ chức, cán bộ",
+      "code": "",
+      "type": "Vụ",
+      "description": "",
+      "duties": [
+        {
+          "code": "1.1",
+          "text": "Nghiên cứu, đề xuất Lãnh đạo Ban tổng kết thực tiễn, nghiên cứu, xây dựng lý luận và cung cấp luận cứ khoa học trong hoạch định đường lối, chủ trương, chính sách về công tác tổ chức xây dựng Đàng."
+        },
+        {
+          "code": "1.2",
+          "text": "Chủ trì, phối hợp với các vụ, cục, đơn vị tham mưu thực hiện, thẩm định, phản biện các đề tài, đề án, công trình nghiên cứu khoa học về công tác tổ chức xây dựng Đảng, góp ý các đề án, văn bản của Đảng, Nhà nước, các địa phương, cơ quan, đơn vị theo phân công của Lãnh đạo Ban."
+        },
+        {
+          "code": "1.3",
+          "text": "Tham mưu Lãnh đạo Ban triển khai việc ứng dụng kết quả nghiên cứu khoa học vào thực hiện các nhiệm vụ của Ban và của ngành Tổ chức xây dựng Đảng."
+        },
+        {
+          "code": "1.4",
+          "text": "Thực hiện nhiệm vụ thường trực Hội đồng khoa học của Ban Tổ chức Trung ương, tham mưu cho Lãnh đạo Ban chỉ đạo các hoạt động nghiên cứu khoa học và quản lý các đề tài, đề án nghiên cứu khoa học, hướng dẫn, kiểm tra, thẩm định việc triển khai các nhiệm vụ khoa học; tham mưu, phối hợp xuất bản các tài liệu, ấn phẩm khoa học của Ban Tổ chức Trung ương"
+        },
+        {
+          "code": "1.5",
+          "text": "Tham mưu xây dựng chương trình, kế hoạch nghiên cứu dài hạn, hằng năm về công tác tổ chức, cán bộ, đảng viên, bảo vệ chính trị nội bộ"
+        },
+        {
+          "code": "1.6",
+          "text": "Thực hiện các nhiệm vụ khác do Lãnh đạo Ban giao"
+        }
+      ],
+      "authorities": [
+        {
+          "code": "2.1",
+          "text": "Được cung cấp thông tin, tài liệu; được liên hệ với các tổ chức, cá nhân có thẩm quyền để triển khai chức năng, nhiệm vụ theo sự chỉ đạo của Lãnh đạo ban"
+        },
+        {
+          "code": "2.2",
+          "text": "Được sử dụng chế đô chuyên gia, cán bộ biệt phái và chế độ cộng tác viên để triển khai thực hiện nhiệm vụ."
+        },
+        {
+          "code": "2.3",
+          "text": "Có trách nhiệm cung cấp thông tin, tài liệu do Vụ quản lý để phục vụ công tác của Ban theo quy định"
+        },
+        {
+          "code": "2.4",
+          "text": "Có trách nhiệm phối hợp với Văn phòng Ban về công tác tuyển dụng, phân công nhiệm vụ và thực hiện chính sách cán bộ, chịu trách nhiệm trong việc quản lý cán bộ, công chức, người lao động và cơ sở vật chất của đơn vị theo quy chế làm việc của Ban Tổ chức Trung ương."
+        }
+      ]
+    },
+    {
+      "id": "phong-cong-nghe-thong-tin-va-chuyen-doi-so",
+      "parentId": "van-phong-ban",
+      "name": "Phòng Công nghệ thông tin và Chuyển đổi số",
+      "code": "",
+      "type": "Phòng",
+      "description": "",
+      "duties": [
+        {
+          "code": "1",
+          "text": "Tham mưu xây dựng và tổ chức thực hiện chương trình, kế hoạch ứng dụng công nghệ thông tin và chuyển đổi số phục vụ công tác của Ban, của Ngành; kế hoạch trang bị, nâng cấp, sửa chữa, bảo trì hệ thống mạng nội bộ, mạng Internet, thiết bị công nghệ thông tin, các cơ sở dữ liệu, phần mềm ứng dụng và các hệ thống quản lý thông tin của Ban Tổ chức Trung ương."
+        },
+        {
+          "code": "2",
+          "text": "Bảo đảm việc kết nối mạng thông tin nội bộ của cơ quan vào hệ thống mạng diện rộng của Đảng; tổ chức kết nối, khai thác mạng Internet theo quy định. Bảo đảm an ninh, an toàn hạ tầng kỹ thuật công nghệ (bao gồm hệ thống mạng, máy chủ, máy tính người dùng) trong nội bộ Ban."
+        },
+        {
+          "code": "3",
+          "text": "Quản trị hệ thống các cơ sở dữ liệu, các phần mềm ứng dụng công nghệ thông tin dùng chung, hệ thống thông tin chuyên ngành tổ chức xây dựng đảng, hệ thống thông tin điện tử của Ban Tổ chức Trung ương."
+        },
+        {
+          "code": "4",
+          "text": "Xây dựng kế hoạch và tổ chức bồi dưỡng, tập huấn kiến thức về ứng dụng công nghệ thông tin, chuyển đổi số đối với cán bộ, công chức của Ban. Bồi dưỡng, tập huấn triển khai ứng dụng công nghệ thông tin chuyên ngành cho cán bộ các ban tổ chức tỉnh ủy, thành ủy, đảng ủy trực thuộc Trung ương và các cơ quan đảng ở Trung ương."
+        },
+        {
+          "code": "5",
+          "text": "Triển khai hướng dẫn, kiểm tra, hỗ trợ về nghiệp vụ, kỹ thuật ứng dụng công nghệ thông tin, chuyển đổi số và việc khai thác, cập nhật, nâng cấp các phần mềm thuộc hệ thống thông tin chuyên ngành đối với các ban tổ chức tỉnh ủy, thành ủy, đảng ủy trực thuộc Trung ương và các cơ quan đảng ở Trung ương."
+        }
+      ],
+      "authorities": []
+    },
+    {
+      "id": "phong-hanh-chinh-luu-tru",
+      "parentId": "van-phong-ban",
+      "name": "Phòng Hành chính - Lưu trữ",
+      "code": "",
+      "type": "Phòng",
+      "description": "",
+      "duties": [
+        {
+          "code": "1",
+          "text": "Tham mưu xây dựng các văn bản hướng dẫn về công tác văn thư, lưu trữ, bảo vệ bí mật nhà nước của Ban Tổ chức Trung ương. Tham mưu xây dựng và tổ chức thực hiện kế hoạch kiểm tra, hướng dẫn, tập huấn các nội dung của công tác văn thư, lưu trữ, bảo vệ bí mật nhà nước đối với các vụ, cục, đơn vị và công chức, người lao động của Ban."
+        },
+        {
+          "code": "2",
+          "text": "Phối hợp với Thư ký Lãnh đạo Ban tham mưu, xây dựng chương trình công tác tuần, dự kiến chương trình họp của Lãnh đạo Ban. Bố trí phòng họp của Ban phục vụ công tác. Tiếp nhận và xử lý thông tin hành chính phục vụ hoạt động chung của Ban. Quản lý và thực hiện chương trình nhắn tin điện tử, đảm bảo thông tin kịp thời đến Lãnh đạo Ban và các vụ, cục, đơn vị trong Ban. Cập nhật văn bản liên quan đến chức năng nhiệm vụ của Ban lên Hệ thống Thông tin điện tử của Ban Tổ chức Trung ương."
+        },
+        {
+          "code": "3",
+          "text": "Giúp Chánh Văn phòng Ban theo dõi, đôn đốc, tổng hợp báo cáo Lãnh đạo Ban tiến độ thực hiện công việc hằng tuần của các vụ, cục, đơn vị; đôn đốc, hướng dẫn, kiểm tra việc thực hiện Quy định về bảo vệ bí mật nhà nước của Ban và tổng hợp báo cáo và đề xuất cấp có thẩm quyền giải quyết những khó khăn, vướng mắc trong quá trình tổ chức thực hiện."
+        },
+        {
+          "code": "4",
+          "text": "Tiếp nhận, xử lý, phát hành và quản lý văn bản; giúp Lãnh đạo Văn phòng rà soát, thẩm định thể thức, thẩm quyền ký ban hành văn bản của Ban trước khi ban hành; quản lý và sử dụng con dấu, thiết bị lưu khóa bí mật của cơ quan đúng quy định. In sao các loại văn bản phục vụ công tác của Ban. Mua và cấp sách, báo, tạp chí, tài liệu phục vụ công tác theo quy định."
+        },
+        {
+          "code": "5",
+          "text": "Tiếp nhận và đề xuất xử lý, giải quyết đơn thư gửi đến Ban."
+        },
+        {
+          "code": "6",
+          "text": "Cấp giấy giới thiệu, giấy đi đường cho cán bộ của Ban đi công tác; xác nhận liên hệ công tác đối với cán bộ đến làm việc tại Ban. Phối hợp với Bộ phận Thường trực đón tiếp và hướng dẫn khách đến làm việc tại trụ sở cơ quan."
+        },
+        {
+          "code": "7",
+          "text": "Tham mưu việc tổ chức xác định giá trị tài liệu của Ban Tổ chức Trung ương. Tổ chức thực hiện các nội dung nghiệp vụ của công tác lưu trữ: Thu thập, chỉnh lý tài liệu lưu trữ; giao nộp hồ sơ, tài liệu vào Lưu trữ Lịch sử của Trung ương Đảng; tổ chức quản lý và khai khác, sử dụng tài liệu khoa học, hiệu quả."
+        }
+      ],
+      "authorities": []
+    },
+    {
+      "id": "phong-quan-tri",
+      "parentId": "van-phong-ban",
+      "name": "Phòng Quản trị",
+      "code": "",
+      "type": "Phòng",
+      "description": "",
+      "duties": [
+        {
+          "code": "1",
+          "text": "Quản lý trụ sở, tài sản, máy móc, trang thiết bị, phương tiện và các điều kiện làm việc của cơ quan. Đề xuất tổ chức sắp xếp, bố trí phòng làm việc, điều chỉnh, mua sắm bổ sung tài sản trong nội bộ cơ quan, tham mưu công tác thanh lý tài sản."
+        },
+        {
+          "code": "2",
+          "text": "Tham mưu đề xuất kế hoạch xây dựng và quản lý các dự án đầu tư xây dựng cơ bản, mua sắm trình cấp có thẩm quyền phê duyệt; phối hợp với các phòng liên quan thực hiện dự án theo đúng quy định. Quản lý, duy tu, bảo dưỡng, cải tạo, sữa chữa trụ sở làm việc, trang thiết bị, tài sản, phương tiện của cơ quan; vận hành các hệ thống kỹ thuật trụ sở làm việc."
+        },
+        {
+          "code": "3",
+          "text": "Quản lý, in ấn, phát hành, cấp phát tài liệu kỹ thuật nghiệp vụ đảng viên, tài liệu nghiệp vụ công tác tổ chức xây dựng Đảng và các ấn phẩm khác."
+        },
+        {
+          "code": "4",
+          "text": "Mua vé máy bay, văn phòng phẩm, trang thiết bị, phương tiện, tài sản phục vụ hoạt động của cơ quan. Chuẩn bị, phục vụ các cuộc họp, làm việc, hội nghị của Ban."
+        },
+        {
+          "code": "5",
+          "text": "Đảm bảo vệ sinh, cảnh quan, môi trường trụ sở cơ quan, phòng làm việc của Lãnh đạo Ban, vụ trưởng và tương đương."
+        },
+        {
+          "code": "6",
+          "text": "Thực hiện công tác bảo vệ, an ninh trật tự, công tác phòng cháy chữa cháy, bảo đảm an toàn trụ sở cơ quan."
+        },
+        {
+          "code": "7",
+          "text": "Căn cứ chương trình, kế hoạch công tác của Ban và các vụ, cục, đơn vị, chủ động tham mưu bố trí người, phương tiện phục vụ kịp thời 24/24 giờ an toàn, hiệu quả, tiết kiệm."
+        },
+        {
+          "code": "8",
+          "text": "Quản lý, sử dụng xe ô tô; bảo quản, giữ gìn xe sạch, đẹp, bảo đảm an toàn. Lập kế hoạch và tổ chức kiểm tra bảo dưỡng định kỳ, sửa chữa, thay thế phụ tùng, đăng kiểm, mua bảo hiểm cho từng loại xe."
+        },
+        {
+          "code": "9",
+          "text": "Chấp hành nghiêm chỉnh Luật Giao thông đường bộ; thực hiện chế độ ghi chép nhật trình cụ thể. Lập kế hoạch và quản lý hồ sơ theo dõi, lưu trữ hồ sơ cho từng xe theo quy định."
+        }
+      ],
+      "authorities": []
+    },
+    {
+      "id": "phong-tai-vu",
+      "parentId": "van-phong-ban",
+      "name": "Phòng Tài vụ",
+      "code": "",
+      "type": "Phòng",
+      "description": "",
+      "duties": [
+        {
+          "code": "1",
+          "text": "Xây dựng, trình cấp có thẩm quyền phê duyệt dự toán ngân sách năm; bảo vệ kế hoạch tài chính; tổ chức thực hiện và hướng dẫn theo dõi kiểm tra, đôn đốc việc thực hiện theo kế hoạch tài chính đã được phê duyệt; quản lý và điều hành các nguồn kinh phí thường xuyên, kinh phí chăm sóc sức khỏe cán bộ; quản lý tài chính, tài sản của đơn vị trực thuộc Ban; thực hiện chế độ kế toán và báo cáo quyết toán ngân sách theo đúng chế độ hiện hành. Tham mưu, thẩm định về lĩnh vực tài chính đối với việc quản lý, sử dụng, mua sắm, sửa chữa tài sản của cơ quan theo đúng quy định."
+        },
+        {
+          "code": "2",
+          "text": "Định kỳ hằng năm (tháng 12) rà soát các nhiệm vụ, chuyên đề, đề án phát sinh để cân đối, điều chỉnh, bổ sung dự toán ngân sách của cơ quan trình cấp có thẩm quyền phê duyệt và tổ chức triển khai thực hiện theo đúng quy định."
+        },
+        {
+          "code": "3",
+          "text": "Tổ chức thực hiện công tác hạch toán kế toán, quản lý lưu trữ hồ sơ sổ sách, chứng từ kế toán theo quy định của luật kế toán, thực hiện chế độ kiểm tra nội bộ nhằm phát hiện và ngăn ngừa những vi phạm về kỷ luật tài chính, kiến nghị với Lãnh đạo Văn phòng, Lãnh đạo Ban để xử lý."
+        },
+        {
+          "code": "4",
+          "text": "Theo dõi đầy đủ, chính xác, đôn đốc các khoản tạm ứng, công nợ của các cá nhân, đơn vị."
+        },
+        {
+          "code": "5",
+          "text": "Chủ trì, phối hợp với các phòng: Quản trị, Công nghệ thông tin và Chuyển đổi số định kỳ hoặc đột xuất kiểm kê, đánh giá lại tài sản của cơ quan đang sử dụng đúng nguyên tắc chế độ."
+        },
+        {
+          "code": "6",
+          "text": "Giúp Lãnh đạo Văn phòng Ban tham mưu Lãnh đạo Ban về việc thực hiện chế độ chính sách đối với cán bộ, công chức, viên chức, người lao động của Ban theo đúng quy định."
+        }
+      ],
+      "authorities": []
+    },
+    {
+      "id": "phong-to-chuc-can-bo",
+      "parentId": "van-phong-ban",
+      "name": "Phòng Tổ chức - Cán bộ",
+      "code": "",
+      "type": "Phòng",
+      "description": "",
+      "duties": [
+        {
+          "code": "1",
+          "text": "Nghiên cứu, tham mưu, xác định vị trí việc làm công chức của cơ quan."
+        },
+        {
+          "code": "2",
+          "text": "Tham mưu xây dựng và tổ chức thực hiện các quy định, quy chế về tổ chức, cán bộ, công tác nội bộ của cơ quan."
+        },
+        {
+          "code": "3",
+          "text": "Tham mưu công tác tuyển dụng, tiếp nhận, quy hoạch, đào tạo, bồi dưỡng, nhận xét, đánh giá, bổ nhiệm, điều động, luân chuyển, bố trí, sắp xếp đội ngũ cán bộ, công chức đáp ứng yêu cầu chức năng, nhiệm vụ, tổ chức bộ máy của Ban và từng vụ, cục, đơn vị."
+        },
+        {
+          "code": "4",
+          "text": "Tham mưu thực hiện chế độ, chính sách đối với cán bộ, công chức, người lao động; công tác thi đua, khen thưởng; công tác đảng vụ của Đảng ủy cơ quan; nhiệm vụ quốc phòng - an ninh và hoạt động dân quân tự vệ trong cơ quan."
+        },
+        {
+          "code": "5",
+          "text": "Tham mưu công tác bảo vệ chính trị nội bộ; phòng chống tham nhũng, lãng phí, tiêu cực; giải quyết khiếu nại, tố cáo; quản lý hồ sơ, xác minh kê khai tài sản, thu nhập của cán bộ, công chức trong cơ quan; xây dựng văn hóa công sở và thực hiện quy chế dân chủ ở cơ sở."
+        },
+        {
+          "code": "6",
+          "text": "Tham mưu Lãnh đạo Văn phòng, Lãnh đạo Ban tổ chức thực hiện công tác thi đua - khen thưởng của ngành Tổ chức xây dựng Đảng."
+        },
+        {
+          "code": "7",
+          "text": "Thực hiện nhiệm vụ do Thường trực Hội đồng thi đua khen thưởng và Thường trực Hội đồng lương, nhà ở của cơ quan giao."
+        },
+        {
+          "code": "8",
+          "text": "Tham mưu và thực hiện công tác tổ chức, cán bộ Văn phòng Ban."
+        }
+      ],
+      "authorities": []
+    },
+    {
+      "id": "phong-tong-hop",
+      "parentId": "van-phong-ban",
+      "name": "Phòng Tổng hợp",
+      "code": "",
+      "type": "Phòng",
+      "description": "",
+      "duties": [
+        {
+          "code": "1",
+          "text": "Theo dõi, tổng hợp báo cáo, thông tin về công tác tổ chức xây dựng Đảng của các tỉnh ủy, thành ủy, đảng ủy trực thuộc Trung ương. Tổng hợp, xây dựng báo cáo định kỳ và báo cáo chuyên đề theo phân công của Lãnh đạo Văn phòng, Lãnh đạo Ban."
+        },
+        {
+          "code": "2",
+          "text": "Tham mưu xây dựng chương trình, kế hoạch công tác của Ban; theo dõi, đôn đốc, tổng hợp tình hình, kết quả thực hiện chương trình, kế hoạch công tác. Dự các cuộc họp Lãnh đạo Ban cho ý kiến vào các đề án, nhiệm vụ của Ban theo quy chế làm việc."
+        },
+        {
+          "code": "3",
+          "text": "Tham mưu chuẩn bị nội dung, chương trình, kế hoạch và tham gia phục vụ hoạt động đối ngoại của Ban."
+        },
+        {
+          "code": "4",
+          "text": "Hướng dẫn nghiệp vụ thống kê, tổng hợp số liệu thống kê của các ban tổ chức tỉnh ủy, thành uỷ, đảng uỷ trực thuộc Trung ương về công tác tổ chức xây dựng Đảng; tham mưu ban hành số liệu thống kê về công tác tổ chức xây dựng Đảng; cung cấp số liệu thống kê theo chỉ đạo của Chánh Văn phòng. Tham mưu Lãnh đạo Ban các chỉ tiêu thống kê về công tác tổ chức xây dựng Đảng nằm trong Danh mục Chỉ tiêu thống kê toàn quốc."
+        },
+        {
+          "code": "5",
+          "text": "Tham mưu triển khai các đoàn công tác của Lãnh đạo Ban tại các địa phương, cơ quan, đơn vị."
+        },
+        {
+          "code": "6",
+          "text": "Biên tập và quản lý nội dung, thanh quyết toán Hệ thống Thông tin điện tử của Ban. Thường xuyên cập nhật nội dung, tư liệu, hiện vật và vận hành hệ thống trình chiếu, giới thiệu thông tin Phòng Truyền thống của Ban."
+        }
+      ],
+      "authorities": []
+    }
+  ]
+}

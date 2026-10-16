@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/* 60: neutral working area; 30: navy structure; 10: ruby interaction.
+   Pantone 193 C / 289 C are visual references; these are screen-only sRGB tokens. */
+:root {
+  --font-body: 'Be Vietnam Pro', 'Segoe UI', sans-serif;
+  --font-heading: 'Manrope Variable', 'Be Vietnam Pro', sans-serif;
+  --palette-ruby: #BF0D3E; --palette-navy: #0C2340; --palette-paper: #F3F5F8;
+  --bg: var(--palette-paper); --surface: #FFFFFF; --raised: #FFFFFF; --text: var(--palette-navy); --muted: #52657C;
+  --border: #D8E0EA; --control: #71849B; --accent: var(--palette-ruby); --accent-soft: #FCECF1;
+  --support: var(--palette-navy); --support-hover: #193653; --support-text: #F6F8FC;
+  --support-muted: #BDCBDB; --support-line: #38516D; --support-selected: #3E2943; --support-accent: #FF97AE;
+  --success: #176B47; --warning: #8A4B08; --danger: #B42318;
+  --panel-shadow: 0 18px 48px -18px rgb(25 38 56 / .22), 0 2px 6px rgb(25 38 56 / .05);
+  color-scheme: light;
+}
+:root[data-theme=dark] {
+  --bg: #08192E; --surface: #102841; --raised: #183654; --text: #F3F6FC; --muted: #B5C5D8;
+  --border: #38516D; --control: #8CA1B9; --accent: #FF8CA4; --accent-soft: #3E2943;
+  --support: #183654; --support-hover: #224766;
+  --success: #77D9A8; --warning: #F0C16D; --danger: #FFB4AB;
+  --panel-shadow: 0 18px 48px -16px rgb(0 0 0 / .5), 0 2px 6px rgb(0 0 0 / .2);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-line: var(--border);
+  --color-control: var(--control);
+  --color-brand: var(--accent);
+  --color-brand-soft: var(--accent-soft);
+  --color-action: var(--palette-ruby);
+  --color-action-hover: #9E0B34;
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --shadow-panel: var(--panel-shadow);
+}
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body { @apply bg-bg font-sans text-ink antialiased; font-synthesis: none; }
+  h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; letter-spacing: -.02em; line-height: 1.4; }
+  input, textarea { caret-color: var(--accent); }
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; opacity: .45; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  ::selection { background: rgb(191 13 62 / .2); }
+  * { scrollbar-width: thin; scrollbar-color: var(--control) transparent; }
+}
+
+@layer components {
+  .btn-primary { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-action px-3.5 text-[14px] font-semibold whitespace-nowrap text-white transition-colors hover:bg-action-hover; }
+  .btn-secondary { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-line bg-surface px-3.5 text-[14px] font-semibold whitespace-nowrap transition-colors hover:bg-bg; }
+  .icon-btn { @apply grid size-9 place-items-center rounded-md text-muted transition-colors hover:bg-bg hover:text-ink; }
+  .floating { @apply rounded-xl border border-line bg-surface shadow-panel; }
+}
+
+.three-host canvas { touch-action: none; }
+
+/* The supporting navy family is concentrated in navigation, not in reading panels. */
+.brand-header, .navigation-panel {
+  --bg: var(--support-hover); --surface: var(--support); --raised: var(--support-hover);
+  --text: var(--support-text); --muted: var(--support-muted); --border: var(--support-line);
+  --control: #8CA1B9; --accent: var(--support-accent); --accent-soft: var(--support-selected);
+  --success: #84D4AE; --warning: #F0C16D;
+  background: var(--support); color: var(--support-text); color-scheme: dark;
+}
+.navigation-panel select option { background: var(--support); color: var(--support-text); }
+.brand-header .btn-primary { background: var(--palette-ruby); }
+.brand-header .btn-primary:hover { background: #9E0B34; }
+.brand-header h1 { font-size: 17px; font-weight: 650; }
+.brand-header .btn-primary, .brand-header .btn-secondary { font-size:12px;min-height:40px; }
+.inspector-title h2 { font-size: 28px; font-weight: 700; line-height: 1.4; }
+.node-label strong, .graph-2d strong { font-family: var(--font-heading); font-weight: 700; }
+[role=tabpanel] p { font-size: 16px; line-height: 1.8; }
+[role=tabpanel] h3 { font-size: 16px; }
+dialog input, dialog textarea, dialog select { font-size: 16px; }
+.unit-table { line-height: 1.65; }
+.unit-type-tag { display:inline-flex;align-items:center;padding:4px 9px;border-radius:6px;background:var(--unit-soft);color:var(--unit-tone);font-size:12px;font-weight:600;line-height:1.5; }
+.node-label .unit-type-tag { font-size:10px;padding:2px 6px;line-height:1.4; }
+.unit-type-filter { color:var(--unit-tone);border-color:color-mix(in srgb,var(--unit-tone) 45%,transparent); }
+.unit-type-filter:hover,.unit-type-filter[aria-pressed=true] { background:var(--unit-soft);border-color:var(--unit-tone); }
+.inspector-title::before { content:'';display:block;width:44px;height:3px;border-radius:2px;margin:5px 0 15px;background:var(--unit-tone,var(--accent)); }
+.node-label>button:first-child { transition:background-color 180ms ease,border-color 180ms ease,box-shadow 180ms ease; }
+.node-label>button:first-child:hover { box-shadow:0 6px 18px -6px rgb(12 35 64 / .24); }
+.flat-unit { overflow:visible;transition:background-color 180ms ease,border-color 180ms ease,box-shadow 180ms ease; }
+.flat-unit::before { content:'';position:absolute;top:0;left:12px;right:12px;height:3px;border-radius:0 0 3px 3px;background:var(--unit-tone,var(--accent));pointer-events:none; }
+.flat-unit:hover { box-shadow:0 7px 18px -8px rgb(12 35 64 / .28); }
+.branch-list { animation:branch-reveal 260ms cubic-bezier(.22,1,.36,1);transform-origin:top; }
+@keyframes branch-reveal { from { opacity:.4;clip-path:inset(0 0 25% 0); } to { opacity:1;clip-path:inset(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
